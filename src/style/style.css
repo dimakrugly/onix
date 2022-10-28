@@ -1,89 +1,93 @@
 @import "reset.css";
+@import "normalize.css";
+@import url(../assets/fonts/fonts.css);
 
-/*FONTS*/
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap');
-
+/*MAIN*/
 .wrapper {
     margin: 0 auto;
-    max-width: 1160px;
+    width: 1150px;
 }
 
+
 /*HEADER*/
+
 header {
-    width: 100%;
-    height: 80px;
-    background-color: white;
+    height: 90px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .headerContainer {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: 13px;
 }
 
-.headerContainer a {
-    font-family: 'Roboto';
+.headerLogo {
+    font-family: 'Pacifico', cursive;
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: center;
-    letter-spacing: 0.8px;
-    color: black;
+    font-size: 33px;
+    line-height: 40px;
+    flex: 1;
+}
+
+.headerMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 22px 0;
+
+}
+.headerList {
+    display: flex;
+    flex-direction: row;
+}
+
+.headerItem {
+    margin-right: 40px;
+}
+
+.headerItem:last-child{
+    margin-right: 0;
+}
+
+.headerItem a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6C6C6C;
     text-decoration: none;
 }
 
-
-
-/*INFO SECTION*/
-.info {
-    background-image: url("../img/info.png");
-    background-size: cover;
+.headerItemActive a {
+    color: #AC1313;
 }
 
-.infoContainer {
+.divider {
+    width: 1px;
+    height: 38px;
+    background-color: #EBEBEB;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-self: center;
+}
+
+.headerCart {
     display: flex;
     align-items: center;
-    flex-direction: column;
 }
 
-.infoTitle {
-    margin-top: 25px;
-}
-
-.infoTitleContent {
-    font-family: 'Roboto';
+.headerCartText {
+    margin-left: 6px;
+    font-family: 'Libre Franklin';
     font-style: normal;
     font-weight: 400;
-    font-size: 43px;
-    line-height: 46px;
-    color: white;
-}
-
-.infoText {
-    margin-top: 70px;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.infoTextContent {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
     text-align: center;
-    letter-spacing: 0.8px;
-    color: white;
+    color: #000000;
 }
-
-.workspace {
-    margin-top: 70px;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-/*FOOTER*/
-
