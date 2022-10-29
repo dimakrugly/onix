@@ -91,3 +91,109 @@ header {
     text-align: center;
     color: #000000;
 }
+
+/*ABOUT*/
+
+.about {
+    background-image: url("../assets/img/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 708px;
+    display: flex;
+}
+.aboutFlexContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.aboutInfoContainer {
+    margin-top: 192px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.aboutName {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #D77474;
+}
+.aboutMainText {
+    margin-top: 12px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #000000;
+}
+
+.aboutSubText {
+    margin-top: 14px;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #6C6C6C;
+}
+
+.aboutButton {
+    margin-top: 50px;
+    height: 62px;
+    width: 201px;
+    background-color: #AC1313;
+    border: none;
+}
+
+.aboutButtonText {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.aboutImageContainer {
+    position: absolute;
+    margin-top: 130px;
+    background-image: url("../assets/img/aboutImage.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 445px;
+    width: 784px;
+    right: -110px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
