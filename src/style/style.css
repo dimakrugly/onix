@@ -38,6 +38,7 @@ header {
     padding: 22px 0;
 
 }
+
 .headerList {
     display: flex;
     flex-direction: row;
@@ -47,7 +48,7 @@ header {
     margin-right: 40px;
 }
 
-.headerItem:last-child{
+.headerItem:last-child {
     margin-right: 0;
 }
 
@@ -101,11 +102,13 @@ header {
     height: 708px;
     display: flex;
 }
+
 .aboutFlexContainer {
     display: flex;
     flex-direction: row;
     position: relative;
 }
+
 .aboutInfoContainer {
     margin-top: 192px;
     display: flex;
@@ -122,6 +125,16 @@ header {
     text-transform: uppercase;
     color: #D77474;
 }
+
+.aboutMainText span {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #AC1313;
+}
+
 .aboutMainText {
     margin-top: 12px;
     font-family: 'Poppins';
@@ -172,24 +185,159 @@ header {
     right: -110px;
 }
 
+/* WORKSPACE */
+
+.workspace {
+    position: relative;
+}
+
+.workspaceSideText {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #DBDBDB;
+    transform: rotate(-90deg);
+    min-width: 250px;
+    position: absolute;
+    top: 362px;
+    left: -32px;
+}
+
+.workspaceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.workspaceCatName {
+    margin-top: 120px;
+}
+
+.workspaceTitle {
+    margin-top: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    color: #000000;
+}
+
+.workspaceTitle span {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #AC1313;
+}
+
+.workspaceCircleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 64px;
+    margin-top: 60px;
+}
+
+.workSpaceCircle {
+    display: flex;
+    width: 190px;
+    height: 190px;
+    border-radius: 240px;
+    margin-right: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.workSpaceCircle:last-child {
+    margin-right: 0;
+}
+
+.yellowCircle {
+    background: #E4B366;
+    border: 30px solid rgba(0, 0, 0, 0.05);
+}
+
+.orangeCircle {
+    background: #F05B10;
+    border: 30px solid rgba(0, 0, 0, 0.05);
+}
+
+.redCircle {
+    background: #A21010;
+    border: 30px solid rgba(0, 0, 0, 0.05);
+}
+
+.circleContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.workspaceVase {
+    height: 70px;
+    width: 70px;
+    background-image: url("../assets/img/workspaceVasa.png");
+}
+
+.workspaceMug {
+    height: 70px;
+    width: 70px;
+    background-image: url("../assets/img/workspaceMug.png");
+}
+
+.workspacePlate {
+    height: 70px;
+    width: 70px;
+    background-image: url("../assets/img/workspacePlate.png");
+}
+.workspaceCircleText {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.workspaceColumns {
+    display: flex;
+    flex-direction: row;
+}
+
+.columnRight {
+    margin-left: 150px;
+}
+.columnTitle{
+    margin-top: 85px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 36px;
+    color: #000000;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.columnSubtitle {
+    margin-top: 25px;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6C6C6C;
+    max-width: 90%;
+}
 
 
 
