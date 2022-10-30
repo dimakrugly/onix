@@ -1,0 +1,295 @@
+@media screen and (max-width: 1280px) {
+    .wrapper {
+        width: 930px;
+    }
+
+    .workspaceSideText {
+        left: 30px;
+    }
+}
+
+@media screen and  (max-width: 980px) {
+    .wrapper {
+        width: 820px;
+    }
+
+    .aboutImageContainer {
+        opacity: .7;
+    }
+
+    .workSpaceCircle {
+        height: 140px;
+        width: 140px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    header {
+        height: 72px;
+    }
+
+    .wrapper {
+        width: 750px;
+    }
+
+    .about {
+        height: 503px;
+    }
+
+    .aboutImageContainer {
+        top: 0;
+        opacity: .5;
+    }
+
+
+    .aboutInfoContainer {
+        margin-top: 86px;
+    }
+
+    .aboutMainText {
+        font-size: 36px;
+    }
+
+    .aboutMainText span {
+        font-size: 50px;
+    }
+
+
+    .workspaceSideText {
+        top: 274px;
+        font-size: 11px;
+    }
+
+    .workspaceCatName {
+        margin-top: 60px;
+    }
+
+
+    .workspaceTitle {
+        margin-top: 0;
+        font-size: 32px;
+    }
+
+    .workspaceTitle span {
+        font-size: 50px;
+    }
+
+    .columnTitle {
+        font-size: 23px;
+    }
+
+    .workSpaceCircle {
+        height: 120px;
+        width: 120px;
+    }
+
+    .circleLogo {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 680px;
+    }
+
+    .aboutImageContainer {
+        height: 345px;
+        width: 584px;
+    }
+
+    .workSpaceCircle {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .wrapper {
+        width: 550px;
+    }
+
+    .workSpaceCircle {
+        height: 95px;
+        width: 95px;
+        border: 10px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .workspaceSideText {
+        top: 208px;
+    }
+
+    .columnTitle {
+        font-size: 16px;
+        margin-top: 50px;
+    }
+
+    .columnSubtitle {
+        margin-top: 0;
+        font-size: 10px;
+    }
+
+    footer {
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .wrapper {
+        width: 500px;
+    }
+
+    .headerMenu {
+        display: none;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .headerCart {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .about {
+        height: 400px;
+    }
+
+    .aboutImageContainer {
+        height: 157px;
+        width: 275px;
+    }
+
+    .aboutInfoContainer {
+        margin-top: 25px;
+    }
+
+    .aboutName {
+        font-size: 11px;
+    }
+
+    .aboutMainText {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .aboutMainText span {
+        font-size: 34px;
+    }
+
+    .aboutSubText {
+        margin-top: 22px;
+        text-align: center;
+    }
+
+    .aboutButton {
+        align-self: center;
+    }
+
+    .workspaceCatName {
+        margin-top: 21px;
+    }
+
+    .workspaceTitle {
+        font-size: 20px;
+    }
+
+    .workspaceTitle span {
+        font-size: 35px;
+    }
+
+    .workspaceSideText {
+        display: none;
+    }
+
+    .workspaceCircleContainer {
+        padding: 0;
+        align-items: center;
+        height: 430px;
+        margin-top: 20px;
+    }
+
+
+    .workSpaceCircle {
+        height: 109px;
+        width: 109px;
+    }
+
+    .workspaceColumns {
+        flex-direction: column;
+    }
+
+    .columnTitle {
+        margin-top: 10px;
+    }
+
+    .columnRight {
+        margin-left: 0;
+    }
+
+    .footerLogo {
+        margin-top: 30px;
+    }
+
+
+
+    .footerCopyright {
+        margin-top: 37px;
+    }
+
+}
+
+@media screen and (max-width: 520px) {
+    .wrapper {
+        width: 430px;
+    }
+    .footerDesign{
+     font-size: 9px;
+    }
+    .footerDesignBy{
+        font-size: 10px;
+    }
+    .workspaceCircleContainer {
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+        height: 430px;
+        margin-top: 20px;
+    }
+
+    .footerCopyright{
+        height: 70px;
+    }
+
+
+}
+
+@media screen and (max-width: 440px) {
+    .wrapper {
+        width: 320px;
+    }
+
+    .footerColumnInfo {
+        font-size: 9px;
+    }
+
+    .number {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .wrapper {
+        width: 300px;
+    }
+
+    .footerColumnLogo {
+        width: 32px;
+        height: 32px;
+    }
+}

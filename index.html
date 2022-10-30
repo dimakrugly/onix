@@ -5,8 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Pompeo</title>
     <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/adaptive.css">
 </head>
 <body>
 <header>
@@ -27,17 +28,22 @@
                 <p class="headerCartText">Cart</p>
             </div>
         </div>
+        <div class="burger">
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+            <div class="burgerLine"></div>
+        </div>
     </div>
 </header>
 <section class="about">
+    <div class="aboutImageContainer"></div>
     <div class="wrapper aboutFlexContainer">
         <div class="aboutInfoContainer">
             <p class="aboutName">Pompeo POttery </p>
             <h1 class="aboutMainText">Unique Porcelain <span>&</span> </br> Stone Collection</h1>
             <p class="aboutSubText">Unique & modern pottery made by our master in porcelain & stones</p>
-            <button class="aboutButton"><p class="aboutButtonText">Shop Collection</p></button>
+            <button class="aboutButton"><span class="aboutButtonText">Shop Collection</span></button>
         </div>
-        <div class="aboutImageContainer"></div>
     </div>
 </section>
 <section class="workspace">
@@ -48,19 +54,19 @@
         <div class="workspaceCircleContainer">
             <div class="workSpaceCircle yellowCircle">
                 <div class="circleContent">
-                    <div class="workspaceVase"></div>
+                    <div class="circleLogo workspaceVase"></div>
                     <p class="workspaceCircleText">VASES</p>
                 </div>
             </div>
             <div class="workSpaceCircle orangeCircle">
                 <div class="circleContent">
-                    <div class="workspaceMug"></div>
+                    <div class="circleLogo workspaceMug"></div>
                     <p class="workspaceCircleText">MUGS</p>
                 </div>
             </div>
             <div class="workSpaceCircle redCircle">
                 <div class="circleContent">
-                    <div class="workspacePlate"></div>
+                    <div class="circleLogo workspacePlate"></div>
                     <p class="workspaceCircleText">PLATES</p>
                 </div>
             </div>
@@ -93,25 +99,25 @@
             <div class="footerColumn">
                 <div class="footerColumnLogo mailLogo"></div>
                 <h4 class="footerColumnName">EMAIL</h4>
-                <p class="footerColumnInfo">pompeopotery@gmail.com</p>
+                <p class="footerColumnInfo">young-z@i.ua</p>
             </div>
             <div class="footerColumn">
                 <div class="footerColumnLogo geoLogo"></div>
-                <h4 class="footerColumnName">FIND</h4>
-                <p class="footerColumnInfo">Central Park, Manhattan</br>New York, 1101</p>
+                <h4 class="footerColumnName">GitHub</h4>
+                <a href="https://github.com/dimakrugly" class="footerColumnInfo">dimakrugly</a>
             </div>
             <div class="footerColumn">
                 <div class="footerColumnLogo phoneLogo"></div>
                 <h4 class="footerColumnName">CALL</h4>
-                <p class="footerColumnInfo">+38(095)056-05-83</p>
+                <p class="footerColumnInfo number">+38(095)056-05-83</p>
             </div>
         </div>
     </div>
     <div class="footerCopyright">
         <p class="footerDesign">Template design by</p>
-        <p class="footerDesignBy">Dorian Hoxha  -  Image License Info </p>
+        <a href="https://www.figma.com/file/bQ749c5X90qul4sM7Fcepf/Pompeo?node-id=1%3A2" class="footerDesignBy">Dorian Hoxha  -  Image License Info </a>
         <p class="footerDesign">Powered by</p>
-        <p class="footerDesignBy">Webflow</p>
+        <a href="https://webflow.com/" class="footerDesignBy">Webflow</a>
     </div>
 </footer>
 </body>
