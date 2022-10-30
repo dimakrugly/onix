@@ -17,6 +17,24 @@ header {
 
 }
 
+.burger {
+    display: none;
+    flex-direction: column;
+    height: 30px;
+    width: 35px;
+    justify-content: space-between;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+
+.burgerLine{
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    border-radius: 2px;
+}
+
 .headerContainer {
     display: flex;
     margin-top: 13px;
@@ -38,6 +56,7 @@ header {
     padding: 22px 0;
 
 }
+
 .headerList {
     display: flex;
     flex-direction: row;
@@ -47,12 +66,12 @@ header {
     margin-right: 40px;
 }
 
-.headerItem:last-child{
+.headerItem:last-child {
     margin-right: 0;
 }
 
 .headerItem a {
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -99,13 +118,16 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     height: 708px;
+    width: 100%;
     display: flex;
 }
+
 .aboutFlexContainer {
     display: flex;
     flex-direction: row;
     position: relative;
 }
+
 .aboutInfoContainer {
     margin-top: 192px;
     display: flex;
@@ -122,6 +144,16 @@ header {
     text-transform: uppercase;
     color: #D77474;
 }
+
+.aboutMainText span {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #AC1313;
+}
+
 .aboutMainText {
     margin-top: 12px;
     font-family: 'Poppins';
@@ -169,31 +201,284 @@ header {
     background-size: cover;
     height: 445px;
     width: 784px;
-    right: -110px;
+    right: 0;
+    top: 100px;
+}
+
+/* WORKSPACE */
+
+.workspace {
+    position: relative;
+}
+
+.workspaceSideText {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #DBDBDB;
+    writing-mode: vertical-lr;
+    min-width: 250px;
+    position: absolute;
+    top: 362px;
+    left: 75px;
+}
+
+.workspaceContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.workspaceCatName {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.workspaceTitle {
+    margin-top: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    color: #000000;
+    text-align: center;
+}
+
+.workspaceTitle span {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #AC1313;
+    text-align: center;
+}
+
+.workspaceCircleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 64px;
+    margin-top: 60px;
+    justify-content: space-between;
+
+}
+
+.workSpaceCircle {
+    display: flex;
+    width: 190px;
+    height: 190px;
+    border-radius: 240px;
+    /*margin-right: 150px;*/
+    justify-content: center;
+    align-items: center;
+}
+
+/*.workSpaceCircle:last-child {*/
+/*    margin-right: 0;*/
+/*}*/
+
+.yellowCircle {
+    background: #E4B366;
+    border: 30px solid rgba(0, 0, 0, 0.05);
+}
+
+.orangeCircle {
+    background: #F05B10;
+    border: 30px solid rgba(0, 0, 0, 0.05);
+}
+
+.redCircle {
+    background: #A21010;
+    border: 30px solid rgba(0, 0, 0, 0.05);
+}
+
+.circleContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.circleLogo {
+    height: 70px;
+    width: 70px;
+}
+.workspaceVase {
+    background-image: url("../assets/img/workspaceVasa.png");
+    background-size: cover;
+}
+
+.workspaceMug {
+    background-image: url("../assets/img/workspaceMug.png");
+    background-size: cover;
+}
+
+.workspacePlate {
+    background-image: url("../assets/img/workspacePlate.png");
+    background-size: cover;
+}
+
+.workspaceCircleText {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.workspaceColumns {
+    display: flex;
+    flex-direction: row;
+}
+
+.columnRight {
+    margin-left: 150px;
+}
+.columnTitle{
+    margin-top: 85px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 36px;
+    color: #000000;
 }
 
 
+.columnSubtitle {
+    margin-top: 25px;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6C6C6C;
+}
+
+/*FOOTER*/
+
+footer {
+    margin-top: 150px;
+    background: rgba(219, 219, 219, 0.1);
+}
+
+.footerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerLogo {
+    margin-top: 107px;
+}
+
+.footerSubText {
+    margin-top: 30px;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #6C6C6C;
+}
+
+.footerContainer {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.footerColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footerColumnLogo{
+    width: 40px;
+    height: 40px;
+}
 
 
+.footerColumnName {
+    margin-top: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #000000;
+}
 
+.footerColumnInfo{
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #6C6C6C;
+    text-decoration: none;
+}
 
+.mailLogo {
+    background-image: url("../assets/img/mail.png");
+    background-size: cover;
+}
 
+.geoLogo {
+    background-image: url("../assets/img/git.png");
+    background-size: cover;
+}
 
+.phoneLogo {
+    background-image: url("../assets/img/phone.png");
+    background-size: cover;
+}
 
+.footerCopyright {
+    margin-top: 90px;
+    border-top: 1px #EBEBEB solid;
+    height: 85px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
+.footerDesign {
+    margin-left: 3px;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+     text-align: right;
+    color: #6C6C6C;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.footerDesignBy {
+    margin-left: 3px;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: right;
+    color: #000000;
+    text-decoration: none;
+}
 
