@@ -6,30 +6,28 @@
     .workspaceSideText {
         left: 30px;
     }
-}
 
-@media screen and  (max-width: 980px) {
-    .wrapper {
-        width: 820px;
-    }
-
-    .aboutImageContainer {
-        opacity: .7;
-    }
-
-    .workSpaceCircle {
-        height: 140px;
-        width: 140px;
+    .footerColumnInfo span{
+        font-size: 11px;
     }
 }
 
-@media screen and (max-width: 850px) {
+
+@media screen and (max-width: 992px) {
     header {
         height: 72px;
     }
 
+    .headerMenu {
+        padding: 16px 0;
+    }
+
+    .headerItem {
+        margin-right: 30px;
+    }
+
     .wrapper {
-        width: 750px;
+        width: 768px;
     }
 
     .about {
@@ -37,13 +35,15 @@
     }
 
     .aboutImageContainer {
-        top: 0;
-        opacity: .5;
+        top: 180px;
+        opacity: .7;
+        height: 331px;
+        width: 585px;
     }
 
 
     .aboutInfoContainer {
-        margin-top: 86px;
+        margin-top: 35px;
     }
 
     .aboutMainText {
@@ -87,27 +87,29 @@
         height: 40px;
         width: 40px;
     }
+    footer  {
+        margin-top: 60px;
+    }
+
+    .footerLogo {
+        margin-top: 60px;
+    }
+    .footerCopyright {
+        margin-top: 38px;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .wrapper {
-        width: 680px;
+        width: 567px;
     }
 
-    .aboutImageContainer {
-        height: 345px;
-        width: 584px;
+    .headerItem {
+        margin-right: 25px;
     }
 
-    .workSpaceCircle {
-        height: 100px;
-        width: 100px;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .wrapper {
-        width: 550px;
+    .headerMenu {
+        padding: 12px 0;
     }
 
     .workSpaceCircle {
@@ -133,15 +135,35 @@
     footer {
         margin-top: 40px;
     }
+
+    .columnTitle {
+        max-width: 83%;
+    }
+
+    .footerColumnInfo span{
+        font-size: 10px;
+    }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 576px) {
     .wrapper {
-        width: 500px;
+        width: 95%;
+    }
+
+    header {
+        height: 50px;
+    }
+
+    .headerContainer {
+        margin-top: 0;
     }
 
     .headerMenu {
         display: none;
+    }
+
+    .headerLogo {
+        font-size: 23px;
     }
 
     .divider {
@@ -161,8 +183,10 @@
     }
 
     .aboutImageContainer {
-        height: 157px;
-        width: 275px;
+        height: 185px;
+        width: 322px;
+        top: 270px;
+        right: 45px;
     }
 
     .aboutInfoContainer {
@@ -176,6 +200,7 @@
     .aboutMainText {
         font-size: 26px;
         text-align: center;
+        max-width: 100%;
     }
 
     .aboutMainText span {
@@ -189,6 +214,9 @@
 
     .aboutButton {
         align-self: center;
+        margin-top: 25px;
+        height: 41px;
+        width: 160px;
     }
 
     .workspaceCatName {
@@ -209,9 +237,10 @@
 
     .workspaceCircleContainer {
         padding: 0;
+        flex-direction: column;
         align-items: center;
-        height: 240px;
-        margin-top: 0px;
+        height: 430px;
+        margin-top: 20px;
     }
 
 
@@ -226,6 +255,7 @@
 
     .columnTitle {
         margin-top: 10px;
+        max-width: 88%;
     }
 
     .columnRight {
@@ -233,63 +263,44 @@
     }
 
     .footerLogo {
-        margin-top: 30px;
+        margin-top: 5px;
     }
-
-
 
     .footerCopyright {
         margin-top: 37px;
     }
 
-}
-
-@media screen and (max-width: 520px) {
-    .wrapper {
-        width: 430px;
+    .footerSubText {
+        margin-top: 5px;
     }
-    .footerDesign{
-     font-size: 9px;
+    .footerContainer {
+        margin-top: 22px;
     }
-    .footerDesignBy{
-        font-size: 10px;
-    }
-    .workspaceCircleContainer {
-        padding: 0;
-        flex-direction: column;
-        align-items: center;
-        height: 430px;
-        margin-top: 20px;
-    }
-
-    .footerCopyright{
-        height: 70px;
-    }
-
-
-}
-
-@media screen and (max-width: 440px) {
-    .wrapper {
-        width: 320px;
-    }
-
     .footerColumnInfo {
+        font-size: 11px;
+    }
+
+    .footerDesign {
         font-size: 9px;
     }
 
-    .number {
+    .footerDesignBy {
         font-size: 10px;
     }
-}
 
-@media screen and (max-width: 320px) {
-    .wrapper {
-        width: 300px;
+
+    .footerCopyright {
+        height: 50px;
     }
 
-    .footerColumnLogo {
-        width: 32px;
-        height: 32px;
+    .footerColumnInfo {
+        font-size: 10px;
+    }
+    .footerColumnInfo span{
+        font-size: 7px;
+    }
+
+    .footerDesignBy span{
+        display: none;
     }
 }

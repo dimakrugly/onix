@@ -1,6 +1,13 @@
 ### GH-Pages
 #### https://dimakrugly.github.io/onix/
+___
 
+### GitHub
+#### https://github.com/dimakrugly
+___
+
+### GitHub repo
+#### https://github.com/dimakrugly/onix
 ___
 
 ### Desing link:

@@ -20,15 +20,15 @@ header {
 .burger {
     display: none;
     flex-direction: column;
-    height: 30px;
-    width: 35px;
+    height: 25px;
+    width: 30px;
     justify-content: space-between;
     position: absolute;
     right: 15px;
-    top: 20px;
+    top: 12px;
 }
 
-.burgerLine{
+.burgerLine {
     width: 100%;
     height: 4px;
     background-color: black;
@@ -143,15 +143,7 @@ header {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #D77474;
-}
 
-.aboutMainText span {
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 68px;
-    line-height: 68px;
-    color: #AC1313;
 }
 
 .aboutMainText {
@@ -162,6 +154,16 @@ header {
     font-size: 48px;
     line-height: 58px;
     color: #000000;
+    max-width: 80%;
+}
+
+.aboutMainText span {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #AC1313;
 }
 
 .aboutSubText {
@@ -195,14 +197,13 @@ header {
 
 .aboutImageContainer {
     position: absolute;
-    margin-top: 130px;
     background-image: url("../assets/img/aboutImage.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 445px;
     width: 784px;
     right: 0;
-    top: 100px;
+    top: 270px;
 }
 
 /* WORKSPACE */
@@ -274,14 +275,9 @@ header {
     width: 190px;
     height: 190px;
     border-radius: 240px;
-    /*margin-right: 150px;*/
     justify-content: center;
     align-items: center;
 }
-
-/*.workSpaceCircle:last-child {*/
-/*    margin-right: 0;*/
-/*}*/
 
 .yellowCircle {
     background: #E4B366;
@@ -298,15 +294,17 @@ header {
     border: 30px solid rgba(0, 0, 0, 0.05);
 }
 
-.circleContent{
+.circleContent {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .circleLogo {
     height: 70px;
     width: 70px;
 }
+
 .workspaceVase {
     background-image: url("../assets/img/workspaceVasa.png");
     background-size: cover;
@@ -342,7 +340,8 @@ header {
 .columnRight {
     margin-left: 150px;
 }
-.columnTitle{
+
+.columnTitle {
     margin-top: 85px;
     font-family: 'Poppins';
     font-style: normal;
@@ -350,6 +349,7 @@ header {
     font-size: 29px;
     line-height: 36px;
     color: #000000;
+    max-width: 63%;
 }
 
 
@@ -399,16 +399,16 @@ footer {
     justify-content: space-between;
 }
 
-.footerColumn{
+.footerColumn {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.footerColumnLogo{
+
+.footerColumnLogo {
     width: 40px;
     height: 40px;
 }
-
 
 .footerColumnName {
     margin-top: 10px;
@@ -423,7 +423,7 @@ footer {
     color: #000000;
 }
 
-.footerColumnInfo{
+.footerColumnInfo {
     font-family: 'Libre Franklin';
     font-style: normal;
     font-weight: 400;
@@ -466,7 +466,7 @@ footer {
     font-weight: 400;
     font-size: 12px;
     line-height: 22px;
-     text-align: right;
+    text-align: right;
     color: #6C6C6C;
 }
 
