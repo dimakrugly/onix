@@ -54,7 +54,6 @@
         font-size: 50px;
     }
 
-
     .workspaceSideText {
         top: 274px;
         font-size: 11px;
@@ -63,7 +62,6 @@
     .workspaceCatName {
         margin-top: 60px;
     }
-
 
     .workspaceTitle {
         margin-top: 0;
@@ -94,6 +92,7 @@
     .footerLogo {
         margin-top: 60px;
     }
+
     .footerCopyright {
         margin-top: 38px;
     }
@@ -243,7 +242,6 @@
         margin-top: 20px;
     }
 
-
     .workSpaceCircle {
         height: 109px;
         width: 109px;
@@ -273,9 +271,11 @@
     .footerSubText {
         margin-top: 5px;
     }
+
     .footerContainer {
         margin-top: 22px;
     }
+
     .footerColumnInfo {
         font-size: 11px;
     }
@@ -288,7 +288,6 @@
         font-size: 10px;
     }
 
-
     .footerCopyright {
         height: 50px;
     }
@@ -296,6 +295,7 @@
     .footerColumnInfo {
         font-size: 10px;
     }
+
     .footerColumnInfo span{
         font-size: 7px;
     }

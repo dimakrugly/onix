@@ -8,9 +8,7 @@
     width: 1150px;
 }
 
-
 /*HEADER*/
-
 header {
     height: 90px;
     display: flex;
@@ -102,7 +100,7 @@ header {
 
 .headerCartText {
     margin-left: 6px;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -112,7 +110,6 @@ header {
 }
 
 /*ABOUT*/
-
 .about {
     background-image: url("../assets/img/background.png");
     background-size: cover;
@@ -136,19 +133,18 @@ header {
 }
 
 .aboutName {
-    font-family: Poppins;
+    font-family: Poppins, serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #D77474;
-
 }
 
 .aboutMainText {
     margin-top: 12px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
@@ -158,7 +154,7 @@ header {
 }
 
 .aboutMainText span {
-    font-family: 'Playfair Display';
+    font-family: 'Playfair Display', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 68px;
@@ -168,7 +164,7 @@ header {
 
 .aboutSubText {
     margin-top: 14px;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -185,7 +181,7 @@ header {
 }
 
 .aboutButtonText {
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
@@ -213,7 +209,7 @@ header {
 }
 
 .workspaceSideText {
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -241,7 +237,7 @@ header {
 
 .workspaceTitle {
     margin-top: 10px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -251,7 +247,7 @@ header {
 }
 
 .workspaceTitle span {
-    font-family: 'Playfair Display';
+    font-family: 'Playfair Display', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 68px;
@@ -321,7 +317,7 @@ header {
 }
 
 .workspaceCircleText {
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -343,7 +339,7 @@ header {
 
 .columnTitle {
     margin-top: 85px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 700;
     font-size: 29px;
@@ -355,7 +351,7 @@ header {
 
 .columnSubtitle {
     margin-top: 25px;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -382,7 +378,7 @@ footer {
 
 .footerSubText {
     margin-top: 30px;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -412,7 +408,7 @@ footer {
 
 .footerColumnName {
     margin-top: 10px;
-    font-family: 'Poppins';
+    font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -424,7 +420,7 @@ footer {
 }
 
 .footerColumnInfo {
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -461,7 +457,7 @@ footer {
 
 .footerDesign {
     margin-left: 3px;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -472,7 +468,7 @@ footer {
 
 .footerDesignBy {
     margin-left: 3px;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
