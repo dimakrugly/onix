@@ -359,6 +359,197 @@ header {
     color: #6C6C6C;
 }
 
+/*CERAMICS*/
+
+.ceramics {
+    margin-top: 151px;
+    border-top: 1px #EBEBEB solid;
+}
+
+.ceramicsGrid {
+    display: flex;
+}
+
+.ceramicsGridLeft {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.ceramicsRectangle {
+    margin-top: 220px;
+    height: 220px;
+    width: 500px;
+    background-color: #f5f5f5;
+}
+
+.ceramicsVaseImg {
+    background-image: url("../assets/img/vase.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 509px;
+    width: 250px;
+    position: absolute;
+    top: 77px;
+    left: 125px;
+}
+
+.ceramicsGridTitle {
+    margin-top: 245px;
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    color: #000000;
+}
+
+.ceramicsGridSubtitle {
+    margin-top: 23px;
+    font-family: 'Libre Franklin', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #6C6C6C;
+    max-width: 385px;
+}
+
+.ceramicsLink {
+    margin-top: 27px;
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.ceramicsGridRight{
+    display: flex;
+    flex-direction: column;
+    padding-left: 85px;
+}
+
+.ceramicsVaseRed {
+    background-image: url("../assets/img/vaseRed.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 417px;
+    width: 350px;
+    top: 2334px;
+    right: 280px;
+    position: absolute;
+}
+
+/*COLLECTION*/
+
+.collection{
+  margin-top: 150px;
+  border-top: 1px #EBEBEB solid;
+}
+
+.collectionWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.collectionContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.collectionGrid {
+    margin-top: 65px;
+}
+
+.collectionUpImage {
+    height: 494px;
+    width: 371px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.plate {
+    background-image: url("../assets/img/plate.png");
+}
+
+.vaseBlue {
+    background-image: url("../assets/img/vaseBlue.png");
+}
+
+.ceramicsImg {
+    background-image: url("../assets/img/ceramics.png");
+}
+
+.collectionContentUpText {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.collectionText {
+    min-width: 371px;
+    border-bottom: 1px #DBDBDB solid;
+}
+
+.collectionTitle{
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #6C6C6C;
+}
+
+.collectionPrice{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.bottom {
+    margin-top: 22px;
+}
+
+.vaseOrange {
+    background-image: url("../assets/img/vaseOrange.png");
+}
+
+.vaseBlack {
+    background-image: url("../assets/img/vaseBlack.png");
+}
+
+.vaseLava {
+    background-image: url("../assets/img/vaseLava.png");
+}
+
+.collectionButton {
+    margin-top: 40px;
+    width: 214px;
+    height: 62px;
+    background: #AC1313;
+    align-self: center;
+    border: none;
+}
+
+.collectionButton span{
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
 /*FOOTER*/
 
 footer {
