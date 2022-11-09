@@ -7,9 +7,37 @@
         left: 30px;
     }
 
-    .footerColumnInfo span{
+    .footerColumnInfo span {
         font-size: 11px;
     }
+
+    .ceramicsRectangle {
+        width: auto;
+    }
+
+    .ceramicsVaseImg {
+        left: 57px;
+    }
+
+    .ceramicsVaseRed {
+        right: 23px;
+    }
+
+    .collectionUpImage {
+        height: 390px;
+        width: 273px;
+    }
+
+    .collectionText {
+        min-width: 271px;
+    }
+
+    .banner {
+        margin-top: 50px;
+        height: 300px;
+    }
+
+
 }
 
 @media screen and (max-width: 992px) {
@@ -84,7 +112,8 @@
         height: 40px;
         width: 40px;
     }
-    footer  {
+
+    footer {
         margin-top: 60px;
     }
 
@@ -95,6 +124,64 @@
     .footerCopyright {
         margin-top: 38px;
     }
+
+    .ceramicsSideText {
+        top: 474px;
+        font-size: 11px;
+    }
+
+    .ceramicsVaseImg {
+        height: 430px;
+        width: 200px;
+    }
+
+    .ceramicsVaseRed {
+        height: 381px;
+        width: 297px;
+        top: 589px;
+    }
+
+    .ceramicsSideText {
+        right: 10px;
+    }
+
+    .collectionUpImage {
+        height: 343px;
+        width: 229px;
+    }
+
+    .collectionText {
+        min-width: 225px;
+    }
+
+    .banner {
+        padding: 5px 0;
+    }
+
+    .bannerTitle {
+        font-size: 30px;
+    }
+
+    .subscribeIcon {
+        margin-top: 40px;
+    }
+
+    .subscribeIcon {
+        width: 60px;
+        height: 60px;
+        background-size: cover;
+    }
+
+    .input {
+        height: 30px;
+        width: 250px;
+    }
+
+    .mailButton {
+        margin-left: 4px;
+        height: 30px;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -138,8 +225,31 @@
         max-width: 83%;
     }
 
-    .footerColumnInfo span{
+    .footerColumnInfo span {
         font-size: 10px;
+    }
+
+    .ceramicsVaseImg {
+        height: 389px;
+        width: 185px;
+        top: 125px;
+        left: 20px;
+    }
+
+    .ceramicsVaseRed {
+        height: 334px;
+        width: 258px;
+        top: 742px;
+        right: 0;
+    }
+
+    .collectionUpImage {
+        height: 233px;
+        width: 177px;
+    }
+
+    .collectionText {
+        min-width: 175px;
     }
 }
 
@@ -295,11 +405,116 @@
         font-size: 10px;
     }
 
-    .footerColumnInfo span{
+    .footerColumnInfo span {
         font-size: 7px;
     }
 
-    .footerDesignBy span{
+    .footerDesignBy span {
         display: none;
+    }
+
+    .ceramics {
+        margin-top: 50px;
+    }
+
+    .ceramicsGrid {
+        flex-direction: column;
+    }
+
+    .ceramicsGridTitle {
+        margin-top: 30px;
+    }
+
+    .ceramicsSideText {
+        display: none;
+    }
+
+    .ceramicsRectangle {
+        display: none;
+    }
+
+    .ceramicsVaseImg {
+        left: 0;
+        top: 117px;
+        z-index: -1;
+        opacity: .5;
+
+    }
+
+    .ceramicsGridLeft {
+        align-items: center;
+    }
+
+    .ceramicsGridRight {
+        padding: 0;
+        align-items: center;
+    }
+
+    .ceramicsVaseImg {
+        left: -13px;
+        top: 19px;
+        height: 256px;
+        width: 113px;
+    }
+
+    .ceramicsVaseRed {
+        height: 217px;
+        width: 185px;
+        top: 68px;
+        right: 0;
+        opacity: .5;
+    }
+
+    .collection {
+        display: none;
+    }
+
+    .banner {
+        height: 190px;
+    }
+
+    .bannerWrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .bannerTitle {
+        font-size: 20px;
+    }
+
+    .bannerText {
+        max-width: none;
+        margin-top: 0;
+    }
+
+    .bannerButton {
+        margin-top: 61px;
+        height: 42px;
+        width: 150px;
+        position: absolute;
+        top: 155px;
+    }
+
+    .subscribe {
+        margin-top: 90px;
+        border-top: 1px #DBDBDB solid;
+    }
+
+    .subscribeTitle {
+        font-size: 14px;
+    }
+
+    .subscribeTitle span {
+        font-size: 40px;
+    }
+
+    .input {
+        width: 171px;
+    }
+
+    .mailButton{
+        width: 95px;
     }
 }

@@ -364,6 +364,24 @@ header {
 .ceramics {
     margin-top: 151px;
     border-top: 1px #EBEBEB solid;
+    position: relative;
+}
+
+
+.ceramicsSideText {
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #DBDBDB;
+    writing-mode: vertical-rl;
+    min-width: 250px;
+    position: absolute;
+    top: 362px;
+    right: 75px;
 }
 
 .ceramicsGrid {
@@ -382,6 +400,7 @@ header {
     width: 500px;
     background-color: #f5f5f5;
 }
+
 
 .ceramicsVaseImg {
     background-image: url("../assets/img/vase.png");
@@ -426,10 +445,11 @@ header {
     text-decoration: none;
 }
 
-.ceramicsGridRight{
+.ceramicsGridRight {
     display: flex;
     flex-direction: column;
     padding-left: 85px;
+    position: relative;
 }
 
 .ceramicsVaseRed {
@@ -438,16 +458,16 @@ header {
     background-repeat: no-repeat;
     height: 417px;
     width: 350px;
-    top: 2334px;
-    right: 280px;
+    top: 565px;
+    right: 90px;
     position: absolute;
 }
 
 /*COLLECTION*/
 
-.collection{
-  margin-top: 150px;
-  border-top: 1px #EBEBEB solid;
+.collection {
+    margin-top: 150px;
+    border-top: 1px #EBEBEB solid;
 }
 
 .collectionWrapper {
@@ -496,7 +516,7 @@ header {
     border-bottom: 1px #DBDBDB solid;
 }
 
-.collectionTitle{
+.collectionTitle {
     font-family: 'Libre Franklin';
     font-style: normal;
     font-weight: 400;
@@ -505,7 +525,7 @@ header {
     color: #6C6C6C;
 }
 
-.collectionPrice{
+.collectionPrice {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -539,7 +559,7 @@ header {
     border: none;
 }
 
-.collectionButton span{
+.collectionButton span {
     font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 700;
@@ -573,7 +593,7 @@ header {
     color: #D77474;
 }
 
-.bannerTitle{
+.bannerTitle {
     margin-top: 7px;
     font-family: 'Poppins';
     font-style: normal;
@@ -594,11 +614,11 @@ header {
     color: #6C6C6C;
 }
 
-.bannerText a{
+.bannerText a {
     color: #AC1313;
 }
 
-.bannerButton  {
+.bannerButton {
     margin-top: 50px;
     height: 62px;
     width: 195px;
@@ -606,7 +626,7 @@ header {
     border: none;
 }
 
-.bannerButton span{
+.bannerButton span {
     font-family: 'Poppins', serif;
     font-style: normal;
     font-weight: 700;
@@ -615,6 +635,150 @@ header {
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #FFFFFF;
+}
+
+/*SUBSCRIBE*/
+
+.subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subscribeIcon {
+    margin-top: 120px;
+    width: 80px;
+    height: 80px;
+    background-image: url("../assets/img/plane.png");
+}
+
+.subscribeInfo {
+    margin-top: 40px;
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #D77474;
+}
+
+.subscribeTitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+    color: #000000;
+}
+
+.subscribeTitle span {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #AC1313;
+}
+
+.subscribeMail {
+    margin-top: 65px;
+    display: flex;
+}
+
+.input {
+    box-sizing: border-box;
+    height: 45px;
+    width: 320px;
+    border: 1px solid #EBEBEB;
+}
+
+.mailButton {
+    margin-left: 4px;
+    height: 45px;
+    width: 175px;
+    border: none;
+    background-color: black;
+}
+
+.mailButton span {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.subscribeAgreement {
+    margin-top: 42px;
+    display: flex;
+    flex-direction: row;
+}
+
+.checkboxContainer {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.checkboxContainer input {
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #8534FF;
+}
+
+.checkboxContainer:hover input ~ .mark {
+    background-color: purple;
+}
+
+.checkboxContainer input:checked ~ .mark {
+    background-color: black;
+}
+
+.mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkboxContainer input:checked ~ .mark:after {
+    display: block;
+}
+
+.checkboxContainer .mark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.checkboxText {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #A1A1A1;
 }
 
 
