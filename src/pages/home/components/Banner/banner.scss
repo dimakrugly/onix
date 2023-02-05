@@ -6,6 +6,28 @@
   background-repeat: no-repeat;
   height: 471px;
   padding-top: 120px;
+
+  @media screen and (max-width: 1280px) {
+    margin-top: 50px;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 992px) {
+    padding: 5px 0;
+  }
+
+  @media screen and (max-width: 576px) {
+    height: 190px;
+  }
+}
+
+.bannerWrapper {
+  @media screen and (max-width: 576px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
 }
 
 .bannerInfo {
@@ -27,6 +49,14 @@
   font-size: 36px;
   line-height: 46px;
   color: #000000;
+
+  @media screen and (max-width: 992px) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 20px;
+  }
 }
 
 .bannerText {
@@ -38,6 +68,11 @@
   font-size: 16px;
   line-height: 24px;
   color: #6C6C6C;
+
+  @media screen and (max-width: 576px) {
+    max-width: none;
+    margin-top: 0;
+  }
 }
 
 .bannerText a {
@@ -50,6 +85,14 @@
   width: 195px;
   background-color: #AC1313;
   border: none;
+
+  @media screen and (max-width: 576px) {
+    margin-top: 61px;
+    height: 42px;
+    width: 150px;
+    position: absolute;
+    top: 155px;
+  }
 }
 
 .bannerButton span {

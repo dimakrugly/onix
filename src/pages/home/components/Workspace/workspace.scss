@@ -1,10 +1,5 @@
 @import '../../../../assets/fonts/fonts';
 
-.wrapper {
-  margin: 0 auto;
-  width: 1150px;
-}
-
 .workspace {
   position: relative;
 }
@@ -23,6 +18,23 @@
   position: absolute;
   top: 362px;
   left: 75px;
+
+  @media screen and (max-width: 1280px) {
+    left: 30px;
+  }
+
+  @media screen and (max-width: 992px) {
+    top: 274px;
+    font-size: 11px;
+  }
+
+  @media screen and (max-width: 768px) {
+    top: 208px;
+  }
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 }
 
 .workspaceContainer {
@@ -34,6 +46,14 @@
 .workspaceCatName {
   margin-top: 120px;
   text-align: center;
+
+  @media screen and (max-width: 992px) {
+    margin-top: 60px;
+  }
+
+  @media screen and (max-width: 576px) {
+    margin-top: 21px;
+  }
 }
 
 .workspaceTitle {
@@ -45,6 +65,15 @@
   line-height: 50px;
   color: #000000;
   text-align: center;
+
+  @media screen and (max-width: 992px) {
+    margin-top: 0;
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 20px;
+  }
 }
 
 .workspaceTitle span {
@@ -55,6 +84,13 @@
   line-height: 68px;
   color: #AC1313;
   text-align: center;
+
+  @media screen and (max-width: 992px) {
+    font-size: 50px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 35px;
+  }
 }
 
 .workspaceCircleContainer {
@@ -65,6 +101,13 @@
   margin-top: 60px;
   justify-content: space-between;
 
+  @media screen and (max-width: 576px) {
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    height: 430px;
+    margin-top: 20px;
+  }
 }
 
 .workSpaceCircle {
@@ -74,6 +117,22 @@
   border-radius: 240px;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 992px) {
+    height: 120px;
+    width: 120px;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 95px;
+    width: 95px;
+    border: 10px solid rgba(0, 0, 0, 0.05);
+  }
+
+  @media screen and (max-width: 576px) {
+    height: 109px;
+    width: 109px;
+  }
 }
 
 .yellowCircle {
@@ -100,6 +159,11 @@
 .circleLogo {
   height: 70px;
   width: 70px;
+
+  @media screen and (max-width: 992px) {
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .workspaceVase {
@@ -132,10 +196,17 @@
 .workspaceColumns {
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+  }
 }
 
 .columnRight {
   margin-left: 150px;
+  @media screen and (max-width: 576px) {
+    margin-left: 0;
+  }
 }
 
 .columnTitle {
@@ -147,6 +218,21 @@
   line-height: 36px;
   color: #000000;
   max-width: 63%;
+
+  @media screen and (max-width: 992px) {
+    font-size: 23px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    margin-top: 50px;
+    max-width: 83%;
+  }
+
+  @media screen and (max-width: 576px) {
+    margin-top: 10px;
+    max-width: 88%;
+  }
 }
 
 
@@ -158,4 +244,9 @@
   font-size: 14px;
   line-height: 24px;
   color: #6C6C6C;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 0;
+    font-size: 10px;
+  }
 }

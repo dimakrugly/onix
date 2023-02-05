@@ -4,6 +4,14 @@
   width: 201px;
   background-color: #AC1313;
   border: none;
+
+  @media screen and (max-width: 576px){
+    margin-top: 61px;
+    height: 42px;
+    width: 150px;
+    position: absolute;
+    top: 155px;
+  }
 }
 
 .buttonText {

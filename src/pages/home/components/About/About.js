@@ -12,7 +12,7 @@ class About extends Component {
                         <p className="aboutName">Pompeo Pottery </p>
                         <h1 className="aboutMainText">Unique Porcelain <span>&</span> Collection</h1>
                         <p className="aboutSubText">Unique & modern pottery made by our master in porcelain & stones</p>
-                        <Button text="Shop Collection"/>
+                        <Button className="aboutButton" text="Shop Collection"/>
                     </div>
                 </div>
             </section>

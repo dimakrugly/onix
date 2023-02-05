@@ -5,6 +5,13 @@ header {
   top: 0;
   z-index: 1;
   background-color: whitesmoke;
+
+  @media screen and (max-width: 992px) {
+    height: 72px;
+  }
+  @media screen and (max-width: 576px) {
+    height: 50px;
+  }
 }
 
 .burger {
@@ -16,6 +23,10 @@ header {
   position: absolute;
   right: 15px;
   top: 12px;
+
+  @media screen and (max-width: 576px) {
+    display: flex;
+  }
 }
 
 .burgerLine {
@@ -28,6 +39,9 @@ header {
 .headerContainer {
   display: flex;
   margin-top: 13px;
+  @media screen and (max-width: 576px) {
+    margin-top: 0;
+  }
 }
 
 .headerLogo {
@@ -37,6 +51,9 @@ header {
   font-size: 33px;
   line-height: 40px;
   flex: 1;
+  @media screen and (max-width: 576px) {
+    font-size: 23px;
+  }
 }
 
 .headerMenu {
@@ -45,6 +62,17 @@ header {
   align-items: center;
   padding: 22px 0;
 
+  @media screen and (max-width: 992px) {
+    padding: 16px 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 12px 0;
+  }
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 }
 
 .headerList {
@@ -55,6 +83,14 @@ header {
 .headerItem {
   margin-right: 40px;
   cursor: pointer;
+
+  @media screen and (max-width: 992px) {
+    margin-right: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-right: 25px;
+  }
 }
 
 .headerItem:last-child {
@@ -80,11 +116,18 @@ header {
   margin-left: 20px;
   margin-right: 20px;
   align-self: center;
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 }
 
 .headerCart {
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 }
 
 .headerCartImg {

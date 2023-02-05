@@ -1,6 +1,10 @@
 .collection {
   margin-top: 150px;
   border-top: 1px #EBEBEB solid;
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
 }
 
 .collectionWrapper {
@@ -23,6 +27,22 @@
   width: 371px;
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media screen and (max-width: 1280px) {
+    height: 390px;
+    width: 273px;
+  }
+
+  @media screen and (max-width: 992px) {
+    height: 343px;
+    width: 229px;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    height: 233px;
+    width: 177px;
+  }
 }
 
 .plate {
@@ -47,6 +67,18 @@
 .collectionText {
   min-width: 371px;
   border-bottom: 1px #DBDBDB solid;
+
+  @media screen and (max-width: 1280px) {
+    min-width: 271px;
+  }
+
+  @media screen and (max-width: 992px) {
+    min-width: 225px;
+  }
+
+  @media screen and (max-width: 768px) {
+    min-width: 175px;
+  }
 }
 
 .collectionTitle {

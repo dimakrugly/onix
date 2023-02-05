@@ -1,8 +1,15 @@
 @import "../../../../assets/fonts/fonts";
+
 .subscribe {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+
+  @media screen and (max-width: 576px) {
+    margin-top: 90px;
+    border-top: 1px #DBDBDB solid;
+  }
 }
 
 .subscribeIcon {
@@ -10,6 +17,13 @@
   width: 80px;
   height: 80px;
   background-image: url("../../../../assets/img/plane.png");
+
+  @media screen and (max-width: 992px) {
+    margin-top: 40px;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+  }
 }
 
 .subscribeInfo {
@@ -32,6 +46,10 @@
   line-height: 50px;
   text-align: center;
   color: #000000;
+
+  @media screen and (max-width: 576px) {
+    font-size: 14px;
+  }
 }
 
 .subscribeTitle span {
@@ -41,6 +59,10 @@
   font-size: 68px;
   line-height: 68px;
   color: #AC1313;
+
+  @media screen and (max-width: 576px) {
+    font-size: 40px;
+  }
 }
 
 .subscribeMail {
@@ -53,6 +75,15 @@
   height: 45px;
   width: 320px;
   border: 1px solid #EBEBEB;
+
+  @media screen and (max-width: 992px) {
+    height: 30px;
+    width: 250px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 171px;
+  }
 }
 
 .mailButton {
@@ -61,6 +92,15 @@
   width: 175px;
   border: none;
   background-color: black;
+
+  @media screen and (max-width: 992px) {
+    margin-left: 4px;
+    height: 30px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 95px;
+  }
 }
 
 .mailButton span {
