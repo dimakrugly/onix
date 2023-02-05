@@ -1,0 +1,102 @@
+
+.ceramics {
+  margin-top: 151px;
+  border-top: 1px #EBEBEB solid;
+  position: relative;
+}
+
+
+.ceramicsSideText {
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #DBDBDB;
+  writing-mode: vertical-rl;
+  min-width: 250px;
+  position: absolute;
+  top: 362px;
+  right: 75px;
+}
+
+.ceramicsGrid {
+  display: flex;
+}
+
+.ceramicsGridLeft {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ceramicsRectangle {
+  margin-top: 220px;
+  height: 220px;
+  width: 500px;
+  background-color: #f5f5f5;
+}
+
+
+.ceramicsVaseImg {
+  background-image: url("../../../assets/img/vase.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 509px;
+  width: 250px;
+  position: absolute;
+  top: 77px;
+  left: 125px;
+}
+
+.ceramicsGridTitle {
+  margin-top: 245px;
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+  color: #000000;
+}
+
+.ceramicsGridSubtitle {
+  margin-top: 23px;
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #6C6C6C;
+  max-width: 385px;
+}
+
+.ceramicsLink {
+  margin-top: 27px;
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.ceramicsGridRight {
+  display: flex;
+  flex-direction: column;
+  padding-left: 85px;
+  position: relative;
+}
+
+.ceramicsVaseRed {
+  background-image: url("../../../assets/img/vaseRed.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 417px;
+  width: 350px;
+  top: 565px;
+  right: 90px;
+  position: absolute;
+}

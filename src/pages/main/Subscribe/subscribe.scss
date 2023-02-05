@@ -1,0 +1,142 @@
+@import "../../../assets/fonts/fonts";
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribeIcon {
+  margin-top: 120px;
+  width: 80px;
+  height: 80px;
+  background-image: url("../../../assets/img/plane.png");
+}
+
+.subscribeInfo {
+  margin-top: 40px;
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #D77474;
+}
+
+.subscribeTitle {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+}
+
+.subscribeTitle span {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 68px;
+  line-height: 68px;
+  color: #AC1313;
+}
+
+.subscribeMail {
+  margin-top: 65px;
+  display: flex;
+}
+
+.input {
+  box-sizing: border-box;
+  height: 45px;
+  width: 320px;
+  border: 1px solid #EBEBEB;
+}
+
+.mailButton {
+  margin-left: 4px;
+  height: 45px;
+  width: 175px;
+  border: none;
+  background-color: black;
+}
+
+.mailButton span {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.subscribeAgreement {
+  margin-top: 42px;
+  display: flex;
+  flex-direction: row;
+}
+
+.checkboxContainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.checkboxContainer input {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #8534FF;
+}
+
+.checkboxContainer:hover input ~ .mark {
+  background-color: purple;
+}
+
+.checkboxContainer input:checked ~ .mark {
+  background-color: black;
+}
+
+.mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxContainer input:checked ~ .mark:after {
+  display: block;
+}
+
+.checkboxContainer .mark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxText {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #A1A1A1;
+}

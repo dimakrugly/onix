@@ -1,0 +1,117 @@
+footer {
+  margin-top: 150px;
+  background: rgba(219, 219, 219, 0.1);
+}
+
+.footerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerLogo {
+  margin-top: 107px;
+}
+
+.footerSubText {
+  margin-top: 30px;
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #6C6C6C;
+}
+
+.footerContainer {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerColumnLogo {
+  width: 40px;
+  height: 40px;
+}
+
+.footerColumnName {
+  margin-top: 10px;
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.footerColumnInfo {
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #6C6C6C;
+  text-decoration: none;
+}
+
+.mailLogo {
+  background-image: url("../../../assets/img/mail.png");
+  background-size: cover;
+}
+
+.geoLogo {
+  background-image: url("../../../assets/img/git.png");
+  background-size: cover;
+}
+
+.phoneLogo {
+  background-image: url("../../../assets/img/phone.png");
+  background-size: cover;
+}
+
+.footerCopyright {
+  margin-top: 90px;
+  border-top: 1px #EBEBEB solid;
+  height: 85px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerDesign {
+  margin-left: 3px;
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: right;
+  color: #6C6C6C;
+}
+
+.footerDesignBy {
+  margin-left: 3px;
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: right;
+  color: #000000;
+  text-decoration: none;
+}
+

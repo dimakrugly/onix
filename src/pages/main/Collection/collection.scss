@@ -1,0 +1,90 @@
+.collection {
+  margin-top: 150px;
+  border-top: 1px #EBEBEB solid;
+}
+
+.collectionWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.collectionContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.collectionGrid {
+  margin-top: 65px;
+}
+
+.collectionUpImage {
+  height: 494px;
+  width: 371px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.plate {
+  background-image: url("../../../assets/img/plate.png");
+}
+
+.vaseBlue {
+  background-image: url("../../../assets/img/vaseBlue.png");
+}
+
+.ceramicsImg {
+  background-image: url("../../../assets/img/ceramics.png");
+}
+
+.collectionContentUpText {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.collectionText {
+  min-width: 371px;
+  border-bottom: 1px #DBDBDB solid;
+}
+
+.collectionTitle {
+  font-family: 'Libre Franklin';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #6C6C6C;
+}
+
+.collectionPrice {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.bottom {
+  margin-top: 22px;
+}
+
+.vaseOrange {
+  background-image: url("../../../assets/img/vaseOrange.png");
+}
+
+.vaseBlack {
+  background-image: url("../../../assets/img/vaseBlack.png");
+}
+
+.vaseLava {
+  background-image: url("../../../assets/img/vaseLava.png");
+}
+
+.collectionButtonArea {
+  display: flex;
+  justify-content: center;
+}
+
