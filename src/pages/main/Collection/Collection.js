@@ -5,7 +5,7 @@ import './collection.scss'
 class Collection extends Component {
     render() {
         return (
-            <section className="collection">
+            <section className="collection" id="collection">
                 <div className="wrapper collectionWrapper">
                     <p className="aboutName workspaceCatName">our online store</p>
                     <h2 className="workspaceTitle">Pottery Collection</h2>

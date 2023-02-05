@@ -5,7 +5,7 @@ import {Button} from "../../../components/Button/Button";
 class About extends Component {
     render() {
         return (
-            <section className="about">
+            <section className="about" id="about">
                 <div className="aboutImageContainer"></div>
                 <div className="wrapper aboutFlexContainer">
                     <div className="aboutInfoContainer">

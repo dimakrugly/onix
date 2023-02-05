@@ -1,20 +1,29 @@
 import React, {Component} from "react";
-import './header.scss'
-import image from './cart.png'
+import './header.scss';
+import {Link} from "react-scroll";
+import image from './cart.png';
 
 class Header extends Component {
     render() {
         return (
-            <header>
+            <header id="header">
                 <div className="wrapper">
                     <div className="headerContainer">
                         <h3 className="headerLogo">Pompeo</h3>
                         <nav className="headerMenu">
                             <ul className="headerList">
-                                <li className="headerItem headerItemActive"><a href="src/pages/main/Header/Header#">HOME</a></li>
-                                <li className="headerItem"><a href="src/pages/main/Header/Header#">ABOUT</a></li>
-                                <li className="headerItem"><a href="src/pages/main/Header/Header#">SHOP</a></li>
-                                <li className="headerItem"><a href="src/pages/main/Header/Header#">CONTACT</a></li>
+                                <li className="headerItem headerItemActive">
+                                    <Link to="header" spy={true} smooth={true} offset={50} duration={500}>HOME</Link>
+                                </li>
+                                <li className="headerItem">
+                                    <Link to="about" spy={true} smooth={true} offset={50} duration={500}>ABOUT</Link>
+                                </li>
+                                <li className="headerItem">
+                                    <Link to="collection" spy={true} smooth={true} offset={50} duration={500}>SHOP</Link>
+                                </li>
+                                <li className="headerItem">
+                                    <Link to="footer" spy={true} smooth={true} offset={50} duration={500}>CONTACT</Link>
+                                </li>
                             </ul>
                         </nav>
                         <div className="divider"></div>

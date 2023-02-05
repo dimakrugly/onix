@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-scroll";
 import './ceramics.scss';
 
 class Ceramics extends Component {
@@ -17,7 +18,7 @@ class Ceramics extends Component {
                                 doctus forensibus, nec lorem vocent aliquam eu. Aliquid definitiones id cum, ad meliore
                                 perpetua
                                 referrentur sed. Quas suscipit ad mea verear vivendo tincidunt.</p>
-                            <a href="#" className="ceramicsLink">View Details</a>
+                            <Link className="ceramicsLink">View Details</Link>
                         </div>
                         <div className="ceramicsGridRight">
                             <h3 className="ceramicsGridTitle">Gold & Black Pottery</h3>
@@ -27,7 +28,7 @@ class Ceramics extends Component {
                                 tempor incididunt ut labore dolore aua. Ut enim ad minim veniam, quis nostrud
                                 exercitationulco
                                 laboris nisi ut aliquip ex ea commodo consequatuisaute.</p>
-                            <a href="#" className="ceramicsLink">View Details</a>
+                            <Link className="ceramicsLink">View Details</Link>
                             <div className="ceramicsRectangle"></div>
                             <div className="ceramicsVaseRed"></div>
                         </div>

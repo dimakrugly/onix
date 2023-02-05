@@ -4,7 +4,7 @@ import './footer.scss';
 class Footer extends Component {
     render() {
         return (
-            <footer>
+            <footer id="footer">
                 <div className="wrapper footerWrapper">
                     <h3 className="headerLogo footerLogo">Dmytro Torop</h3>
                     <p className="footerSubText"> REACT TEST TASK 2022 </p>

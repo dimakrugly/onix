@@ -1,13 +1,10 @@
-@import '../../../assets/fonts/fonts';
-
-.wrapper {
-  margin: 0 auto;
-  width: 1150px;
-}
-
 header {
   height: 90px;
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: whitesmoke;
 }
 
 .burger {
@@ -57,6 +54,7 @@ header {
 
 .headerItem {
   margin-right: 40px;
+  cursor: pointer;
 }
 
 .headerItem:last-child {

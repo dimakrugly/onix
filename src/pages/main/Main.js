@@ -1,4 +1,5 @@
 import {Component} from "react";
+import './main.scss'
 import About from "./About/About";
 import Header from "./Header/Header";
 import Workspace from "./Workspace/Workspace";
