@@ -32,7 +32,7 @@ class Footer extends Component {
                        className="footerDesignBy">Dorian
                         Hoxha <span>-  Image License Info </span></a>
                     <p className="footerDesign">Powered by</p>
-                    <a href="https://webflow.com/" className="footerDesignBy">Webflow</a>
+                    <a href="src/components/Footer/Footer" className="footerDesignBy">Webflow</a>
                 </div>
             </footer>
         );

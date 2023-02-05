@@ -1,4 +1,4 @@
-@import "../../../assets/fonts/fonts";
+@import "../../../../assets/fonts/fonts";
 .subscribe {
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   margin-top: 120px;
   width: 80px;
   height: 80px;
-  background-image: url("../../../assets/img/plane.png");
+  background-image: url("../../../../assets/img/plane.png");
 }
 
 .subscribeInfo {

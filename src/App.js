@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import Main from "./pages/main/Main";
+import Home from "./pages/home/Home";
 
  class App extends Component {
     render() {
         return (
-           <Main/>
+           <Home/>
         );
     };
 }

@@ -12,7 +12,7 @@ class Header extends Component {
                         <h3 className="headerLogo">Pompeo</h3>
                         <nav className="headerMenu">
                             <ul className="headerList">
-                                <li className="headerItem headerItemActive">
+                                <li className="headerItem">
                                     <Link to="header" spy={true} smooth={true} offset={50} duration={500}>HOME</Link>
                                 </li>
                                 <li className="headerItem">

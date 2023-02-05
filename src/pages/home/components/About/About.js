@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import './about.scss'
-import {Button} from "../../../components/Button/Button";
+import {Button} from "../../../../components/Button/Button";
 
 class About extends Component {
     render() {
