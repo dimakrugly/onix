@@ -1,4 +1,4 @@
 .idea
 .husky
-.build
+build
 node_modules
