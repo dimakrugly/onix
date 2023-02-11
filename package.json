@@ -7,15 +7,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "css-reset-and-normalize": "^2.3.6",
-    "normalize-css": "^2.3.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
-    "reset-css": "^5.0.1",
-    "sass": "^1.58.0",
     "scss": "^0.2.4",
     "web-vitals": "^2.1.4"
   },
@@ -25,7 +23,10 @@
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -47,8 +48,10 @@
   },
   "devDependencies": {
     "css-loader": "^6.7.3",
+    "eslint": "^8.33.0",
     "gh-pages": "^5.0.0",
     "react-router": "^6.8.0",
-    "react-router-dom": "^6.8.0"
+    "react-router-dom": "^6.8.0",
+    "husky": "^8.0.0"
   }
 }
