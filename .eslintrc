@@ -14,7 +14,9 @@
     "react/prop-types": 1,
     "linebreak-style": 0,
     "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
     "class-methods-use-this\n": "off",
+    "no-console": "off",
     "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": [
       1,
@@ -33,6 +35,6 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/anchor-is-valid": 0
   }
 }

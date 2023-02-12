@@ -52,8 +52,8 @@ class Home extends Component {
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
   onChange = () => {
+    // eslint-disable-next-line no-console
     console.log('123');
   };
 

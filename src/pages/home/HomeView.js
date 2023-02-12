@@ -22,6 +22,11 @@ export const HomeView = ({ items, onChange }) => (
 );
 
 HomeView.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    item: PropTypes.string,
+  })).isRequired,
   onChange: PropTypes.func.isRequired,
 };

@@ -28,5 +28,10 @@ export const Collection = ({ items }) => (
 );
 
 Collection.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    item: PropTypes.string,
+  })).isRequired,
 };
