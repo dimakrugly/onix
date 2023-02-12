@@ -18,7 +18,6 @@
 }
 
 .collectionDivider {
-  width: 100%;
   height: 1px;
   background-color: #b5abab69;
 }
@@ -55,75 +54,6 @@
   flex-direction: column;
 }
 
-.collectionContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.collectionGrid {
-  margin-top: 65px;
-}
-
-.collectionUpImage {
-  height: 494px;
-  width: 371px;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  @media screen and (max-width: 1280px) {
-    height: 390px;
-    width: 273px;
-  }
-
-  @media screen and (max-width: 992px) {
-    height: 343px;
-    width: 229px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    height: 233px;
-    width: 177px;
-  }
-}
-
-.plate {
-  background-image: url("../../../../assets/img/plate.png");
-}
-
-.vaseBlue {
-  background-image: url("../../../../assets/img/vaseBlue.png");
-}
-
-.ceramicsImg {
-  background-image: url("../../../../assets/img/ceramics.png");
-}
-
-.collectionContentUpText {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.collectionText {
-  min-width: 371px;
-  border-bottom: 1px #DBDBDB solid;
-
-  @media screen and (max-width: 1280px) {
-    min-width: 271px;
-  }
-
-  @media screen and (max-width: 992px) {
-    min-width: 225px;
-  }
-
-  @media screen and (max-width: 768px) {
-    min-width: 175px;
-  }
-}
-
 .collectionTitle {
   font-family: 'Libre Franklin';
   font-style: normal;
@@ -140,22 +70,6 @@
   font-size: 14px;
   line-height: 24px;
   color: #000000;
-}
-
-.bottom {
-  margin-top: 22px;
-}
-
-.vaseOrange {
-  background-image: url("../../../../assets/img/vaseOrange.png");
-}
-
-.vaseBlack {
-  background-image: url("../../../../assets/img/vaseBlack.png");
-}
-
-.vaseLava {
-  background-image: url("../../../../assets/img/vaseLava.png");
 }
 
 .collectionButtonArea {

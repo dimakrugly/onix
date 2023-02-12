@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Header } from '../../components/Header/Header';
 import { About } from './components/About/About';
 import { Workspace } from './components/Workspace/Workspace';
@@ -19,3 +20,8 @@ export const HomeView = ({ items, onChange }) => (
     <Footer />
   </>
 );
+
+HomeView.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  onChange: PropTypes.func.isRequired,
+};

@@ -28,5 +28,5 @@ export const Collection = ({ items }) => (
 );
 
 Collection.propTypes = {
-  items: PropTypes.arrayOf.isRequired,
+  items: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
 };

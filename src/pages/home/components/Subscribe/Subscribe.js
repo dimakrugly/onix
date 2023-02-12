@@ -1,5 +1,6 @@
 import React from 'react';
 import './subscribe.scss';
+import PropTypes from 'prop-types';
 
 export const Subscribe = ({ onChange }) => (
   <section className="subscribe">
@@ -33,3 +34,7 @@ export const Subscribe = ({ onChange }) => (
     </div>
   </section>
 );
+
+Subscribe.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
