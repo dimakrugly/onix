@@ -10,6 +10,6 @@ ___
 #### https://github.com/dimakrugly/onix
 ___
 
-### Desing link:
+### Design link:
 #### https://www.figma.com/file/bQ749c5X90qul4sM7Fcepf/Pompeo?node-id=1%3A2
 ___

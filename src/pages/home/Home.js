@@ -60,19 +60,15 @@ class Home extends Component {
     };
   }
 
-  // Mail handling
   onChangeMail = (event) => {
     this.setState((prev) => ({
       ...prev,
       email: event.target.value,
-    }));
-    this.setState((prev) => ({
-      ...prev,
       isError: { isMailError: isValidEMail(event.target.value) },
     }));
   };
 
-  onMailBlur = (event) => {
+  onBlurMail = (event) => {
     this.setState((prev) => ({
       ...prev,
       touched: { touchedMail: isTouchedMail(event.target.value) },
@@ -89,7 +85,7 @@ class Home extends Component {
         onChange={this.onChangeMail}
         isError={isError.isMailError}
         value={email}
-        onBlur={this.onMailBlur}
+        onBlur={this.onBlurMail}
         touched={touched.touchedMail}
       />
     );

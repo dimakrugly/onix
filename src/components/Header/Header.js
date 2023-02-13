@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.scss';
-import image from './cart.png';
+import image from '../../assets/img/cart.png';
 
 export const Header = () => (
   <header>
