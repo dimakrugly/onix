@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './home.scss';
 import { HomeView } from './HomeView';
+import { isValidEMail, isTouchedMail } from '../../utils/validation';
 import image1 from '../../assets/img/plate.png';
 import image2 from '../../assets/img/vaseBlue.png';
 import image3 from '../../assets/img/ceramics.png';
@@ -49,22 +50,49 @@ class Home extends Component {
         price: '$ 115.00 US',
       },
       ],
-      user: {
-        email: '',
+      email: '',
+      isError: {
+        isMailError: false,
+      },
+      touched: {
+        touchedMail: false,
       },
     };
   }
 
-  onChange = (event) => {
+  // Mail handling
+  onChangeMail = (event) => {
     this.setState((prev) => ({
       ...prev,
       email: event.target.value,
     }));
+    this.setState((prev) => ({
+      ...prev,
+      isError: { isMailError: isValidEMail(event.target.value) },
+    }));
+  };
+
+  onMailBlur = (event) => {
+    this.setState((prev) => ({
+      ...prev,
+      touched: { touchedMail: isTouchedMail(event.target.value) },
+    }));
   };
 
   render() {
-    const { items } = this.state;
-    return <HomeView items={items} onChange={this.onChange} />;
+    const {
+      items, isError, email, touched,
+    } = this.state;
+    return (
+      <HomeView
+        items={items}
+        onChange={this.onChangeMail}
+        isError={isError.isMailError}
+        value={email}
+        onBlur={this.onMailBlur}
+        touched={touched.touchedMail}
+      />
+    );
   }
 }
 

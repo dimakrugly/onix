@@ -70,22 +70,6 @@
   display: flex;
 }
 
-.input {
-  box-sizing: border-box;
-  height: 45px;
-  width: 320px;
-  border: 1px solid #EBEBEB;
-
-  @media screen and (max-width: 992px) {
-    height: 30px;
-    width: 250px;
-  }
-
-  @media screen and (max-width: 576px) {
-    width: 171px;
-  }
-}
-
 .mailButton {
   margin-left: 4px;
   height: 45px;

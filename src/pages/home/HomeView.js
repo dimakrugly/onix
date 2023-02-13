@@ -8,7 +8,14 @@ import { Banner } from './components/Banner/Banner';
 import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 
-export const HomeView = ({ items, onChange }) => (
+export const HomeView = ({
+  items,
+  onChange,
+  isError,
+  value,
+  onBlur,
+  touched,
+}) => (
   <>
     <Header />
     <About />
@@ -16,7 +23,13 @@ export const HomeView = ({ items, onChange }) => (
     <Ceramics />
     <Collection items={items} />
     <Banner />
-    <Subscribe onChange={onChange} />
+    <Subscribe
+      onChange={onChange}
+      isError={isError}
+      value={value}
+      onBlur={onBlur}
+      touched={touched}
+    />
     <Footer />
   </>
 );
@@ -26,4 +39,8 @@ HomeView.propTypes = {
     PropTypes.string,
   )).isRequired,
   onChange: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
+  value: PropTypes.string.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  touched: PropTypes.bool.isRequired,
 };
