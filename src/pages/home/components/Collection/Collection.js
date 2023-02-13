@@ -1,61 +1,34 @@
-import React, { Component } from 'react';
-import { Button } from '../../../../components/Button/Button';
+import React from 'react';
 import './collection.scss';
+import PropTypes from 'prop-types';
+import { Button } from '../../../../components/Button/Button';
 
-class Collection extends Component {
-  render() {
-    return (
-      <section className="collection" id="collection">
-        <div className="wrapper collectionWrapper">
-          <p className="aboutName workspaceCatName">our online store</p>
-          <h2 className="workspaceTitle">Pottery Collection</h2>
-          <div className="collectionGrid" />
-          <div className="collectionContent">
-            <div className="collectionUpImage plate" />
-            <div className="collectionUpImage vaseBlue" />
-            <div className="collectionUpImage ceramicsImg" />
-          </div>
-          <div className="collectionContentUpText">
-            <div className="collectionText">
-              <p className="collectionTitle">Decor Plate</p>
-              <p className="collectionPrice">$ 65.00 USD</p>
+export const Collection = ({ items }) => (
+  <section className="collection" id="collection">
+    <div>
+      <div className="wrapper collectionWrapper">
+        <p className="aboutName workspaceCatName">our online store</p>
+        <h2 className="workspaceTitle collectionMainText">Pottery Collection</h2>
+        <div className="collectionContainer">
+          {items.map((item) => (
+            <div className="collectionProductCard" key={item.key}>
+              <img className="collectionImage" src={item.image} alt="imageCard" />
+              <p className="collectionTitle">{item.title}</p>
+              <p className="collectionPrice">{item.price}</p>
+              <div className="collectionDivider" />
             </div>
-            <div className="collectionText">
-              <p className="collectionTitle">Mint Pottery</p>
-              <p className="collectionPrice">$ 75.00 USD</p>
-            </div>
-            <div className="collectionText">
-              <p className="collectionTitle">Set Of Potterys</p>
-              <p className="collectionPrice">$ 125.00 USD</p>
-            </div>
-          </div>
-          <div className="collectionContent bottom">
-            <div className="collectionUpImage vaseOrange" />
-            <div className="collectionUpImage vaseBlack" />
-            <div className="collectionUpImage vaseLava" />
-          </div>
-          <div className="collectionContentUpText">
-            <div className="collectionText">
-              <p className="collectionTitle">Orange Ceramic</p>
-              <p className="collectionPrice">$ 55.00 USD</p>
-            </div>
-            {' '}
-            <div className="collectionText">
-              <p className="collectionTitle">Dark Bowl</p>
-              <p className="collectionPrice">$ 115.00 USD</p>
-            </div>
-            <div className="collectionText">
-              <p className="collectionTitle">Square Pottery</p>
-              <p className="collectionPrice">$ 75.00 USD</p>
-            </div>
-          </div>
-          <div className="collectionButtonArea">
-            <Button text="View All Products" />
-          </div>
+          ))}
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </div>
+    <div className="collectionButtonArea">
+      <Button text="View All Products" />
+    </div>
+  </section>
+);
 
-export default Collection;
+Collection.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.objectOf(
+    PropTypes.string,
+  )).isRequired,
+};

@@ -1,5 +1,9 @@
 @import '../../assets/fonts/fonts';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .wrapper {
   margin: 0 auto;
   width: 1150px;

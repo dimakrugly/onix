@@ -1,0 +1,22 @@
+.formControl {
+  box-sizing: border-box;
+  height: 45px;
+  width: 320px;
+  border: 1px solid #EBEBEB;
+  padding:10px;
+
+  @media screen and (max-width: 992px) {
+    height: 30px;
+    width: 250px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 171px;
+  }
+}
+
+.isInvalid {
+  background-color: #f1abab;
+}
+
+

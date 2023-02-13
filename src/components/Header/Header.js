@@ -1,54 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './header.scss';
-import { Link } from 'react-scroll';
-import image from './cart.png';
+import image from '../../assets/img/cart.png';
 
-class Header extends Component {
-  render() {
-    return (
-      <header id="header">
-        <div className="wrapper">
-          <div className="headerContainer">
-            <h3 className="headerLogo">Pompeo</h3>
-            <nav className="headerMenu">
-              <ul className="headerList">
-                <li className="headerItem">
-                  <Link to="header" spy smooth offset={50} duration={500}>
-                    HOME
-                  </Link>
-                </li>
-                <li className="headerItem">
-                  <Link to="about" spy smooth offset={50} duration={500}>
-                    ABOUT
-                  </Link>
-                </li>
-                <li className="headerItem">
-                  <Link to="collection" spy smooth offset={50} duration={500}>
-                    SHOP
-                  </Link>
-                </li>
-                <li className="headerItem">
-                  <Link to="footer" spy smooth offset={50} duration={500}>
-                    CONTACT
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-            <div className="divider" />
-            <div className="headerCart">
-              <img className="headerCartImg" src={image} alt="cart" />
-              <p className="headerCartText">Cart</p>
-            </div>
-          </div>
-          <div className="burger">
-            <div className="burgerLine" />
-            <div className="burgerLine" />
-            <div className="burgerLine" />
-          </div>
+export const Header = () => (
+  <header>
+    <div className="wrapper">
+      <div className="headerContainer">
+        <h3 className="headerLogo">Pompeo</h3>
+        <nav className="headerMenu">
+          <ul className="headerList">
+            <li className="headerItem">
+              <a href="#about">
+                HOME
+              </a>
+            </li>
+            <li className="headerItem">
+              <a href="#workspace">
+                ABOUT
+              </a>
+            </li>
+            <li className="headerItem">
+              <a href="#collection">
+                SHOP
+              </a>
+            </li>
+            <li className="headerItem">
+              <a href="#footer">
+                CONTACT
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div className="divider" />
+        <div className="headerCart">
+          <img className="headerCartImg" src={image} alt="cart" />
+          <p className="headerCartText">Cart</p>
         </div>
-      </header>
-    );
-  }
-}
-
-export default Header;
+      </div>
+      <div className="burger">
+        <div className="burgerLine" />
+        <div className="burgerLine" />
+        <div className="burgerLine" />
+      </div>
+    </div>
+  </header>
+);

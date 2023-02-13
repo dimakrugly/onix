@@ -6,27 +6,31 @@
     display: none;
   }
 }
-
-.collectionWrapper {
-  display: flex;
-  flex-direction: column;
+.collectionMainText{
+  margin-bottom: 30px;
 }
 
-.collectionContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.collectionContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1.1fr 1.1fr;
+  gap: 0px 0px;
 }
 
-.collectionGrid {
-  margin-top: 65px;
+.collectionDivider {
+  height: 1px;
+  background-color: #b5abab69;
 }
 
-.collectionUpImage {
-  height: 494px;
-  width: 371px;
-  background-size: cover;
-  background-repeat: no-repeat;
+.collectionProductCard {
+  display: grid;
+  justify-content: center;
+  margin: 15px 0 15px 0;
+}
+
+.collectionImage {
+  width: auto;
+  height: auto;
 
   @media screen and (max-width: 1280px) {
     height: 390px;
@@ -45,40 +49,9 @@
   }
 }
 
-.plate {
-  background-image: url("../../../../assets/img/plate.png");
-}
-
-.vaseBlue {
-  background-image: url("../../../../assets/img/vaseBlue.png");
-}
-
-.ceramicsImg {
-  background-image: url("../../../../assets/img/ceramics.png");
-}
-
-.collectionContentUpText {
-  margin-top: 15px;
+.collectionWrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.collectionText {
-  min-width: 371px;
-  border-bottom: 1px #DBDBDB solid;
-
-  @media screen and (max-width: 1280px) {
-    min-width: 271px;
-  }
-
-  @media screen and (max-width: 992px) {
-    min-width: 225px;
-  }
-
-  @media screen and (max-width: 768px) {
-    min-width: 175px;
-  }
+  flex-direction: column;
 }
 
 .collectionTitle {
@@ -97,22 +70,6 @@
   font-size: 14px;
   line-height: 24px;
   color: #000000;
-}
-
-.bottom {
-  margin-top: 22px;
-}
-
-.vaseOrange {
-  background-image: url("../../../../assets/img/vaseOrange.png");
-}
-
-.vaseBlack {
-  background-image: url("../../../../assets/img/vaseBlack.png");
-}
-
-.vaseLava {
-  background-image: url("../../../../assets/img/vaseLava.png");
 }
 
 .collectionButtonArea {
