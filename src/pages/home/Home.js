@@ -49,12 +49,17 @@ class Home extends Component {
         price: '$ 115.00 US',
       },
       ],
+      user: {
+        email: '',
+      },
     };
   }
 
-  onChange = () => {
-    // eslint-disable-next-line no-console
-    console.log('123');
+  onChange = (event) => {
+    this.setState((prev) => ({
+      ...prev,
+      email: event.target.value,
+    }));
   };
 
   render() {

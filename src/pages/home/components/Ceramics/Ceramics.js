@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 import './ceramics.scss';
 
 export const Ceramics = () => (
@@ -16,7 +15,7 @@ export const Ceramics = () => (
             Aliquid definitiones id cum, ad meliore perpetua referrentur
             sed. Quas suscipit ad mea verear vivendo tincidunt.
           </p>
-          <Link className="ceramicsLink">View Details</Link>
+          <a className="ceramicsLink">View Details</a>
         </div>
         <div className="ceramicsGridRight">
           <h3 className="ceramicsGridTitle">Gold & Black Pottery</h3>
@@ -26,7 +25,7 @@ export const Ceramics = () => (
             veniam, quis nostrud exercitationulco laboris nisi ut aliquip ex
             ea commodo consequatuisaute.
           </p>
-          <Link className="ceramicsLink">View Details</Link>
+          <a className="ceramicsLink">View Details</a>
           <div className="ceramicsRectangle" />
           <div className="ceramicsVaseRed" />
         </div>

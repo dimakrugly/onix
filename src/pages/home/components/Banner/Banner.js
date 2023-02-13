@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 import { Button } from '../../../../components/Button/Button';
 import './banner.scss';
 
@@ -10,7 +9,7 @@ export const Banner = () => (
       <h2 className="bannerTitle">Ready to start shopping?</h2>
       <p className="bannerText">
         Lorem ipsum dolor sit amet,
-        <Link to="header">consectetur adipiscing elit.</Link>
+        <a href="#header">consectetur adipiscing elit.</a>
         {' '}
         Suspendisse
         varius enim in eros elementum.

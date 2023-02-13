@@ -2,7 +2,7 @@ import React from 'react';
 import './workspace.scss';
 
 export const Workspace = () => (
-  <section className="workspace">
+  <section className="workspace" id="workspace">
     <p className="workspaceSideText">Hand Craft Pottery</p>
     <div className="wrapper workspaceContainer">
       <p className="aboutName workspaceCatName">Product categories </p>
