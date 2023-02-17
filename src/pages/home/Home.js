@@ -50,12 +50,11 @@ class Home extends Component {
         price: '$ 115.00 US',
       },
       ],
-      email: '',
-      isError: {
+      formData: {
+        email: '',
         isMailError: false,
-      },
-      touched: {
         touchedMail: false,
+        checkedMail: false,
       },
     };
   }
@@ -63,30 +62,57 @@ class Home extends Component {
   onChangeMail = (event) => {
     this.setState((prev) => ({
       ...prev,
-      email: event.target.value,
-      isError: { isMailError: isValidEMail(event.target.value) },
+      formData: {
+        ...prev.formData,
+        email: event.target.value,
+        isMailError: isValidEMail(event.target.value),
+      },
     }));
   };
 
   onBlurMail = (event) => {
     this.setState((prev) => ({
       ...prev,
-      touched: { touchedMail: isTouchedMail(event.target.value) },
+      formData: {
+        ...prev.formData,
+        touchedMail: isTouchedMail(event.target.value),
+      },
     }));
+  };
+
+  onCheckedMail = () => {
+    this.setState((prev) => ({
+      ...prev,
+      formData: {
+        ...prev.formData,
+        checkedMail: !prev.formData.checkedMail,
+      },
+    }));
+  };
+
+  onButtonDisabled = () => {
+    const { formData } = this.state;
+    if (formData.checkedMail && !formData.isMailError && formData.touchedMail) {
+      return false;
+    }
+    return true;
   };
 
   render() {
     const {
-      items, isError, email, touched,
+      items, formData,
     } = this.state;
     return (
       <HomeView
         items={items}
-        onChange={this.onChangeMail}
-        isError={isError.isMailError}
-        value={email}
+        onChangeMailInput={this.onChangeMail}
+        isError={formData.isMailError}
+        value={formData.email}
         onBlur={this.onBlurMail}
-        touched={touched.touchedMail}
+        touched={formData.touchedMail}
+        onCheckedMail={this.onCheckedMail}
+        checked={formData.checkedMail}
+        disabled={this.onButtonDisabled()}
       />
     );
   }

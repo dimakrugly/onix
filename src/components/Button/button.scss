@@ -1,4 +1,4 @@
-.button {
+.buttonPrimary {
   margin-top: 50px;
   height: 62px;
   width: 201px;
@@ -14,6 +14,23 @@
   }
 }
 
+.buttonSecondary {
+  margin-left: 4px;
+  height: 45px;
+  width: 175px;
+  border: none;
+  background-color: black;
+
+  @media screen and (max-width: 992px) {
+    margin-left: 4px;
+    height: 30px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 95px;
+  }
+}
+
 .buttonText {
   font-family: 'Poppins', serif;
   font-style: normal;
@@ -23,4 +40,8 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: white;
+}
+
+.disabled {
+  background-color: gray;
 }

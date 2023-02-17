@@ -2,9 +2,10 @@ import React from 'react';
 import './subscribe.scss';
 import PropTypes from 'prop-types';
 import { Input } from '../../../../components/Input/Input';
+import { Button } from '../../../../components/Button/Button';
 
 export const Subscribe = ({
-  onChange, isError, value, onBlur, touched,
+  onChangeMailInput, isError, value, onBlur, touched, onCheckedMail, checked, disabled,
 }) => (
   <section className="subscribe">
     <div className="subscribeIcon" />
@@ -16,30 +17,38 @@ export const Subscribe = ({
     </h2>
     <div className="subscribeMail">
       <Input
-        onChange={onChange}
+        onChange={onChangeMailInput}
         isError={isError}
         value={value}
         onBlur={onBlur}
         touched={touched}
+        placeholder="Enter your email"
       />
-      <button type="button" className="mailButton">
-        <span>subscribe</span>
-      </button>
+      <Button
+        text="subscribe"
+        variant="secondary"
+        disabled={disabled}
+      />
     </div>
     <div className="subscribeAgreement">
       <label htmlFor="check" className="checkboxContainer">
-        <input id="check" type="checkbox" />
+        <input id="check" type="checkbox" onChange={onCheckedMail} checked={checked} />
         <span className="mark" />
       </label>
-      <p className="checkboxText">Sign up for our newsletter</p>
+      <p className="checkboxText">
+        Subscribe to our newsletter
+      </p>
     </div>
   </section>
 );
 
 Subscribe.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onChangeMailInput: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onBlur: PropTypes.func.isRequired,
   touched: PropTypes.bool.isRequired,
+  onCheckedMail: PropTypes.func.isRequired,
+  checked: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
