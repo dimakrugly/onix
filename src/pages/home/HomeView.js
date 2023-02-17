@@ -10,11 +10,14 @@ import { Footer } from '../../components/Footer/Footer';
 
 export const HomeView = ({
   items,
-  onChange,
+  onChangeMailInput,
   isError,
   value,
   onBlur,
   touched,
+  onCheckedMail,
+  checked,
+  disabled,
 }) => (
   <>
     <Header />
@@ -24,11 +27,14 @@ export const HomeView = ({
     <Collection items={items} />
     <Banner />
     <Subscribe
-      onChange={onChange}
+      onChangeMailInput={onChangeMailInput}
       isError={isError}
       value={value}
       onBlur={onBlur}
       touched={touched}
+      onCheckedMail={onCheckedMail}
+      checked={checked}
+      disabled={disabled}
     />
     <Footer />
   </>
@@ -38,9 +44,16 @@ HomeView.propTypes = {
   items: PropTypes.arrayOf(PropTypes.objectOf(
     PropTypes.string,
   )).isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChangeMailInput: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onBlur: PropTypes.func.isRequired,
   touched: PropTypes.bool.isRequired,
+  onCheckedMail: PropTypes.func.isRequired,
+  checked: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};
+
+HomeView.defaultProps = {
+  value: '',
 };
