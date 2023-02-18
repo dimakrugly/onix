@@ -70,33 +70,6 @@
   display: flex;
 }
 
-.mailButton {
-  margin-left: 4px;
-  height: 45px;
-  width: 175px;
-  border: none;
-  background-color: black;
-
-  @media screen and (max-width: 992px) {
-    margin-left: 4px;
-    height: 30px;
-  }
-
-  @media screen and (max-width: 576px) {
-    width: 95px;
-  }
-}
-
-.mailButton span {
-  font-family: 'Lato', serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: #FFFFFF;
-  text-transform: uppercase;
-}
 
 .subscribeAgreement {
   margin-top: 42px;

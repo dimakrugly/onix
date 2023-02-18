@@ -103,32 +103,6 @@
   }
 }
 
-.aboutButton {
-  margin-top: 50px;
-  height: 62px;
-  width: 201px;
-  background-color: #AC1313;
-  border: none;
-
-  @media screen and (max-width: 576px) {
-      align-self: center;
-      margin-top: 25px;
-      height: 41px;
-      width: 160px;
-    }
-}
-
-.aboutButtonText {
-  font-family: 'Poppins', serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 22px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: white;
-}
-
 .aboutImageContainer {
   position: absolute;
   background-image: url('../../../../assets/img/aboutImage.png');
