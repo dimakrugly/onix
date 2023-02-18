@@ -78,30 +78,3 @@
 .bannerText a {
   color: #AC1313;
 }
-
-.bannerButton {
-  margin-top: 50px;
-  height: 62px;
-  width: 195px;
-  background-color: #AC1313;
-  border: none;
-
-  @media screen and (max-width: 576px) {
-    margin-top: 61px;
-    height: 42px;
-    width: 150px;
-    position: absolute;
-    top: 155px;
-  }
-}
-
-.bannerButton span {
-  font-family: 'Poppins', serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 22px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #FFFFFF;
-}
