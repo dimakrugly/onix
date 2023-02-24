@@ -3,7 +3,7 @@ import './collection.scss';
 import PropTypes from 'prop-types';
 import { Button } from '../../../../components/Button/Button';
 
-export const Collection = ({ items }) => (
+export const Collection = ({ items, onCartAdd, cartData }) => (
   <section className="collection" id="collection">
     <div>
       <div className="wrapper collectionWrapper">
@@ -14,7 +14,15 @@ export const Collection = ({ items }) => (
             <div className="collectionProductCard" key={item.key}>
               <img className="collectionImage" src={item.image} alt="imageCard" />
               <p className="collectionTitle">{item.title}</p>
-              <p className="collectionPrice">{item.price}</p>
+              <p className="collectionPrice">{`$ ${item.price},00 USD`}</p>
+              <Button
+                disabled={cartData.some((cartItem) => cartItem.key === item.key)}
+                text={cartData.some((cartItem) => cartItem.key === item.key) ? 'Done!' : 'Add to cart'}
+                variant="small"
+                onClick={() => {
+                  onCartAdd(item);
+                }}
+              />
               <div className="collectionDivider" />
             </div>
           ))}
@@ -28,7 +36,17 @@ export const Collection = ({ items }) => (
 );
 
 Collection.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.objectOf(
-    PropTypes.string,
-  )).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  })).isRequired,
+  onCartAdd: PropTypes.func.isRequired,
+  cartData: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  })).isRequired,
 };

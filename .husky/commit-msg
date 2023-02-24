@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+message="$(cat $1)"
+requiredPattern="^(feat|fix|refactor|init|docs):[a-z 0-9]*."
+if ! [[ $message =~ $requiredPattern ]];
+then
+echo "-"
+echo "-"
+echo "-"
+echo "🚨🚨🚨🚨 Wrong commit message! 😕"
+echo "The commit message must have this format:"
+echo "<feat|fix|refactor|init|docs>: <what was done>."
+echo "Allowed verbs in imperative mood: init, feat, fix, refactor, docs"
+echo "Example: init: start new project."
+echo "-"
+echo "Your commit message was:"
+echo $message
+echo "-"
+echo "For more information, check script in .husky/commit-msg"
+echo "-"
+exit 1
+fi
+npx --yes commitlint --edit "$1"

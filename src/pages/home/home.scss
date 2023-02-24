@@ -1,9 +1,5 @@
 @import '../../assets/fonts/fonts';
 
-html {
-  scroll-behavior: smooth;
-}
-
 .wrapper {
   margin: 0 auto;
   width: 1150px;
@@ -23,4 +19,8 @@ html {
   @media screen and (max-width: 576px) {
     width: 95%;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
