@@ -150,6 +150,17 @@ class Home extends Component {
     }));
   };
 
+  onFilteredProducts = () => {
+    const { cartData, cartSearchValue } = this.state;
+    return (
+      cartData.filter((product) => product
+        .productData
+        .title
+        .toLowerCase()
+        .includes(cartSearchValue
+          .toLowerCase())));
+  };
+
   onCartItemDiscount = (product) => {
     this.setState((prev) => ({
       cartData: prev.cartData.map((item) => {
@@ -170,7 +181,7 @@ class Home extends Component {
 
   render() {
     const {
-      items, formData, isCartOpen, cartData, cartSearchValue, isMobileMenuOpen, isDiscount,
+      items, formData, isCartOpen, cartData, isMobileMenuOpen, isDiscount,
     } = this.state;
     return (
       <HomeView
@@ -191,11 +202,11 @@ class Home extends Component {
         onCartLowerSort={this.onCartLowerSort}
         onCartHigherSort={this.onCartHigherSort}
         onCartSearchGetValue={this.onCartSearchGetValue}
-        cartSearchValue={cartSearchValue}
         isMobileMenuOpen={isMobileMenuOpen}
         onMobileMenuOpen={this.onMobileMenuOpen}
         onCartItemDiscount={this.onCartItemDiscount}
         isDiscount={isDiscount}
+        onFilteredProducts={this.onFilteredProducts}
       />
     );
   }
