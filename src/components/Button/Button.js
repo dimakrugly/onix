@@ -28,6 +28,9 @@ export const Button = ({
     case 'primary':
       disabledStyle += ' disabledPrimary';
       break;
+    case 'secondary':
+      disabledStyle += ' disabledSecondary';
+      break;
     case 'small':
       disabledStyle += ' disabledSmall';
       break;
