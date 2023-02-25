@@ -5,6 +5,17 @@
   background-color: #AC1313;
   border: none;
 
+  span {
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+  }
+
   @media screen and (max-width: 576px){
     margin-top: 61px;
     height: 42px;
@@ -20,6 +31,16 @@
   width: 175px;
   border: none;
   background-color: black;
+  span {
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+  }
 
   @media screen and (max-width: 992px) {
     margin-left: 4px;
@@ -31,17 +52,51 @@
   }
 }
 
-.buttonText {
-  font-family: 'Poppins', serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 22px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: white;
+.buttonCart{
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  border: #000000 2px solid;
+  height: 28px;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  display: inline-block;
+  vertical-align: middle;
+  span{
+    font-family: "Roboto", sans-serif;
+    color: black;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 992px) {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 10px;
+  }
 }
 
-.disabled {
+.buttonSmall {
+  background-color: #AC1313;
+  border: none;
+  span {
+      font-family: 'Poppins', serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 22px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: white;
+    }
+}
+
+.disabledPrimary {
   background-color: gray;
+}
+
+.disabledSmall {
+  background-color: #43b02a;
 }

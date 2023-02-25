@@ -23,6 +23,9 @@ header {
   position: absolute;
   right: 15px;
   top: 12px;
+  padding: 0;
+  border: none;
+  background-color: white;
 
   @media screen and (max-width: 576px) {
     display: flex;
@@ -122,6 +125,7 @@ header {
 }
 
 .headerCart {
+  border: none;
   display: flex;
   align-items: center;
 
@@ -144,4 +148,43 @@ header {
   line-height: 20px;
   text-align: center;
   color: #000000;
+}
+
+.headerListMobile {
+  background-color: white;
+}
+
+.headerItemMobile{
+  padding: 5px 0 5px 0;
+  border-top: #adadad 1px solid;
+  button {
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6C6C6C;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    background-color: white;
+  }
+
+  a {
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6C6C6C;
+    text-decoration: none;
+  }
+}
+
+.closed {
+  display: none;
 }
