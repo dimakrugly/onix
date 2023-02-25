@@ -8,6 +8,7 @@ import image3 from '../../assets/img/ceramics.png';
 import image4 from '../../assets/img/vaseOrange.png';
 import image5 from '../../assets/img/vaseBlack.png';
 import image6 from '../../components/Cart/vaseLava.png';
+import { bubbleSort } from '../../utils/bubleSort';
 
 class Home extends Component {
   constructor(props) {
@@ -139,7 +140,7 @@ class Home extends Component {
 
   onCartHigherSort = () => {
     this.setState((prev) => ({
-      cartData: prev.cartData.sort((el, item) => item.productData.price - el.productData.price),
+      cartData: bubbleSort(prev.cartData),
     }));
   };
 

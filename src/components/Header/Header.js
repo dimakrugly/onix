@@ -83,4 +83,6 @@ export const Header = ({
 );
 Header.propTypes = {
   onCartOpen: PropTypes.func.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
+  onMobileMenuOpen: PropTypes.func.isRequired,
 };

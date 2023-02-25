@@ -2,6 +2,7 @@ import React from 'react';
 import './cart.scss';
 import PropTypes from 'prop-types';
 import { Button } from '../Button/Button';
+import { buttonVariants } from '../../constants/constants';
 
 export const Cart = ({
   onCartOpen,
@@ -22,92 +23,84 @@ export const Cart = ({
 
   return (
     <div className="shopCart">
-      <div className="shopCartContainer">
-        <div className="cartInputContainer">
-          <Button
-            text="Lowest first"
-            variant="cart"
-            onClick={() => {
-              onCartLowerSort(cartData);
-            }}
-          />
-          <Button
-            text="Highest first"
-            variant="cart"
-            onClick={() => {
-              onCartHigherSort(cartData);
-            }}
-          />
-          <input
-            type="text"
-            className="cartInput"
-            placeholder="Search by name"
-            onChange={onCartSearchGetValue}
-          />
-          <Button type="button" variant="cart" className="close" onClick={onCartOpen} id="closeButton" text="×" />
-        </div>
-        <div className="cartFlex">
-          {cartData.length === 0
-            ? (
-              <div className="cartEmpty">
-                <p>Sorry, your shopping cart is currently empty.</p>
-                <p>Please browse our selection of products to find items you would like to add.</p>
-                <p>Happy shopping!</p>
+      <div className="cartButtonContainer">
+        <Button
+          text="Lowest first"
+          variant={buttonVariants.cart}
+          onClick={() => {
+            onCartLowerSort(cartData);
+          }}
+        />
+        <Button
+          text="Highest first"
+          variant={buttonVariants.cart}
+          onClick={() => {
+            onCartHigherSort(cartData);
+          }}
+        />
+        <input
+          type="text"
+          className="cartInput"
+          placeholder="Search by name"
+          onChange={onCartSearchGetValue}
+        />
+        <Button type="button" variant={buttonVariants.cart} onClick={onCartOpen} id="closeButton" text="×" />
+      </div>
+      <div className="cartFlex">
+        {cartData.length === 0
+          ? (
+            <div className="cartEmpty">
+              <p>Sorry, your shopping cart is currently empty.</p>
+            </div>
+          )
+          : filteredProducts.map((item) => (
+            <div className="cartCard" key={item.key}>
+              <div className="cartImageContainer">
+                <img src={item.productData.image} alt="img" />
               </div>
-            )
-            : filteredProducts.map((item) => (
-              <div className="cartCard" key={item.key}>
-                <div className="cartProductInfo">
-                  <div className="cartImageContainer">
-                    <img className="cartImage" src={item.productData.image} alt="img" />
-                  </div>
-                  <div className="cartInfo">
-                    <div className="cartTitle">
-                      <p>{item.productData.title}</p>
-                    </div>
-                    <div className="cartInputContainer">
-                      {
-                        !isDiscount ? (
-                          <Button
-                            type="button"
-                            variant="cart"
-                            text="Use discount"
-                            onClick={() => {
-                              onCartItemDiscount(item);
-                            }}
-                          />
-                        )
-                          : null
-                      }
-                      <div className="cartPrice">
-                        <p>{`${item.productData.price} $`}</p>
-                      </div>
-                      <div className="cartButtonContainer">
+              <div className="cartTitle">
+                <p>{item.productData.title}</p>
+                {
+                      !isDiscount ? (
                         <Button
                           type="button"
-                          variant="cart"
-                          text="remove"
+                          variant={buttonVariants.cart}
+                          text="Use discount"
                           onClick={() => {
-                            onCartRemove(item);
+                            onCartItemDiscount(item);
                           }}
                         />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      )
+                        : null
+                    }
               </div>
-            ))}
-        </div>
-        <div className="cartButtonShopContainer">
-          <Button type="button" variant="cart" onClick={() => { }} text="Buy" />
-          <div className="cartTotal">
-            <p>
-              {`Total ${cartData.reduce((acc, item) => acc + item.productData.price, 0)} $`}
-            </p>
-          </div>
+              <div className="cartTitle">
+                <p>{`${item.productData.price} $`}</p>
+              </div>
+
+              <div className="cartButtonContainer removeButton">
+                <Button
+                  type="button"
+                  variant={buttonVariants.cart}
+                  text="remove"
+                  onClick={() => {
+                    onCartRemove(item);
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+      </div>
+      <div className="cartButtonShopContainer">
+        <Button type="button" variant={buttonVariants.cart} onClick={() => { }} text="Buy" />
+        <div className="cartTitle">
+          <p>
+            {`Total ${cartData.reduce((acc, item) => acc + item.productData.price, 0)} $`}
+          </p>
         </div>
       </div>
     </div>
+
   );
 };
 

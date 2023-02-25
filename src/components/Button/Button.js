@@ -43,12 +43,13 @@ export const Button = ({
 };
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'small']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'small', 'cart']),
   disabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
   variant: 'primary',
   disabled: false,
+  onClick: () => {},
 };

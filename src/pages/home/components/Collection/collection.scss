@@ -3,7 +3,7 @@
   border-top: 1px #EBEBEB solid;
 
   @media screen and (max-width: 576px) {
-    display: none;
+
   }
 }
 .collectionMainText{
@@ -15,6 +15,11 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1.1fr 1.1fr;
   gap: 0px 0px;
+
+  @media screen and (max-width: 576px) {
+  display: flex;
+    flex-direction: column;
+  }
 }
 
 .collectionDivider {
@@ -27,6 +32,13 @@
   display: grid;
   justify-content: center;
   margin: 15px 0 15px 0;
+  @media screen and (max-width: 576px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: rgba(105, 105, 105, 0.63) 1px solid;
+  }
 }
 
 .collectionImage {
@@ -48,6 +60,11 @@
     height: 233px;
     width: 177px;
   }
+  @media screen and (max-width: 576px) {
+    height: 150px;
+    width: 120px;
+  }
+
 }
 
 .collectionWrapper {

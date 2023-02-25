@@ -56,7 +56,7 @@
   background-color: rgba(255, 255, 255, 0);
   cursor: pointer;
   border: #000000 2px solid;
-  height: 35px;
+  height: 28px;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   display: inline-block;
   vertical-align: middle;
@@ -68,12 +68,19 @@
     letter-spacing: 0;
     text-transform: uppercase;
   }
+
+  @media screen and (max-width: 992px) {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 10px;
+  }
 }
 
 .buttonSmall {
   background-color: #AC1313;
   border: none;
-  width: 40%;
   span {
       font-family: 'Poppins', serif;
       font-style: normal;
