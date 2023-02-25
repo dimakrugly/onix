@@ -29,11 +29,11 @@ export const HomeView = ({
   onCartLowerSort,
   onCartHigherSort,
   onCartSearchGetValue,
-  cartSearchValue,
   isMobileMenuOpen,
   onMobileMenuOpen,
   onCartItemDiscount,
   isDiscount,
+  onFilteredProducts,
 }) => (
   <>
     <Header
@@ -52,9 +52,9 @@ export const HomeView = ({
         onCartLowerSort={onCartLowerSort}
         onCartHigherSort={onCartHigherSort}
         onCartSearchGetValue={onCartSearchGetValue}
-        cartSearchValue={cartSearchValue}
         onCartItemDiscount={onCartItemDiscount}
         isDiscount={isDiscount}
+        onFilteredProducts={onFilteredProducts}
       />
     ) : null}
     <About />
@@ -110,7 +110,7 @@ HomeView.propTypes = {
   onCartLowerSort: PropTypes.func.isRequired,
   onCartHigherSort: PropTypes.func.isRequired,
   onCartSearchGetValue: PropTypes.func.isRequired,
-  cartSearchValue: PropTypes.string.isRequired,
+  onFilteredProducts: PropTypes.func.isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
   onMobileMenuOpen: PropTypes.func.isRequired,
   onCartItemDiscount: PropTypes.func.isRequired,
