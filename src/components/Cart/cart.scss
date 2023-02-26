@@ -1,4 +1,5 @@
 .shopCart {
+  display: none;
   position: fixed;
   top: 90px;
   right: 30px;
@@ -18,6 +19,9 @@
   }
 }
 
+.activeShopCard {
+  display: block;
+}
 .cartButtonContainer {
   display: flex;
   flex-direction: row;

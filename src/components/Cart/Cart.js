@@ -5,6 +5,7 @@ import { Button } from '../Button/Button';
 import { buttonVariants } from '../../constants/constants';
 
 export const Cart = ({
+  isCartOpen,
   onCartOpen,
   cartData,
   onCartRemove,
@@ -15,7 +16,7 @@ export const Cart = ({
   isDiscount,
   onFilteredProducts,
 }) => (
-  <div className="shopCart">
+  <div className={`shopCart ${isCartOpen ? 'activeShopCard' : null}`}>
     <div className="cartButtonContainer">
       <Button
         text="Lowest first"
@@ -97,6 +98,7 @@ export const Cart = ({
 );
 
 Cart.propTypes = {
+  isCartOpen: PropTypes.bool.isRequired,
   cartData: PropTypes.arrayOf(PropTypes.shape({
     key: PropTypes.string.isRequired,
     productData: PropTypes.shape({

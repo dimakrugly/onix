@@ -10,6 +10,7 @@ import { Banner } from './components/Banner/Banner';
 import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
+import { ScrollUpButton } from '../../components/ScrollUpButton/ScrollUpButton';
 
 export const HomeView = ({
   items,
@@ -34,8 +35,11 @@ export const HomeView = ({
   onCartItemDiscount,
   isDiscount,
   onFilteredProducts,
+  isShownScrollButton,
+  onScrollUp,
 }) => (
   <>
+    <ScrollUpButton isShownScrollButton={isShownScrollButton} onClick={onScrollUp} />
     <Header
       onCartOpen={onCartOpen}
       cartData={cartData}
@@ -43,20 +47,18 @@ export const HomeView = ({
       isMobileMenuOpen={isMobileMenuOpen}
       onMobileMenuOpen={onMobileMenuOpen}
     />
-    {isCartOpen ? (
-      <Cart
-        isCartOpen={isCartOpen}
-        onCartOpen={onCartOpen}
-        onCartRemove={onCartRemove}
-        cartData={cartData}
-        onCartLowerSort={onCartLowerSort}
-        onCartHigherSort={onCartHigherSort}
-        onCartSearchGetValue={onCartSearchGetValue}
-        onCartItemDiscount={onCartItemDiscount}
-        isDiscount={isDiscount}
-        onFilteredProducts={onFilteredProducts}
-      />
-    ) : null}
+    <Cart
+      isCartOpen={isCartOpen}
+      onCartOpen={onCartOpen}
+      onCartRemove={onCartRemove}
+      cartData={cartData}
+      onCartLowerSort={onCartLowerSort}
+      onCartHigherSort={onCartHigherSort}
+      onCartSearchGetValue={onCartSearchGetValue}
+      onCartItemDiscount={onCartItemDiscount}
+      isDiscount={isDiscount}
+      onFilteredProducts={onFilteredProducts}
+    />
     <About />
     <Workspace />
     <Ceramics />
@@ -115,6 +117,8 @@ HomeView.propTypes = {
   onMobileMenuOpen: PropTypes.func.isRequired,
   onCartItemDiscount: PropTypes.func.isRequired,
   isDiscount: PropTypes.bool.isRequired,
+  isShownScrollButton: PropTypes.bool.isRequired,
+  onScrollUp: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {
