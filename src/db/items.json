@@ -3,7 +3,7 @@
     {
       "key": "1",
       "image": "https://i.ibb.co/ynd6C6T/plate.png",
-      "title": "Decor Plate",
+      "title": "Decor plate",
       "price": 65
     },
     {
@@ -15,25 +15,25 @@
     {
       "key": "3",
       "image": "https://i.ibb.co/m0dWqMQ/ceramics.png",
-      "title": "Set of potteries",
+      "title": "Set of pottery",
       "price": 125
     },
     {
       "key": "4",
       "image": "https://i.ibb.co/TW4Xk12/vase-Orange.png",
-      "title": "Orange Ceramic",
+      "title": "Orange ceramic",
       "price": 55
     },
     {
       "key": "5",
       "image": "https://i.ibb.co/4JHR17b/vase-Black.png",
-      "title": "Dark Bowl",
+      "title": "Dark bowl",
       "price": 115
     },
     {
       "key": "6",
       "image": "https://i.ibb.co/wMZWNPN/vaseLava.png",
-      "title": "Square Pottery",
+      "title": "Square pottery",
       "price": 115
     }
   ]

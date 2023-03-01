@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './button.scss';
+import { buttonVariants } from '../../constants/constants';
 
 export const Button = ({
   text, variant, disabled, onClick,
 }) => {
   let classNames = 'Button';
   switch (variant) {
-    case 'primary':
+    case buttonVariants.primary:
       classNames += ' buttonPrimary';
       break;
-    case 'secondary':
+    case buttonVariants.secondary:
       classNames += ' buttonSecondary';
       break;
-    case 'small':
+    case buttonVariants.small:
       classNames += ' buttonSmall';
       break;
-    case 'cart':
+    case buttonVariants.cart:
       classNames += ' buttonCart';
       break;
     default:
@@ -25,13 +26,13 @@ export const Button = ({
 
   let disabledStyle = 'disabled';
   switch (variant) {
-    case 'primary':
+    case buttonVariants.primary:
       disabledStyle += ' disabledPrimary';
       break;
-    case 'secondary':
+    case buttonVariants.secondary:
       disabledStyle += ' disabledSecondary';
       break;
-    case 'small':
+    case buttonVariants.small:
       disabledStyle += ' disabledSmall';
       break;
     default:

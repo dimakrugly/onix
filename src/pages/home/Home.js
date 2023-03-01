@@ -3,7 +3,7 @@ import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { bubbleSort } from '../../utils/bubleSort';
 import { HomeView } from './HomeView';
-import LoggerService from '../../service/logger/LoggerService';
+import LoggerService from '../../services/logger/LoggerService';
 import data from '../../db/items.json';
 
 class Home extends Component {
@@ -139,7 +139,8 @@ class Home extends Component {
 
   onCartLowerSort = () => {
     this.setState((prev) => ({
-      cartData: prev.cartData.sort((el, item) => el.productData.price - item.productData.price),
+      cartData: [...prev.cartData]
+        .sort((el, item) => el.productData.price - item.productData.price),
     }));
   };
 
@@ -220,7 +221,7 @@ class Home extends Component {
         onMobileMenuOpen={this.onMobileMenuOpen}
         onCartItemDiscount={this.onCartItemDiscount}
         isDiscount={isDiscount}
-        onFilteredProducts={this.onFilteredProducts}
+        filteredProducts={this.onFilteredProducts()}
         isShownScrollButton={isShownScrollButton}
         onScrollUp={this.onScrollUp}
       />

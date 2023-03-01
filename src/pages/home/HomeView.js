@@ -34,7 +34,7 @@ export const HomeView = ({
   onMobileMenuOpen,
   onCartItemDiscount,
   isDiscount,
-  onFilteredProducts,
+  filteredProducts,
   isShownScrollButton,
   onScrollUp,
 }) => (
@@ -57,7 +57,7 @@ export const HomeView = ({
       onCartSearchGetValue={onCartSearchGetValue}
       onCartItemDiscount={onCartItemDiscount}
       isDiscount={isDiscount}
-      onFilteredProducts={onFilteredProducts}
+      filteredProducts={filteredProducts}
     />
     <About />
     <Workspace />
@@ -112,7 +112,14 @@ HomeView.propTypes = {
   onCartLowerSort: PropTypes.func.isRequired,
   onCartHigherSort: PropTypes.func.isRequired,
   onCartSearchGetValue: PropTypes.func.isRequired,
-  onFilteredProducts: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    productData: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  })).isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
   onMobileMenuOpen: PropTypes.func.isRequired,
   onCartItemDiscount: PropTypes.func.isRequired,
