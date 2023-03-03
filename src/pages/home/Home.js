@@ -3,7 +3,7 @@ import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
-import data from '../../db/items.json';
+import ApiService from '../../services/apiService/apiService';
 
 class Home extends Component {
   constructor(props) {
@@ -27,11 +27,16 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.setState(() => ({
-      items: [
-        ...data.items,
-      ],
-    }));
+    ApiService
+      .getItems()
+      .then((data) => {
+        this.setState(() => ({
+          items: [
+            ...data,
+          ],
+        }));
+      });
+
     window.addEventListener('scroll', this.handleScroll);
   }
 
