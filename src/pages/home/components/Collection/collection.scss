@@ -22,11 +22,6 @@
   }
 }
 
-.collectionDivider {
-  margin-top: 10px;
-  height: 1px;
-  background-color: #b5abab69;
-}
 
 .collectionProductCard {
   display: grid;
@@ -41,9 +36,20 @@
   }
 }
 
+.collectionDivider {
+  margin-top: 10px;
+  height: 1px;
+  background-color: #b5abab69;
+}
+
 .collectionImage {
   width: auto;
   height: auto;
+
+  &:hover {
+    transition: ease .5s;
+    transform: scale(1.05);
+  }
 
   @media screen and (max-width: 1280px) {
     height: 390px;

@@ -10,6 +10,7 @@ import { Banner } from './components/Banner/Banner';
 import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
+import { ScrollUpButton } from '../../components/ScrollUpButton/ScrollUpButton';
 
 export const HomeView = ({
   items,
@@ -33,9 +34,12 @@ export const HomeView = ({
   onMobileMenuOpen,
   onCartItemDiscount,
   isDiscount,
-  onFilteredProducts,
+  filteredProducts,
+  isShownScrollButton,
+  onScrollUp,
 }) => (
   <>
+    <ScrollUpButton isShownScrollButton={isShownScrollButton} onClick={onScrollUp} />
     <Header
       onCartOpen={onCartOpen}
       cartData={cartData}
@@ -43,20 +47,18 @@ export const HomeView = ({
       isMobileMenuOpen={isMobileMenuOpen}
       onMobileMenuOpen={onMobileMenuOpen}
     />
-    {isCartOpen ? (
-      <Cart
-        isCartOpen={isCartOpen}
-        onCartOpen={onCartOpen}
-        onCartRemove={onCartRemove}
-        cartData={cartData}
-        onCartLowerSort={onCartLowerSort}
-        onCartHigherSort={onCartHigherSort}
-        onCartSearchGetValue={onCartSearchGetValue}
-        onCartItemDiscount={onCartItemDiscount}
-        isDiscount={isDiscount}
-        onFilteredProducts={onFilteredProducts}
-      />
-    ) : null}
+    <Cart
+      isCartOpen={isCartOpen}
+      onCartOpen={onCartOpen}
+      onCartRemove={onCartRemove}
+      cartData={cartData}
+      onCartLowerSort={onCartLowerSort}
+      onCartHigherSort={onCartHigherSort}
+      onCartSearchGetValue={onCartSearchGetValue}
+      onCartItemDiscount={onCartItemDiscount}
+      isDiscount={isDiscount}
+      filteredProducts={filteredProducts}
+    />
     <About />
     <Workspace />
     <Ceramics />
@@ -110,11 +112,20 @@ HomeView.propTypes = {
   onCartLowerSort: PropTypes.func.isRequired,
   onCartHigherSort: PropTypes.func.isRequired,
   onCartSearchGetValue: PropTypes.func.isRequired,
-  onFilteredProducts: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    productData: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  })).isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
   onMobileMenuOpen: PropTypes.func.isRequired,
   onCartItemDiscount: PropTypes.func.isRequired,
   isDiscount: PropTypes.bool.isRequired,
+  isShownScrollButton: PropTypes.bool.isRequired,
+  onScrollUp: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {

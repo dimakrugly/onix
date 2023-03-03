@@ -1,0 +1,27 @@
+.buttonTop {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.24);
+  z-index: 999;
+  border: none;
+  @media screen and (max-width: 992px) {
+    bottom: 45px;
+    right: 45px;
+    width: 45px;
+    height: 45px;
+  }
+  @media screen and (max-width: 576px) {
+    bottom: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.visible {
+  display: block;
+}

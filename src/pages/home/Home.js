@@ -1,55 +1,15 @@
 import React, { Component } from 'react';
-import { HomeView } from './HomeView';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
-import image1 from '../../assets/img/plate.png';
-import image2 from '../../assets/img/vaseBlue.png';
-import image3 from '../../assets/img/ceramics.png';
-import image4 from '../../assets/img/vaseOrange.png';
-import image5 from '../../assets/img/vaseBlack.png';
-import image6 from '../../components/Cart/vaseLava.png';
-import { bubbleSort } from '../../utils/bubleSort';
+import { HomeView } from './HomeView';
+import LoggerService from '../../services/logger/LoggerService';
+import data from '../../db/items.json';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [{
-        key: '1',
-        image: image1,
-        title: 'Decor Plate',
-        price: 65,
-      },
-      {
-        key: '2',
-        image: image2,
-        title: 'Mint Pottery',
-        price: 65,
-      },
-      {
-        key: '3',
-        image: image3,
-        title: 'Set Of Potterys',
-        price: 125,
-      },
-      {
-        key: '4',
-        image: image4,
-        title: 'Orange Ceramic',
-        price: 55,
-      },
-      {
-        key: '5',
-        image: image5,
-        title: 'Dark Bowl',
-        price: 115,
-      },
-      {
-        key: '6',
-        image: image6,
-        title: 'Square Pottery',
-        price: 115,
-      },
+      items: [
       ],
       formData: {
         email: '',
@@ -62,8 +22,52 @@ class Home extends Component {
       cartSearchValue: '',
       isMobileMenuOpen: false,
       isDiscount: false,
+      isShownScrollButton: false,
     };
   }
+
+  componentDidMount() {
+    this.setState(() => ({
+      items: [
+        ...data.items,
+      ],
+    }));
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { isShownScrollButton, isMobileMenuOpen } = this.state;
+
+    if (isShownScrollButton !== prevState.isShownScrollButton) {
+      LoggerService.logData('success', 'scroll Button switched');
+    }
+    if (isMobileMenuOpen !== prevState.isMobileMenuOpen) {
+      LoggerService.logData('success', 'mobile menu switched');
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = ({ currentTarget: { scrollY } }) => {
+    if (scrollY > 500) {
+      this.setState(() => ({
+        isShownScrollButton: true,
+      }));
+    } else {
+      this.setState(() => ({
+        isShownScrollButton: false,
+      }));
+    }
+  };
+
+  onScrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   onMobileMenuOpen = () => {
     this.setState((prev) => ({
@@ -134,13 +138,15 @@ class Home extends Component {
 
   onCartLowerSort = () => {
     this.setState((prev) => ({
-      cartData: prev.cartData.sort((el, item) => el.productData.price - item.productData.price),
+      cartData: [...prev.cartData]
+        .sort((el, item) => el.productData.price - item.productData.price),
     }));
   };
 
   onCartHigherSort = () => {
     this.setState((prev) => ({
-      cartData: bubbleSort(prev.cartData),
+      cartData: [...prev.cartData]
+        .sort((el, item) => item.productData.price - el.productData.price),
     }));
   };
 
@@ -151,7 +157,10 @@ class Home extends Component {
   };
 
   onFilteredProducts = () => {
-    const { cartData, cartSearchValue } = this.state;
+    const {
+      cartData,
+      cartSearchValue,
+    } = this.state;
     return (
       cartData.filter((product) => product
         .productData
@@ -181,7 +190,13 @@ class Home extends Component {
 
   render() {
     const {
-      items, formData, isCartOpen, cartData, isMobileMenuOpen, isDiscount,
+      items,
+      formData,
+      isCartOpen,
+      cartData,
+      isMobileMenuOpen,
+      isDiscount,
+      isShownScrollButton,
     } = this.state;
     return (
       <HomeView
@@ -206,7 +221,9 @@ class Home extends Component {
         onMobileMenuOpen={this.onMobileMenuOpen}
         onCartItemDiscount={this.onCartItemDiscount}
         isDiscount={isDiscount}
-        onFilteredProducts={this.onFilteredProducts}
+        filteredProducts={this.onFilteredProducts()}
+        isShownScrollButton={isShownScrollButton}
+        onScrollUp={this.onScrollUp}
       />
     );
   }
