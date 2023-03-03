@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
-import { bubbleSort } from '../../utils/bubleSort';
 import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
 import data from '../../db/items.json';
@@ -146,7 +145,8 @@ class Home extends Component {
 
   onCartHigherSort = () => {
     this.setState((prev) => ({
-      cartData: bubbleSort(prev.cartData),
+      cartData: [...prev.cartData]
+        .sort((el, item) => item.productData.price - el.productData.price),
     }));
   };
 
