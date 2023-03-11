@@ -4,6 +4,7 @@ import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
 import ApiService from '../../services/apiService/apiService';
+import { bubbleSort } from '../../utils/bubleSort';
 
 class Home extends Component {
   constructor(props) {
@@ -23,6 +24,8 @@ class Home extends Component {
       isMobileMenuOpen: false,
       isDiscount: false,
       isShownScrollButton: false,
+      currentCard: undefined,
+      isLoaded: false,
     };
   }
 
@@ -54,6 +57,68 @@ class Home extends Component {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
+
+  onKeyDetect = (event) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.arrowBottomHandler();
+    }
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.arrowUpHandler();
+    }
+  };
+
+  onImageLoaded = () => {
+    this.setState(() => ({ isLoaded: true }));
+  };
+
+  onImageError = ({ currentTarget }) => {
+    currentTarget.onerror = null;
+    currentTarget.src = 'https://i.ibb.co/0QJgMM8/Screenshot-1.png';
+  };
+
+  arrowBottomHandler = () => {
+    const { cartData } = this.state;
+    const currentActive = cartData.findIndex(((el) => el.active));
+    if (currentActive >= 0 || currentActive <= cartData.length - 1) {
+      this.setState((prev) => ({
+        cartData: prev
+          .cartData
+          .map((item, index) => (index === currentActive + 1
+            ? { ...item, active: true } : { ...item, active: false })),
+      }));
+    }
+    if (currentActive === cartData.length - 1 || currentActive === -1) {
+      this.setState((prev) => ({
+        cartData: prev
+          .cartData
+          .map((item, index) => (index === 0
+            ? { ...item, active: true } : { ...item, active: false })),
+      }));
+    }
+  };
+
+  arrowUpHandler = () => {
+    const { cartData } = this.state;
+    const currentActive = cartData.findIndex(((el) => el.active));
+    if (currentActive >= 0 || currentActive <= cartData.length - 1) {
+      this.setState((prev) => ({
+        cartData: prev
+          .cartData
+          .map((item, index) => (index === currentActive - 1
+            ? { ...item, active: true } : { ...item, active: false })),
+      }));
+    }
+    if (currentActive === 0 || currentActive === -1) {
+      this.setState((prev) => ({
+        cartData: prev
+          .cartData
+          .map((item, index) => (index === cartData.length - 1
+            ? { ...item, active: true } : { ...item, active: false })),
+      }));
+    }
+  };
 
   handleScroll = ({ currentTarget: { scrollY } }) => {
     if (scrollY > 500) {
@@ -125,6 +190,9 @@ class Home extends Component {
         ...prev.cartData,
         {
           key: item.key,
+          id: item.key,
+          order: item.key,
+          active: false,
           productData: {
             title: item.title,
             image: item.image,
@@ -150,8 +218,7 @@ class Home extends Component {
 
   onCartHigherSort = () => {
     this.setState((prev) => ({
-      cartData: [...prev.cartData]
-        .sort((el, item) => item.productData.price - el.productData.price),
+      cartData: bubbleSort(prev.cartData),
     }));
   };
 
@@ -193,6 +260,53 @@ class Home extends Component {
     }));
   };
 
+  onItemSelected = (product) => {
+    this.setState((prev) => ({
+      cartData: prev.cartData.map((item) => {
+        if (item.key === product.key) {
+          return {
+            ...item,
+            active: !item.active,
+          };
+        }
+        return {
+          ...item,
+          active: false,
+        };
+      }),
+    }));
+  };
+
+  onDragStartHandle = (event, card) => {
+    this.onDragGetValue(card);
+  };
+
+  onDragOverHandle = (event) => {
+    event.preventDefault();
+  };
+
+  onDropHandle = (event, card) => {
+    const { currentCard } = this.state;
+    event.preventDefault();
+    this.setState((prev) => ({
+      cartData: prev.cartData.map((c) => {
+        if (c.id === card.id) {
+          return { ...c, order: currentCard.order };
+        }
+        if (c.id === currentCard.id) {
+          return { ...c, order: card.order };
+        }
+        return c;
+      }).sort((a, b) => a.order - b.order),
+    }));
+  };
+
+  onDragGetValue = (item) => {
+    this.setState(() => ({
+      currentCard: item,
+    }));
+  };
+
   render() {
     const {
       items,
@@ -202,6 +316,7 @@ class Home extends Component {
       isMobileMenuOpen,
       isDiscount,
       isShownScrollButton,
+      isLoaded,
     } = this.state;
     return (
       <HomeView
@@ -229,6 +344,14 @@ class Home extends Component {
         filteredProducts={this.onFilteredProducts()}
         isShownScrollButton={isShownScrollButton}
         onScrollUp={this.onScrollUp}
+        onDragStartHandle={this.onDragStartHandle}
+        onDragOverHandle={this.onDragOverHandle}
+        onDropHandle={this.onDropHandle}
+        onItemSelected={this.onItemSelected}
+        onImageLoaded={this.onImageLoaded}
+        isLoaded={isLoaded}
+        onKeyDetect={this.onKeyDetect}
+        onImageError={this.onImageError}
       />
     );
   }

@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1.1fr 1.1fr;
-  gap: 0px 0px;
+  gap: 0 0;
 
   @media screen and (max-width: 576px) {
   display: flex;
@@ -34,6 +34,11 @@
     padding-bottom: 20px;
     border-bottom: rgba(105, 105, 105, 0.63) 1px solid;
   }
+}
+
+.collectionImageContainer{
+  height: 100%;
+  width: 100%;
 }
 
 .collectionDivider {

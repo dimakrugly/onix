@@ -1,4 +1,5 @@
-export const bubbleSort = (arr) => {
+export const bubbleSort = (array) => {
+  const arr = [...array];
   let len = arr.length;
   let swapped;
   do {
