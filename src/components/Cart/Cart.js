@@ -4,6 +4,7 @@ import './cart.scss';
 import PropTypes from 'prop-types';
 import { Button } from '../Button/Button';
 import { buttonVariants } from '../../constants/constants';
+import { CartList } from '../CartList/CartList';
 
 export const Cart = ({
   isCartOpen,
@@ -16,6 +17,11 @@ export const Cart = ({
   onCartItemDiscount,
   isDiscount,
   filteredProducts,
+  onDragStartHandle,
+  onDragOverHandle,
+  onDropHandle,
+  onItemSelected,
+  onKeyDetect,
 }) => {
   const { t } = useTranslation();
   return (
@@ -44,49 +50,25 @@ export const Cart = ({
         <Button type="button" variant={buttonVariants.cart} onClick={onCartOpen} id="closeButton" text="×" />
       </div>
       <div className="cartFlex">
-        {cartData.length === 0
+        {cartData.length
           ? (
+            <CartList
+              onCartRemove={onCartRemove}
+              onCartItemDiscount={onCartItemDiscount}
+              isDiscount={isDiscount}
+              filteredProducts={filteredProducts}
+              onDragStartHandle={onDragStartHandle}
+              onDragOverHandle={onDragOverHandle}
+              onDropHandle={onDropHandle}
+              onItemSelected={onItemSelected}
+              onKeyDetect={onKeyDetect}
+            />
+          )
+          : (
             <div className="cartEmpty">
               <p>{t('cart.empty')}</p>
             </div>
-          )
-          : filteredProducts.map((item) => (
-            <div className="cartCard" key={item.key}>
-              <div className="cartImageContainer">
-                <img src={item.productData.image} alt="img" />
-              </div>
-              <div className="cartTitle">
-                <p>{item.productData.title}</p>
-                {
-                      !isDiscount ? (
-                        <Button
-                          type="button"
-                          variant={buttonVariants.cart}
-                          text={t('cart.discount')}
-                          onClick={() => {
-                            onCartItemDiscount(item);
-                          }}
-                        />
-                      )
-                        : null
-                    }
-              </div>
-              <div className="cartTitle">
-                <p>{`${item.productData.price} $`}</p>
-              </div>
-
-              <div className="cartButtonContainer removeButton">
-                <Button
-                  type="button"
-                  variant={buttonVariants.cart}
-                  text={t('cart.remove')}
-                  onClick={() => {
-                    onCartRemove(item);
-                  }}
-                />
-              </div>
-            </div>
-          ))}
+          )}
       </div>
       <div className="cartButtonShopContainer">
         <Button type="button" variant={buttonVariants.cart} onClick={() => { }} text={t('cart.buy')} />
@@ -126,4 +108,9 @@ Cart.propTypes = {
   })).isRequired,
   onCartItemDiscount: PropTypes.func.isRequired,
   isDiscount: PropTypes.bool.isRequired,
+  onDragStartHandle: PropTypes.func.isRequired,
+  onDragOverHandle: PropTypes.func.isRequired,
+  onDropHandle: PropTypes.func.isRequired,
+  onItemSelected: PropTypes.func.isRequired,
+  onKeyDetect: PropTypes.func.isRequired,
 };

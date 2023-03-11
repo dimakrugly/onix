@@ -37,6 +37,14 @@ export const HomeView = ({
   filteredProducts,
   isShownScrollButton,
   onScrollUp,
+  onDragStartHandle,
+  onDragOverHandle,
+  onDropHandle,
+  onItemSelected,
+  onImageLoaded,
+  isLoaded,
+  onKeyDetect,
+  onImageError,
 }) => (
   <>
     <ScrollUpButton isShownScrollButton={isShownScrollButton} onClick={onScrollUp} />
@@ -58,6 +66,11 @@ export const HomeView = ({
       onCartItemDiscount={onCartItemDiscount}
       isDiscount={isDiscount}
       filteredProducts={filteredProducts}
+      onDragStartHandle={onDragStartHandle}
+      onDragOverHandle={onDragOverHandle}
+      onDropHandle={onDropHandle}
+      onItemSelected={onItemSelected}
+      onKeyDetect={onKeyDetect}
     />
     <About />
     <Workspace />
@@ -66,6 +79,9 @@ export const HomeView = ({
       items={items}
       onCartAdd={onCartAdd}
       cartData={cartData}
+      onImageLoaded={onImageLoaded}
+      isLoaded={isLoaded}
+      onImageError={onImageError}
     />
     <Banner />
     <Subscribe
@@ -126,6 +142,14 @@ HomeView.propTypes = {
   isDiscount: PropTypes.bool.isRequired,
   isShownScrollButton: PropTypes.bool.isRequired,
   onScrollUp: PropTypes.func.isRequired,
+  onDragStartHandle: PropTypes.func.isRequired,
+  onDragOverHandle: PropTypes.func.isRequired,
+  onDropHandle: PropTypes.func.isRequired,
+  onItemSelected: PropTypes.func.isRequired,
+  onImageLoaded: PropTypes.func.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  onKeyDetect: PropTypes.func.isRequired,
+  onImageError: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {

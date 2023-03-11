@@ -4,8 +4,11 @@ import './collection.scss';
 import PropTypes from 'prop-types';
 import { Button } from '../../../../components/Button/Button';
 import { buttonVariants } from '../../../../constants/constants';
+import { Image } from '../../../../components/Image/Image';
 
-export const Collection = ({ items, onCartAdd, cartData }) => {
+export const Collection = ({
+  items, onCartAdd, cartData, onImageLoaded, isLoaded, onImageError,
+}) => {
   const { t } = useTranslation();
   return (
     <section className="collection" id="collection">
@@ -21,7 +24,9 @@ export const Collection = ({ items, onCartAdd, cartData }) => {
               price,
             }) => (
               <div className="collectionProductCard" key={key}>
-                <img className="collectionImage" src={image} alt="imageCard" />
+                <div className="collectionImageContainer">
+                  <Image className="collectionImage" src={image} alt="imageCard" onImageLoaded={onImageLoaded} isLoaded={isLoaded} onError={onImageError} />
+                </div>
                 <p className="collectionTitle">{title}</p>
                 <p className="collectionPrice">{`$ ${price},00 USD`}</p>
                 <Button
@@ -64,6 +69,9 @@ Collection.propTypes = {
     title: PropTypes.string,
     price: PropTypes.number,
   })),
+  onImageLoaded: PropTypes.func.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  onImageError: PropTypes.func.isRequired,
 };
 
 Collection.defaultProps = {
