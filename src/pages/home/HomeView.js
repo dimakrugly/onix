@@ -41,8 +41,6 @@ export const HomeView = ({
   onDragOverHandle,
   onDropHandle,
   onItemSelected,
-  onImageLoaded,
-  isLoaded,
   onKeyDetect,
   onImageError,
 }) => (
@@ -79,8 +77,6 @@ export const HomeView = ({
       items={items}
       onCartAdd={onCartAdd}
       cartData={cartData}
-      onImageLoaded={onImageLoaded}
-      isLoaded={isLoaded}
       onImageError={onImageError}
     />
     <Banner />
@@ -146,8 +142,6 @@ HomeView.propTypes = {
   onDragOverHandle: PropTypes.func.isRequired,
   onDropHandle: PropTypes.func.isRequired,
   onItemSelected: PropTypes.func.isRequired,
-  onImageLoaded: PropTypes.func.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
   onKeyDetect: PropTypes.func.isRequired,
   onImageError: PropTypes.func.isRequired,
 };

@@ -25,9 +25,7 @@ export const CartList = ({
           onClick={() => {
             onItemSelected(item);
           }}
-          onKeyDown={(event) => {
-            onKeyDetect(event);
-          }}
+          onKeyDown={onKeyDetect}
           className={`cartCard ${item.active ? ' active' : null}`}
           key={item.key}
           draggable
