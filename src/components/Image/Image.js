@@ -1,26 +1,22 @@
 import React from 'react';
 import './image.scss';
 import PropTypes from 'prop-types';
-import loader from '../../assets/img/cardLoading.png';
 
 export const Image = ({
-  alt, className, src, onImageLoaded, isLoaded, onError,
+  alt, className, src, onError,
 }) => (
   <img
-    src={isLoaded ? src : loader}
+    src={src}
     alt={alt}
     className={className}
-    onLoad={onImageLoaded}
+    onLoad={() => { console.log(`image ${src} downloaded successfully`); }}
     onError={onError}
   />
-
 );
 
 Image.propTypes = {
   alt: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
-  onImageLoaded: PropTypes.func.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
   onError: PropTypes.func.isRequired,
 };

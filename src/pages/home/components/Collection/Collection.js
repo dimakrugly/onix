@@ -7,7 +7,7 @@ import { buttonVariants } from '../../../../constants/constants';
 import { Image } from '../../../../components/Image/Image';
 
 export const Collection = ({
-  items, onCartAdd, cartData, onImageLoaded, isLoaded, onImageError,
+  items, onCartAdd, cartData, onImageLoaded, onImageError,
 }) => {
   const { t } = useTranslation();
   return (
@@ -25,7 +25,7 @@ export const Collection = ({
             }) => (
               <div className="collectionProductCard" key={key}>
                 <div className="collectionImageContainer">
-                  <Image className="collectionImage" src={image} alt="imageCard" onImageLoaded={onImageLoaded} isLoaded={isLoaded} onError={onImageError} />
+                  <Image className="collectionImage" src={image} alt="imageCard" onImageLoaded={onImageLoaded} onError={onImageError} />
                 </div>
                 <p className="collectionTitle">{title}</p>
                 <p className="collectionPrice">{`$ ${price},00 USD`}</p>
@@ -70,7 +70,6 @@ Collection.propTypes = {
     price: PropTypes.number,
   })),
   onImageLoaded: PropTypes.func.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
   onImageError: PropTypes.func.isRequired,
 };
 

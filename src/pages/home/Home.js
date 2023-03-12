@@ -25,7 +25,6 @@ class Home extends Component {
       isDiscount: false,
       isShownScrollButton: false,
       currentCard: undefined,
-      isLoaded: false,
     };
   }
 
@@ -69,10 +68,6 @@ class Home extends Component {
     }
   };
 
-  onImageLoaded = () => {
-    this.setState(() => ({ isLoaded: true }));
-  };
-
   onImageError = ({ currentTarget }) => {
     currentTarget.onerror = null;
     currentTarget.src = 'https://i.ibb.co/0QJgMM8/Screenshot-1.png';
@@ -81,43 +76,37 @@ class Home extends Component {
   arrowBottomHandler = () => {
     const { cartData } = this.state;
     const currentActive = cartData.findIndex(((el) => el.active));
+    let newCartData;
     if (currentActive >= 0 || currentActive <= cartData.length - 1) {
-      this.setState((prev) => ({
-        cartData: prev
-          .cartData
-          .map((item, index) => (index === currentActive + 1
-            ? { ...item, active: true } : { ...item, active: false })),
-      }));
+      newCartData = cartData
+        .map((item, index) => (index === currentActive + 1
+          ? { ...item, active: true } : { ...item, active: false }));
     }
     if (currentActive === cartData.length - 1 || currentActive === -1) {
-      this.setState((prev) => ({
-        cartData: prev
-          .cartData
-          .map((item, index) => (index === 0
-            ? { ...item, active: true } : { ...item, active: false })),
-      }));
+      newCartData = cartData.map((item, index) => (index === 0
+        ? { ...item, active: true } : { ...item, active: false }));
     }
+    this.setState({
+      cartData: newCartData,
+    });
   };
 
   arrowUpHandler = () => {
     const { cartData } = this.state;
     const currentActive = cartData.findIndex(((el) => el.active));
+    let newCartData;
     if (currentActive >= 0 || currentActive <= cartData.length - 1) {
-      this.setState((prev) => ({
-        cartData: prev
-          .cartData
-          .map((item, index) => (index === currentActive - 1
-            ? { ...item, active: true } : { ...item, active: false })),
-      }));
+      newCartData = cartData
+        .map((item, index) => (index === currentActive - 1
+          ? { ...item, active: true } : { ...item, active: false }));
     }
-    if (currentActive === 0 || currentActive === -1) {
-      this.setState((prev) => ({
-        cartData: prev
-          .cartData
-          .map((item, index) => (index === cartData.length - 1
-            ? { ...item, active: true } : { ...item, active: false })),
-      }));
+    if (currentActive <= 0) {
+      newCartData = cartData.map((item, index) => (index === cartData.length - 1
+        ? { ...item, active: true } : { ...item, active: false }));
     }
+    this.setState({
+      cartData: newCartData,
+    });
   };
 
   handleScroll = ({ currentTarget: { scrollY } }) => {
@@ -316,7 +305,6 @@ class Home extends Component {
       isMobileMenuOpen,
       isDiscount,
       isShownScrollButton,
-      isLoaded,
     } = this.state;
     return (
       <HomeView
@@ -348,8 +336,6 @@ class Home extends Component {
         onDragOverHandle={this.onDragOverHandle}
         onDropHandle={this.onDropHandle}
         onItemSelected={this.onItemSelected}
-        onImageLoaded={this.onImageLoaded}
-        isLoaded={isLoaded}
         onKeyDetect={this.onKeyDetect}
         onImageError={this.onImageError}
       />
