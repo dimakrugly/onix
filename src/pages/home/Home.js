@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
-import ApiService from '../../services/apiService/apiService';
 import { bubbleSort } from '../../utils/bubleSort';
+import { urlBase } from '../../constants/urlBase';
 
 class Home extends Component {
   constructor(props) {
@@ -29,14 +30,17 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    ApiService
-      .getItems()
-      .then((data) => {
+    axios
+      .get(urlBase.sku)
+      .then((response) => {
         this.setState(() => ({
           items: [
-            ...data,
+            ...response.data.items,
           ],
         }));
+      })
+      .catch((error) => {
+        console.log(error);
       });
 
     window.addEventListener('scroll', this.handleScroll);

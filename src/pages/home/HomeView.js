@@ -11,6 +11,7 @@ import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
 import { ScrollUpButton } from '../../components/ScrollUpButton/ScrollUpButton';
+import { Team } from './components/Team/Team';
 
 export const HomeView = ({
   items,
@@ -79,6 +80,7 @@ export const HomeView = ({
       cartData={cartData}
       onImageError={onImageError}
     />
+    <Team />
     <Banner />
     <Subscribe
       onChangeMailInput={onChangeMailInput}
