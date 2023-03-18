@@ -6,41 +6,8 @@ import { buttonVariants } from '../../constants/constants';
 export const Button = ({
   text, variant, disabled, onClick,
 }) => {
-  let classNames = 'Button';
-  switch (variant) {
-    case buttonVariants.primary:
-      classNames += ' buttonPrimary';
-      break;
-    case buttonVariants.secondary:
-      classNames += ' buttonSecondary';
-      break;
-    case buttonVariants.small:
-      classNames += ' buttonSmall';
-      break;
-    case buttonVariants.cart:
-      classNames += ' buttonCart';
-      break;
-    default:
-      classNames += ' ';
-  }
-
-  let disabledStyle = 'disabled';
-  switch (variant) {
-    case buttonVariants.primary:
-      disabledStyle += ' disabledPrimary';
-      break;
-    case buttonVariants.secondary:
-      disabledStyle += ' disabledSecondary';
-      break;
-    case buttonVariants.small:
-      disabledStyle += ' disabledSmall';
-      break;
-    default:
-      disabledStyle += ' ';
-  }
-
   return (
-    <button type="button" disabled={disabled} className={`${classNames} ${disabled ? disabledStyle : null}`} onClick={onClick}>
+    <button type="button" disabled={disabled} className={`button ${variant} ${disabled ? 'disabled': ''}`} onClick={onClick}>
       <span>{text}</span>
     </button>
   );
