@@ -1,0 +1,19 @@
+.teamWrapper {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.teamTitle {
+  font-family: "Poppins", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+  color: #000000;
+  text-align: center;
+
+  @media screen and (max-width: 576px) {
+    font-size: 14px;
+  }
+}

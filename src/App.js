@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import Home from './pages/home/Home';
+import { BrowserRouter } from 'react-router-dom';
 import translate from './services/translate/TranslateService';
+import { Navigation } from './components/Navigation/Navigation';
 
 class App extends Component {
   render() {
     translate.init();
     return (
-      <Home />
+      <BrowserRouter>
+        <Navigation />
+      </BrowserRouter>
     );
   }
 }

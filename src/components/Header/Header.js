@@ -2,6 +2,7 @@ import React from 'react';
 import './header.scss';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import image from '../../assets/img/cart.png';
 import { LangSwitcher } from '../LangSwitcher/LangSwitcher';
 
@@ -20,9 +21,7 @@ export const Header = ({
           <nav className="headerMenu">
             <ul className="headerList">
               <li className="headerItem">
-                <a href="#about">
-                  {t('header.home')}
-                </a>
+                <Link to="/onix">{t('header.home')}</Link>
               </li>
               <li className="headerItem">
                 <a href="#workspace">
@@ -38,6 +37,9 @@ export const Header = ({
                 <a href="#footer">
                   {t('header.contact')}
                 </a>
+              </li>
+              <li className="headerItem">
+                <Link to="/swapi">STAR DB</Link>
               </li>
             </ul>
           </nav>

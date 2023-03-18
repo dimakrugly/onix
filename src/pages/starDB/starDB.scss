@@ -1,0 +1,64 @@
+.starTitle {
+  margin-top: 50px;
+  font-family: "Poppins", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+  color: #000000;
+  text-align: center;
+}
+
+.starFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.starCard{
+  display: flex;
+  padding: 20px;
+  background: rgb(205,205,205);
+  background: linear-gradient(90deg, rgba(205,205,205,1) 0%, rgba(228,228,228,1) 42%, rgba(255,255,255,1) 100%);
+  margin: 20px 50px 20px 50px;
+}
+
+.starImage{
+  background-size: cover;
+}
+
+.starPhoto{
+  height: 150px;
+}
+
+.starInfo{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding:  0 15px 0 15px;
+  align-items: center;
+}
+
+.starName{
+  font-family: "Poppins", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
+  color: #000000;
+  text-align: center;
+}
+
+.starCardSubtitle{
+  font-family: "Poppins", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 50px;
+  color: #000000;
+  text-align: center;
+}
+
+.starButtonContainer{
+  display: flex;
+  justify-content: flex-end;
+}

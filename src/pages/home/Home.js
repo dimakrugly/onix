@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
-import ApiService from '../../services/apiService/apiService';
 import { bubbleSort } from '../../utils/bubleSort';
+import { urlBase } from '../../constants/urlBase';
 
 class Home extends Component {
   constructor(props) {
@@ -29,14 +30,17 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    ApiService
-      .getItems()
-      .then((data) => {
+    axios
+      .get(urlBase.sku)
+      .then((response) => {
         this.setState(() => ({
           items: [
-            ...data,
+            ...response.data.items,
           ],
         }));
+      })
+      .catch((error) => {
+        console.log(error);
       });
 
     window.addEventListener('scroll', this.handleScroll);
@@ -60,53 +64,31 @@ class Home extends Component {
   onKeyDetect = (event) => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      this.arrowBottomHandler();
+      this.arrowHandler(true);
     }
     if (event.key === 'ArrowUp') {
       event.preventDefault();
-      this.arrowUpHandler();
+      this.arrowHandler(false);
     }
+  };
+
+  arrowHandler = (isUp) => {
+    const payLoad = isUp ? 1 : -1;
+    const { cartData } = this.state;
+    const currentActive = cartData.findIndex(((el) => el.active));
+
+    const newIndex = (currentActive + payLoad) % cartData.length < 0 ? cartData.length - 1
+      : (currentActive + payLoad) % cartData.length;
+
+    const newCartData = cartData.map((item, index) => ({ ...item, active: index === newIndex }));
+    this.setState({
+      cartData: newCartData,
+    });
   };
 
   onImageError = ({ currentTarget }) => {
     currentTarget.onerror = null;
     currentTarget.src = 'https://i.ibb.co/0QJgMM8/Screenshot-1.png';
-  };
-
-  arrowBottomHandler = () => {
-    const { cartData } = this.state;
-    const currentActive = cartData.findIndex(((el) => el.active));
-    let newCartData;
-    if (currentActive >= 0 || currentActive <= cartData.length - 1) {
-      newCartData = cartData
-        .map((item, index) => (index === currentActive + 1
-          ? { ...item, active: true } : { ...item, active: false }));
-    }
-    if (currentActive === cartData.length - 1 || currentActive === -1) {
-      newCartData = cartData.map((item, index) => (index === 0
-        ? { ...item, active: true } : { ...item, active: false }));
-    }
-    this.setState({
-      cartData: newCartData,
-    });
-  };
-
-  arrowUpHandler = () => {
-    const { cartData } = this.state;
-    const currentActive = cartData.findIndex(((el) => el.active));
-    let newCartData;
-    if (currentActive >= 0 || currentActive <= cartData.length - 1) {
-      newCartData = cartData
-        .map((item, index) => (index === currentActive - 1
-          ? { ...item, active: true } : { ...item, active: false }));
-    }
-    if (currentActive <= 0) {
-      newCartData = cartData.map((item, index) => (index === cartData.length - 1
-        ? { ...item, active: true } : { ...item, active: false }));
-    }
-    this.setState({
-      cartData: newCartData,
-    });
   };
 
   handleScroll = ({ currentTarget: { scrollY } }) => {
@@ -174,13 +156,15 @@ class Home extends Component {
   };
 
   onCartAdd = (item) => {
+    const { cartData } = this.state;
+    const sortOrder = cartData.length + 1;
     this.setState((prev) => ({
       cartData: [
         ...prev.cartData,
         {
           key: item.key,
           id: item.key,
-          order: item.key,
+          order: sortOrder,
           active: false,
           productData: {
             title: item.title,
@@ -199,15 +183,27 @@ class Home extends Component {
   };
 
   onCartLowerSort = () => {
+    let i = 1;
     this.setState((prev) => ({
       cartData: [...prev.cartData]
-        .sort((el, item) => el.productData.price - item.productData.price),
+        .sort((el, item) => el.productData.price - item.productData.price)
+        .reduce((acc, item) => {
+          item = { ...item, order: i += 1 };
+          acc = [...acc, item];
+          return acc;
+        }, []),
     }));
   };
 
   onCartHigherSort = () => {
+    let i = 1;
     this.setState((prev) => ({
-      cartData: bubbleSort(prev.cartData),
+      cartData: bubbleSort(prev.cartData)
+        .reduce((acc, item) => {
+          item = { ...item, order: i += 1 };
+          acc = [...acc, item];
+          return acc;
+        }, []),
     }));
   };
 

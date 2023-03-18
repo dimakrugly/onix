@@ -1,4 +1,4 @@
-button {
+.button {
   background-color: #AC1313;
   cursor: pointer;
   outline: none;
@@ -21,74 +21,75 @@ button {
     text-transform: uppercase;
     color: white;
   }
-}
 
-.buttonPrimary {
-  margin-top: 50px;
-  height: 62px;
-  width: 201px;
-  border: none;
+  &.primary {
+    margin-top: 50px;
+    height: 62px;
+    width: 201px;
+    border: none;
 
-  @media screen and (max-width: 576px) {
-    margin-top: 61px;
-    height: 42px;
-    width: 150px;
-    top: 155px;
+    @media screen and (max-width: 576px) {
+      margin-top: 61px;
+      height: 42px;
+      width: 150px;
+      top: 155px;
+    }
+    &.disabled {
+      background-color: gray;
+    }
   }
-}
 
-.buttonSecondary {
-  margin-left: 4px;
-  height: 45px;
-  width: 175px;
-  border: none;
-  background-color: black;
-
-  @media screen and (max-width: 992px) {
+  &.secondary {
     margin-left: 4px;
-    height: 30px;
+    height: 45px;
+    width: 175px;
+    border: none;
+    background-color: black;
+
+    @media screen and (max-width: 992px) {
+      margin-left: 4px;
+      height: 30px;
+    }
+
+    @media screen and (max-width: 576px) {
+      width: 95px;
+    }
+    &.disabled {
+      background-color: rgba(128, 128, 128, 0.45);
+    }
   }
 
-  @media screen and (max-width: 576px) {
-    width: 95px;
+  &.cart {
+    background-color: rgb(246, 246, 246);
+    border: #000000 2px solid;
+    height: 28px;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    display: inline-block;
+    vertical-align: middle;
+
+    span {
+      font-family: "Roboto", sans-serif;
+      color: black;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 992px) {
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: 10px;
+    }
+  }
+
+  &.small {
+    &.disabledSmall {
+      background-color: #43b02a;
+    }
   }
 }
 
-.buttonCart {
-  background-color: rgb(246, 246, 246);
-  border: #000000 2px solid;
-  height: 28px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  display: inline-block;
-  vertical-align: middle;
 
-  span {
-    font-family: "Roboto", sans-serif;
-    color: black;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  @media screen and (max-width: 992px) {
-    font-size: 12px;
-  }
-
-  @media screen and (max-width: 576px) {
-    font-size: 10px;
-  }
-}
-
-
-.disabledPrimary {
-  background-color: gray;
-}
-
-.disabledSecondary {
-  background-color: rgba(128, 128, 128, 0.45);
-}
-
-.disabledSmall {
-  background-color: #43b02a;
-}
