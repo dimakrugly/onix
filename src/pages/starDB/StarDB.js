@@ -82,7 +82,6 @@ class StarDB extends Component {
 
   render() {
     const { items, disabled, isTopButton } = this.state;
-
     return (
       <StarDBView
         items={items}
