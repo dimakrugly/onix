@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StarDBView } from './StarDBView';
 import AxiosService from '../../services/AxiosService/AxiosService';
 import { extractId } from '../../utils/asynFunctions';
+import { urlBase } from '../../constants/urlBase';
 
 class StarDB extends Component {
   constructor(props) {
@@ -15,14 +16,17 @@ class StarDB extends Component {
   }
 
   componentDidMount() {
-    AxiosService.getRequest('https://swapi.dev/api/people/?page=1')
+    AxiosService.getRequest(urlBase.swapi)
       .then((res) => this.setState(() => ({
         items: [
           ...res.results,
         ],
         next: res.next,
         disabled: false,
-      }))).then(() => { this.onImageAdd(); });
+      }))).then(() => { this.onImageAdd(); })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onScrollUp = () => {
