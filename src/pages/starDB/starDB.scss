@@ -1,3 +1,19 @@
+.headerStarMenu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 22px 0;
+
+    @media screen and (max-width: 992px) {
+      padding: 16px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 12px 0;
+    }
+
+}
+
 .starTitle {
   margin-top: 50px;
   font-family: "Poppins", serif;
@@ -20,14 +36,23 @@
   background: rgb(205,205,205);
   background: linear-gradient(90deg, rgba(205,205,205,1) 0%, rgba(228,228,228,1) 42%, rgba(255,255,255,1) 100%);
   margin: 20px 50px 20px 50px;
+  @media screen and (max-width: 576px) {
+   flex-direction: column;
+  }
 }
 
 .starImage{
   background-size: cover;
+  @media screen and (max-width: 576px) {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .starPhoto{
   height: 150px;
+  border-radius: 2px;
 }
 
 .starInfo{
@@ -46,6 +71,13 @@
   line-height: 50px;
   color: #000000;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 11px;
+    line-height: 20px;
+  }
 }
 
 .starCardSubtitle{
@@ -56,6 +88,13 @@
   line-height: 50px;
   color: #000000;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 10px;
+    line-height: 15px;
+  }
 }
 
 .starButtonContainer{
