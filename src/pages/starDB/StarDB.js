@@ -17,16 +17,14 @@ class StarDB extends Component {
 
   componentDidMount() {
     AxiosService.getRequest(urlBase.swapi)
-      .then((res) => this.setState(() => ({
-        items: [
-          ...res.results,
-        ],
-        next: res.next,
-        disabled: false,
-      }))).then(() => { this.onImageAdd(); })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((res) => {
+        this.setState({
+          items: this.updateItems(res.results),
+          next: res.next,
+          disabled: false,
+        });
+      })
+      .catch(console.log);
   }
 
   onScrollUp = () => {
@@ -39,46 +37,26 @@ class StarDB extends Component {
   onItemsLoad = () => {
     const {
       next,
-      disabled,
     } = this.state;
-    if (!disabled && next !== null) {
-      this.setState(() => ({
-        disabled: true,
-      }));
-      AxiosService.getRequest(next)
-        .then((res) => this.setState((prev) => ({
+    AxiosService.getRequest(next)
+      .then((res) => {
+        this.setState((prev) => ({
           items: [
             ...prev.items,
-            ...res.results,
+            ...this.updateItems(res.results),
           ],
           next: res.next,
-        })))
-        .then(() => {
-          this.onImageAdd();
-        })
-        .then(() => {
-          this.setState(() => ({
-            disabled: false,
-            isTopButton: true,
-          }));
-        });
-    }
-    if (next === null) {
-      this.setState(() => ({
-        disabled: true,
-      }));
-    }
+          disabled: res.next === null,
+          isTopButton: true,
+        }));
+      });
   };
 
-  onImageAdd = () => {
-    this.setState((prev) => ({
-      items: prev.items.map((item) => ({
-        ...item,
-        id: extractId(item.url),
-        image: `https://starwars-visualguide.com/assets/img/characters/${extractId(item.url)}.jpg`,
-      })),
-    }));
-  };
+  updateItems = (arr) => arr.map((item) => ({
+    ...item,
+    id: extractId(item.url),
+    image: `https://starwars-visualguide.com/assets/img/characters/${extractId(item.url)}.jpg`,
+  }));
 
   render() {
     const { items, disabled, isTopButton } = this.state;
