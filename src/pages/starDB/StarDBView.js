@@ -7,7 +7,7 @@ import { Button } from '../../components/Button/Button';
 import { buttonVariants } from '../../constants/constants';
 
 export const StarDBView = ({
-  items, onItemsLoad, disabled, onScrollUp, isTopButton,
+  items, onItemsLoad, disabled,
 }) => (
   <>
     <header>
@@ -49,12 +49,10 @@ export const StarDBView = ({
           </div>
         ))}
         <div className="starButtonContainer">
-          {isTopButton && <Button text="UP" variant={buttonVariants.secondary} onClick={() => onScrollUp()} /> }
           <Button text="More" variant={buttonVariants.secondary} disabled={disabled} onClick={() => onItemsLoad()} />
         </div>
       </div>
     </div>
-
     <Footer />
   </>
 );
@@ -82,6 +80,4 @@ StarDBView.propTypes = {
   }).isRequired).isRequired,
   onItemsLoad: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
-  onScrollUp: PropTypes.func.isRequired,
-  isTopButton: PropTypes.bool.isRequired,
 };
