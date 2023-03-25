@@ -44,7 +44,7 @@ class Home extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     const { isMobileMenuOpen } = this.state;
 
     if (isMobileMenuOpen !== prevState.isMobileMenuOpen) {
@@ -73,11 +73,6 @@ class Home extends Component {
     this.setState((prev) => ({
       cartData: prev.cartData.map((item, index) => ({ ...item, active: index === newIndex })),
     }));
-  };
-
-  onImageError = ({ currentTarget }) => {
-    currentTarget.onerror = null;
-    currentTarget.src = 'https://i.ibb.co/0QJgMM8/Screenshot-1.png';
   };
 
   onMobileMenuOpen = () => {
@@ -292,7 +287,6 @@ class Home extends Component {
         onDropHandle={this.onDropHandle}
         onItemSelected={this.onItemSelected}
         onKeyDetect={this.onKeyDetect}
-        onImageError={this.onImageError}
       />
     );
   }

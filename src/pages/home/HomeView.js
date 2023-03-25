@@ -39,7 +39,6 @@ export const HomeView = ({
   onDropHandle,
   onItemSelected,
   onKeyDetect,
-  onImageError,
 }) => (
   <>
     <Header
@@ -73,7 +72,6 @@ export const HomeView = ({
       items={items}
       onCartAdd={onCartAdd}
       cartData={cartData}
-      onImageError={onImageError}
     />
     <Banner />
     <Subscribe
@@ -137,7 +135,6 @@ HomeView.propTypes = {
   onDropHandle: PropTypes.func.isRequired,
   onItemSelected: PropTypes.func.isRequired,
   onKeyDetect: PropTypes.func.isRequired,
-  onImageError: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {
