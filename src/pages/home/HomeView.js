@@ -10,8 +10,6 @@ import { Banner } from './components/Banner/Banner';
 import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
-import { ScrollUpButton } from '../../components/ScrollUpButton/ScrollUpButton';
-import { Team } from './components/Team/Team';
 
 export const HomeView = ({
   items,
@@ -36,8 +34,6 @@ export const HomeView = ({
   onCartItemDiscount,
   isDiscount,
   filteredProducts,
-  isShownScrollButton,
-  onScrollUp,
   onDragStartHandle,
   onDragOverHandle,
   onDropHandle,
@@ -46,7 +42,6 @@ export const HomeView = ({
   onImageError,
 }) => (
   <>
-    <ScrollUpButton isShownScrollButton={isShownScrollButton} onClick={onScrollUp} />
     <Header
       onCartOpen={onCartOpen}
       cartData={cartData}
@@ -80,7 +75,6 @@ export const HomeView = ({
       cartData={cartData}
       onImageError={onImageError}
     />
-    <Team />
     <Banner />
     <Subscribe
       onChangeMailInput={onChangeMailInput}
@@ -138,8 +132,6 @@ HomeView.propTypes = {
   onMobileMenuOpen: PropTypes.func.isRequired,
   onCartItemDiscount: PropTypes.func.isRequired,
   isDiscount: PropTypes.bool.isRequired,
-  isShownScrollButton: PropTypes.bool.isRequired,
-  onScrollUp: PropTypes.func.isRequired,
   onDragStartHandle: PropTypes.func.isRequired,
   onDragOverHandle: PropTypes.func.isRequired,
   onDropHandle: PropTypes.func.isRequired,

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withUpButton from '../../hoc/withUpButton';
 import { StarDBView } from './StarDBView';
 import AxiosService from '../../services/AxiosService/AxiosService';
 import { extractId } from '../../utils/asynFunctions';
@@ -11,7 +12,6 @@ class StarDB extends Component {
       disabled: true,
       next: '',
       items: [],
-      isTopButton: false,
     };
   }
 
@@ -47,7 +47,6 @@ class StarDB extends Component {
           ],
           next: res.next,
           disabled: res.next === null,
-          isTopButton: true,
         }));
       });
   };
@@ -59,17 +58,16 @@ class StarDB extends Component {
   }));
 
   render() {
-    const { items, disabled, isTopButton } = this.state;
+    const { items, disabled } = this.state;
     return (
       <StarDBView
         items={items}
         onItemsLoad={this.onItemsLoad}
         disabled={disabled}
         onScrollUp={this.onScrollUp}
-        isTopButton={isTopButton}
       />
     );
   }
 }
 
-export default StarDB;
+export default withUpButton(StarDB);

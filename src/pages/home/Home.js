@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import withUpButton from '../../hoc/withUpButton';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
@@ -24,7 +25,6 @@ class Home extends Component {
       cartSearchValue: '',
       isMobileMenuOpen: false,
       isDiscount: false,
-      isShownScrollButton: false,
       currentCard: undefined,
     };
   }
@@ -42,23 +42,14 @@ class Home extends Component {
       .catch((error) => {
         console.log(error);
       });
-
-    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { isShownScrollButton, isMobileMenuOpen } = this.state;
+    const { isMobileMenuOpen } = this.state;
 
-    if (isShownScrollButton !== prevState.isShownScrollButton) {
-      LoggerService.logData('success', 'scroll Button switched');
-    }
     if (isMobileMenuOpen !== prevState.isMobileMenuOpen) {
       LoggerService.logData('success', 'mobile menu switched');
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
   }
 
   onKeyDetect = (event) => {
@@ -77,37 +68,16 @@ class Home extends Component {
     const { cartData } = this.state;
     const currentActive = cartData.findIndex(((el) => el.active));
 
-    const newIndex = (currentActive + payLoad) % cartData.length < 0 ? cartData.length - 1
-      : (currentActive + payLoad) % cartData.length;
+    const newIndex = (currentActive + payLoad + cartData.length) % cartData.length;
 
-    const newCartData = cartData.map((item, index) => ({ ...item, active: index === newIndex }));
-    this.setState({
-      cartData: newCartData,
-    });
+    this.setState((prev) => ({
+      cartData: prev.cartData.map((item, index) => ({ ...item, active: index === newIndex })),
+    }));
   };
 
   onImageError = ({ currentTarget }) => {
     currentTarget.onerror = null;
     currentTarget.src = 'https://i.ibb.co/0QJgMM8/Screenshot-1.png';
-  };
-
-  handleScroll = ({ currentTarget: { scrollY } }) => {
-    if (scrollY > 500) {
-      this.setState(() => ({
-        isShownScrollButton: true,
-      }));
-    } else {
-      this.setState(() => ({
-        isShownScrollButton: false,
-      }));
-    }
-  };
-
-  onScrollUp = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
   };
 
   onMobileMenuOpen = () => {
@@ -208,9 +178,9 @@ class Home extends Component {
   };
 
   onCartSearchGetValue = (event) => {
-    this.setState(() => ({
+    this.setState({
       cartSearchValue: event.target.value,
-    }));
+    });
   };
 
   onFilteredProducts = () => {
@@ -247,18 +217,10 @@ class Home extends Component {
 
   onItemSelected = (product) => {
     this.setState((prev) => ({
-      cartData: prev.cartData.map((item) => {
-        if (item.key === product.key) {
-          return {
-            ...item,
-            active: !item.active,
-          };
-        }
-        return {
-          ...item,
-          active: false,
-        };
-      }),
+      cartData: prev.cartData.map((item) => ({
+        ...item,
+        active: item.key === product.key ? !item.active : false,
+      })),
     }));
   };
 
@@ -300,7 +262,6 @@ class Home extends Component {
       cartData,
       isMobileMenuOpen,
       isDiscount,
-      isShownScrollButton,
     } = this.state;
     return (
       <HomeView
@@ -326,8 +287,6 @@ class Home extends Component {
         onCartItemDiscount={this.onCartItemDiscount}
         isDiscount={isDiscount}
         filteredProducts={this.onFilteredProducts()}
-        isShownScrollButton={isShownScrollButton}
-        onScrollUp={this.onScrollUp}
         onDragStartHandle={this.onDragStartHandle}
         onDragOverHandle={this.onDragOverHandle}
         onDropHandle={this.onDropHandle}
@@ -339,4 +298,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withUpButton(Home);

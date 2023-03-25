@@ -4,6 +4,7 @@
   outline: none;
   border: 0;
 
+
   &:active {
     outline: none;
   }
@@ -25,8 +26,9 @@
   &.primary {
     margin-top: 50px;
     height: 62px;
-    width: 201px;
+    padding: 0 25px;
     border: none;
+    align-self: center;
 
     @media screen and (max-width: 576px) {
       margin-top: 61px;
@@ -40,9 +42,9 @@
   }
 
   &.secondary {
+    padding: 0 25px;
     margin-left: 4px;
     height: 45px;
-    width: 175px;
     border: none;
     background-color: black;
 
