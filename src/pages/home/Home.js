@@ -70,10 +70,9 @@ class Home extends Component {
 
     const newIndex = (currentActive + payLoad + cartData.length) % cartData.length;
 
-    const newCartData = cartData.map((item, index) => ({ ...item, active: index === newIndex }));
-    this.setState({
-      cartData: newCartData,
-    });
+    this.setState((prev) => ({
+      cartData: prev.cartData.map((item, index) => ({ ...item, active: index === newIndex })),
+    }));
   };
 
   onImageError = ({ currentTarget }) => {
@@ -179,9 +178,9 @@ class Home extends Component {
   };
 
   onCartSearchGetValue = (event) => {
-    this.setState(() => ({
+    this.setState({
       cartSearchValue: event.target.value,
-    }));
+    });
   };
 
   onFilteredProducts = () => {
@@ -218,18 +217,10 @@ class Home extends Component {
 
   onItemSelected = (product) => {
     this.setState((prev) => ({
-      cartData: prev.cartData.map((item) => {
-        if (item.key === product.key) {
-          return {
-            ...item,
-            active: !item.active,
-          };
-        }
-        return {
-          ...item,
-          active: false,
-        };
-      }),
+      cartData: prev.cartData.map((item) => ({
+        ...item,
+        active: item.key === product.key ? !item.active : false,
+      })),
     }));
   };
 

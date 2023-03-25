@@ -27,24 +27,16 @@ const withUpButton = (WrappedComponent) => class extends React.Component {
   };
 
   handleScroll = ({ currentTarget: { scrollY } }) => {
-    if (scrollY > 500) {
-      console.log('CPA6OTALO');
-      this.setState(() => ({
-        isShownScrollButton: true,
-      }));
-    } else {
-      this.setState(() => ({
-        isShownScrollButton: false,
-      }));
-    }
+    this.setState({
+      isShownScrollButton: scrollY > 500,
+    });
   };
 
   render() {
     const { isShownScrollButton } = this.state;
     return (
       <div>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <WrappedComponent {...this.props} />
+        <WrappedComponent />
         <div className={`upButtonArea ${isShownScrollButton ? 'visible' : null}`}>
           <Button
             text="Up!"
