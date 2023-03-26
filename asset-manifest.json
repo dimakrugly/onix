@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/onix/static/css/main.7ffe8df2.css",
-    "main.js": "/onix/static/js/main.5b78f017.js",
+    "main.css": "/onix/static/css/main.9a7cd4cc.css",
+    "main.js": "/onix/static/js/main.3a9fcfd7.js",
     "static/js/787.69219562.chunk.js": "/onix/static/js/787.69219562.chunk.js",
     "static/media/banner.png": "/onix/static/media/banner.a16f0df4f68d6ed9eaa5.png",
     "static/media/aboutImage.png": "/onix/static/media/aboutImage.a16aeb5c83774192fe8e.png",
@@ -10,12 +10,12 @@
     "static/media/vaseRed.png": "/onix/static/media/vaseRed.7d248ed104846a550193.png",
     "static/media/en.jpg": "/onix/static/media/en.5961eba15118665b8056.jpg",
     "index.html": "/onix/index.html",
-    "main.7ffe8df2.css.map": "/onix/static/css/main.7ffe8df2.css.map",
-    "main.5b78f017.js.map": "/onix/static/js/main.5b78f017.js.map",
+    "main.9a7cd4cc.css.map": "/onix/static/css/main.9a7cd4cc.css.map",
+    "main.3a9fcfd7.js.map": "/onix/static/js/main.3a9fcfd7.js.map",
     "787.69219562.chunk.js.map": "/onix/static/js/787.69219562.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ffe8df2.css",
-    "static/js/main.5b78f017.js"
+    "static/css/main.9a7cd4cc.css",
+    "static/js/main.3a9fcfd7.js"
   ]
 }
