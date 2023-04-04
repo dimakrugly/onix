@@ -20,7 +20,7 @@ export const About = () => {
           <p className="aboutSubText">
             {t('about.unique')}
           </p>
-          <Button className="aboutButton" text={t('about.shop')} />
+          <Button theme="dark" className="aboutButton" text={t('about.shop')} />
         </div>
       </div>
     </section>

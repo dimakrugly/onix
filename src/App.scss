@@ -1,0 +1,13 @@
+:root {
+  --button: #ac1313;
+  --header-background: whitesmoke;
+  --text-color: black;
+  --background-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --button: #43f800;
+  --header-background: #1aa0f7;
+  --text-color: black;
+  --background-color: #01054a;
+}

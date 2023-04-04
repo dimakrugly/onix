@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.scss';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import image from '../../assets/img/cart.png';
 import { LangSwitcher } from '../LangSwitcher/LangSwitcher';
+import { Switcher } from '../Switcher/Switcher';
+import ThemeContext from '../../providers/ThemeProvider';
 
 export const Header = ({
   onCartOpen,
@@ -12,8 +14,9 @@ export const Header = ({
   onMobileMenuOpen,
 }) => {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
   return (
-    <header>
+    <header data-theme={theme}>
       <LangSwitcher />
       <div className="wrapper">
         <div className="headerContainer">
@@ -48,6 +51,9 @@ export const Header = ({
             <img className="headerCartImg" src={image} alt="cart" />
             <p className="headerCartText">{t('header.cart')}</p>
           </button>
+          <div className="headerSwitch">
+            <Switcher />
+          </div>
         </div>
         <button type="button" className="burger" onClick={onMobileMenuOpen}>
           <div className="burgerLine" />
