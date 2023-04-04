@@ -1,9 +1,10 @@
+@import "../../App";
+
 .button {
-  background-color: #AC1313;
+  background-color: var(--button);
   cursor: pointer;
   outline: none;
   border: 0;
-
 
   &:active {
     outline: none;
@@ -93,5 +94,6 @@
     }
   }
 }
+
 
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './withUpButton.scss';
 import { Button } from '../components/Button/Button';
 import { buttonVariants } from '../constants/constants';
 
-const withUpButton = (WrappedComponent) => class extends React.Component {
+const withUpButton = (WrappedComponent) => class extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,7 @@ const withUpButton = (WrappedComponent) => class extends React.Component {
   render() {
     const { isShownScrollButton } = this.state;
     return (
-      <div>
+      <>
         <WrappedComponent />
         <div className={`upButtonArea ${isShownScrollButton ? 'visible' : null}`}>
           <Button
@@ -45,7 +45,7 @@ const withUpButton = (WrappedComponent) => class extends React.Component {
             onClick={this.scrollToTop}
           />
         </div>
-      </div>
+      </>
     );
   }
 };

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import './ceramics.scss';
+import ThemeContext from '../../../../providers/ThemeProvider';
 
 export const Ceramics = () => {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
   return (
-    <section className="ceramics">
+    <section className="ceramics" data-theme={theme}>
       <div className="wrapper">
         <div className="ceramicsGrid">
           <div className="ceramicsGridLeft">

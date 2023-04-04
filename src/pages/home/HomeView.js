@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
+import ThemeContext from '../../providers/ThemeProvider';
 import './home.scss';
 import { Header } from '../../components/Header/Header';
 import { About } from './components/About/About';
@@ -39,56 +40,57 @@ export const HomeView = ({
   onDropHandle,
   onItemSelected,
   onKeyDetect,
-  onImageError,
-}) => (
-  <>
-    <Header
-      onCartOpen={onCartOpen}
-      cartData={cartData}
-      onCartRemove={onCartRemove}
-      isMobileMenuOpen={isMobileMenuOpen}
-      onMobileMenuOpen={onMobileMenuOpen}
-    />
-    <Cart
-      isCartOpen={isCartOpen}
-      onCartOpen={onCartOpen}
-      onCartRemove={onCartRemove}
-      cartData={cartData}
-      onCartLowerSort={onCartLowerSort}
-      onCartHigherSort={onCartHigherSort}
-      onCartSearchGetValue={onCartSearchGetValue}
-      onCartItemDiscount={onCartItemDiscount}
-      isDiscount={isDiscount}
-      filteredProducts={filteredProducts}
-      onDragStartHandle={onDragStartHandle}
-      onDragOverHandle={onDragOverHandle}
-      onDropHandle={onDropHandle}
-      onItemSelected={onItemSelected}
-      onKeyDetect={onKeyDetect}
-    />
-    <About />
-    <Workspace />
-    <Ceramics />
-    <Collection
-      items={items}
-      onCartAdd={onCartAdd}
-      cartData={cartData}
-      onImageError={onImageError}
-    />
-    <Banner />
-    <Subscribe
-      onChangeMailInput={onChangeMailInput}
-      isError={isError}
-      value={value}
-      onBlur={onBlur}
-      touched={touched}
-      onCheckedMail={onCheckedMail}
-      checked={checked}
-      disabled={disabled}
-    />
-    <Footer />
-  </>
-);
+}) => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <div className="home" data-theme={theme}>
+      <Header
+        onCartOpen={onCartOpen}
+        cartData={cartData}
+        onCartRemove={onCartRemove}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuOpen={onMobileMenuOpen}
+      />
+      <Cart
+        isCartOpen={isCartOpen}
+        onCartOpen={onCartOpen}
+        onCartRemove={onCartRemove}
+        cartData={cartData}
+        onCartLowerSort={onCartLowerSort}
+        onCartHigherSort={onCartHigherSort}
+        onCartSearchGetValue={onCartSearchGetValue}
+        onCartItemDiscount={onCartItemDiscount}
+        isDiscount={isDiscount}
+        filteredProducts={filteredProducts}
+        onDragStartHandle={onDragStartHandle}
+        onDragOverHandle={onDragOverHandle}
+        onDropHandle={onDropHandle}
+        onItemSelected={onItemSelected}
+        onKeyDetect={onKeyDetect}
+      />
+      <About />
+      <Workspace />
+      <Ceramics />
+      <Collection
+        items={items}
+        onCartAdd={onCartAdd}
+        cartData={cartData}
+      />
+      <Banner />
+      <Subscribe
+        onChangeMailInput={onChangeMailInput}
+        isError={isError}
+        value={value}
+        onBlur={onBlur}
+        touched={touched}
+        onCheckedMail={onCheckedMail}
+        checked={checked}
+        disabled={disabled}
+      />
+      <Footer />
+    </div>
+  );
+};
 
 HomeView.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
@@ -137,7 +139,6 @@ HomeView.propTypes = {
   onDropHandle: PropTypes.func.isRequired,
   onItemSelected: PropTypes.func.isRequired,
   onKeyDetect: PropTypes.func.isRequired,
-  onImageError: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {

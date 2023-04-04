@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './image.scss';
 import PropTypes from 'prop-types';
+import { plugImage } from '../../constants/constants';
 
 export const Image = ({
-  alt, className, src, onError,
-}) => (
-  <img
-    src={src}
-    alt={alt}
-    className={className}
-    onLoad={() => { console.log(`image ${src} downloaded successfully`); }}
-    onError={onError}
-  />
-);
+  alt, className, src,
+}) => {
+  const [isError, setIsError] = useState(false);
+
+  const onError = () => {
+    setIsError(true);
+  };
+
+  return (
+    <img
+      src={isError ? plugImage : src}
+      alt={alt}
+      className={className}
+      onLoad={() => { console.log(`image ${src} downloaded successfully`); }}
+      onError={onError}
+    />
+  );
+};
 
 Image.propTypes = {
   alt: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
-  onError: PropTypes.func.isRequired,
 };
