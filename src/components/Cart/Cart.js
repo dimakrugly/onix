@@ -50,7 +50,7 @@ export const Cart = ({
         <Button type="button" variant={buttonVariants.cart} onClick={onCartOpen} id="closeButton" text="×" />
       </div>
       <div className="cartFlex">
-        {cartData.length
+        {filteredProducts.length
           ? (
             <CartList
               onCartRemove={onCartRemove}
