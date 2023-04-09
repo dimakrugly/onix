@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import './subscribe.scss';
 import PropTypes from 'prop-types';
@@ -6,10 +6,11 @@ import { Input } from '../../../../components/Input/Input';
 import { Button } from '../../../../components/Button/Button';
 import { buttonVariants } from '../../../../constants/constants';
 
-export const Subscribe = ({
+export const Subscribe = memo(({
   onChangeMailInput, isError, value, onBlur, touched, onCheckedMail, checked, disabled,
 }) => {
   const { t } = useTranslation();
+  console.log('RENDER SUBSCRIBE');
   return (
     <section className="subscribe">
       <div className="subscribeIcon" />
@@ -45,7 +46,7 @@ export const Subscribe = ({
       </div>
     </section>
   );
-};
+})
 Subscribe.propTypes = {
   onChangeMailInput: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,

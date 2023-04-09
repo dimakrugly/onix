@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import './workspace.scss';
 
-export const Workspace = () => {
+export const Workspace = memo(() => {
   const { t } = useTranslation();
+  console.log('RENDER WORKSPACE');
   return (
     <section className="workspace" id="workspace">
       <p className="workspaceSideText">Hand Craft Pottery</p>
@@ -57,4 +58,4 @@ export const Workspace = () => {
       </div>
     </section>
   );
-};
+})

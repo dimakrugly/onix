@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import './ceramics.scss';
 import ThemeContext from '../../../../providers/ThemeProvider';
 
-export const Ceramics = () => {
+export const Ceramics = memo(() => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  console.log('RENDER CERAMICS');
   return (
     <section className="ceramics" data-theme={theme}>
       <div className="wrapper">
@@ -33,4 +34,4 @@ export const Ceramics = () => {
       <p className="ceramicsSideText">{t('ceramics.featured')}</p>
     </section>
   );
-};
+});

@@ -8,7 +8,8 @@
     "browser": true
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     "semi": "off",
@@ -30,6 +31,7 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "error",
     "react/function-component-definition": [
       2,
       {

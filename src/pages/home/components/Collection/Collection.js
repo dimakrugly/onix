@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import './collection.scss';
 import PropTypes from 'prop-types';
@@ -6,10 +6,11 @@ import { Button } from '../../../../components/Button/Button';
 import { buttonVariants } from '../../../../constants/constants';
 import { Image } from '../../../../components/Image/Image';
 
-export const Collection = ({
+export const Collection = memo(({
   items, onCartAdd, cartData,
 }) => {
   const { t } = useTranslation();
+  console.log('RENDER COLLECTION');
   return (
     <section className="collection" id="collection">
       <div>
@@ -53,7 +54,7 @@ export const Collection = ({
       </div>
     </section>
   );
-};
+});
 
 Collection.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({

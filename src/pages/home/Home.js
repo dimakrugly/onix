@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useEffect, useMemo, useCallback,
+} from 'react';
 import axios from 'axios';
-import withUpButton from '../../hoc/withUpButton';
+import { useUpButton } from '../../hook/useUpButton';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
@@ -8,193 +10,155 @@ import LoggerService from '../../services/logger/LoggerService';
 import { bubbleSort } from '../../utils/bubleSort';
 import { urlBase } from '../../constants/urlBase';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [
-      ],
-      formData: {
-        email: '',
-        isMailError: false,
-        touchedMail: false,
-        checkedMail: false,
-      },
-      isCartOpen: false,
-      cartData: [],
-      cartSearchValue: '',
-      isMobileMenuOpen: false,
-      isDiscount: false,
-      currentCard: undefined,
-    };
-  }
+export const Home = () => {
+  const [items, setItems] = useState([]);
+  const [formData, setFormData] = useState({
+    email: '',
+    isMailError: false,
+    touchedMail: false,
+    checkedMail: false,
+  });
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartData, setCartData] = useState([]);
+  const [cartSearchValue, setCartSearchValue] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDiscount, setIsDiscount] = useState(false);
+  const [currentCard, setCurrentCard] = useState(undefined);
 
-  componentDidMount() {
+  useEffect(() => {
     axios
       .get(urlBase.sku)
       .then((response) => {
-        this.setState(() => ({
-          items: [
-            ...response.data.items,
-          ],
-        }));
+        setItems(
+          response.data.items,
+        );
       })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+      .catch(console.log);
+  }, []);
 
-  componentDidUpdate(_, prevState) {
-    const { isMobileMenuOpen } = this.state;
+  useEffect(() => {
+    LoggerService.logData('success', 'mobile menu switched');
+  }, [isMobileMenuOpen])
 
-    if (isMobileMenuOpen !== prevState.isMobileMenuOpen) {
-      LoggerService.logData('success', 'mobile menu switched');
-    }
-  }
-
-  onKeyDetect = (event) => {
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      this.arrowHandler(true);
-    }
-    if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      this.arrowHandler(false);
-    }
-  };
-
-  arrowHandler = (isUp) => {
+  const arrowHandler = (isUp) => {
     const payLoad = isUp ? 1 : -1;
-    const { cartData } = this.state;
     const currentActive = cartData.findIndex(((el) => el.active));
 
     const newIndex = (currentActive + payLoad + cartData.length) % cartData.length;
 
-    this.setState((prev) => ({
-      cartData: prev.cartData.map((item, index) => ({ ...item, active: index === newIndex })),
-    }));
+    setCartData(cartData.map((item, index) => ({ ...item, active: index === newIndex })));
   };
 
-  onMobileMenuOpen = () => {
-    this.setState((prev) => ({
-      isMobileMenuOpen: !prev.isMobileMenuOpen,
-    }));
+  const onKeyDetect = (event) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      arrowHandler(true);
+    }
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      arrowHandler(false);
+    }
   };
 
-  onChangeMail = (event) => {
-    this.setState((prev) => ({
-      formData: {
-        ...prev.formData,
-        email: event.target.value,
-        isMailError: isValidEMail(event.target.value),
-      },
-    }));
+  const onMobileMenuOpen = () => {
+    setIsMobileMenuOpen(
+      !isMobileMenuOpen,
+    );
   };
 
-  onBlurMail = (event) => {
-    this.setState((prev) => ({
-      formData: {
-        ...prev.formData,
-        touchedMail: isTouchedMail(event.target.value),
-      },
-    }));
-  };
-
-  onCheckedMail = () => {
-    this.setState((prev) => ({
-      formData: {
-        ...prev.formData,
-        checkedMail: !prev.formData.checkedMail,
-      },
-    }));
-  };
-
-  onButtonDisabled = () => {
-    const { formData } = this.state;
-    return !(formData.checkedMail && !formData.isMailError && formData.touchedMail);
-  };
-
-  onCartOpen = () => {
-    this.setState((prev) => ({
-      isCartOpen: !prev.isCartOpen,
-    }));
-  };
-
-  onCartAdd = (item) => {
-    const { cartData } = this.state;
-    const sortOrder = cartData.length + 1;
-    this.setState((prev) => ({
-      cartData: [
-        ...prev.cartData,
-        {
-          key: item.key,
-          id: item.key,
-          order: sortOrder,
-          active: false,
-          productData: {
-            title: item.title,
-            image: item.image,
-            price: item.price,
-          },
-        },
-      ],
-    }));
-  };
-
-  onCartRemove = (item) => {
-    this.setState((prev) => ({
-      cartData: prev.cartData.filter((p) => p.key !== item.key),
-    }));
-  };
-
-  onCartLowerSort = () => {
-    let i = 1;
-    this.setState((prev) => ({
-      cartData: [...prev.cartData]
-        .sort((el, item) => el.productData.price - item.productData.price)
-        .reduce((acc, item) => {
-          item = { ...item, order: i += 1 };
-          acc = [...acc, item];
-          return acc;
-        }, []),
-    }));
-  };
-
-  onCartHigherSort = () => {
-    let i = 1;
-    this.setState((prev) => ({
-      cartData: bubbleSort(prev.cartData)
-        .reduce((acc, item) => {
-          item = { ...item, order: i += 1 };
-          acc = [...acc, item];
-          return acc;
-        }, []),
-    }));
-  };
-
-  onCartSearchGetValue = (event) => {
-    this.setState({
-      cartSearchValue: event.target.value,
+  const onChangeMail = useCallback((event) => {
+    setFormData({
+      ...formData,
+      email: event.target.value,
+      isMailError: isValidEMail(event.target.value),
     });
+  }, [formData])
+
+  const onBlurMail = useCallback((event) => {
+    setFormData({
+      ...formData,
+      touchedMail: isTouchedMail(event.target.value),
+    })
+  }, [formData])
+
+  const onCheckedMail = useCallback(() => {
+    setFormData({
+      ...formData,
+      checkedMail: !formData.checkedMail,
+    })
+  }, [formData])
+
+  const isButtonDisabled = useMemo(() => (
+    !(formData.checkedMail && !formData.isMailError && formData.touchedMail)
+  ), [formData.checkedMail, formData.isMailError, formData.touchedMail]);
+
+  const onCartOpen = () => {
+    setIsCartOpen(!isCartOpen);
   };
 
-  onFilteredProducts = () => {
-    const {
-      cartData,
-      cartSearchValue,
-    } = this.state;
-    return (
-      cartData.filter((product) => product
-        .productData
-        .title
-        .toLowerCase()
-        .includes(cartSearchValue
-          .toLowerCase())));
+  const onCartAdd = useCallback((item) => {
+    const sortOrder = cartData.length + 1;
+
+    setCartData([
+      ...cartData,
+      {
+        key: item.key,
+        id: item.key,
+        order: sortOrder,
+        active: false,
+        productData: {
+          title: item.title,
+          image: item.image,
+          price: item.price,
+        },
+      },
+    ])
+  }, [cartData]);
+
+  const onCartRemove = (event, item) => {
+    event.stopPropagation();
+    const newCartData = cartData.filter((cartItem) => cartItem.key !== item.key)
+    setCartData(newCartData);
   };
 
-  onCartItemDiscount = (product) => {
-    this.setState((prev) => ({
-      cartData: prev.cartData.map((item) => {
+  const onCartLowerSort = () => {
+    let i = 1;
+    setCartData([...cartData]
+      .sort((el, item) => el.productData.price - item.productData.price)
+      .reduce((acc, item) => {
+        item = { ...item, order: i += 1 };
+        acc = [...acc, item];
+        return acc;
+      }, []))
+  }
+
+  const onCartHigherSort = () => {
+    let i = 1;
+    setCartData(
+      bubbleSort(cartData)
+        .reduce((acc, item) => {
+          item = { ...item, order: i += 1 };
+          acc = [...acc, item];
+          return acc;
+        }, []),
+    )
+  }
+
+  const onCartSearchGetValue = (event) => {
+    setCartSearchValue(event.target.value);
+  };
+
+  const filteredProduct = useMemo(() => cartData.filter((product) => product
+    .productData
+    .title
+    .toLowerCase()
+    .includes(cartSearchValue
+      .toLowerCase())), [cartData, cartSearchValue])
+
+  const onCartItemDiscount = (event, product) => {
+    event.stopPropagation();
+    setCartData(
+      cartData.map((item) => {
         if (item.key === product.key) {
           return {
             ...product,
@@ -206,90 +170,78 @@ class Home extends Component {
         }
         return item;
       }),
-      isDiscount: true,
-    }));
+      setIsDiscount(true),
+    )
   };
 
-  onItemSelected = (product) => {
-    this.setState((prev) => ({
-      cartData: prev.cartData.map((item) => ({
-        ...item,
-        active: item.key === product.key ? !item.active : false,
-      })),
-    }));
+  const onItemSelected = (product) => {
+    setCartData(cartData.map((item) => ({
+      ...item,
+      active: item.key === product.key ? !item.active : false,
+    })))
   };
 
-  onDragStartHandle = (event, card) => {
-    this.onDragGetValue(card);
+  const onDragGetValue = (item) => {
+    setCurrentCard(item);
   };
 
-  onDragOverHandle = (event) => {
+  const onDragStartHandle = (event, card) => {
+    onDragGetValue(card);
+  };
+
+  const onDropHandle = (event, card) => {
+    event.preventDefault();
+    setCartData(cartData.map((c) => {
+      if (c.id === card.id) {
+        return { ...c, order: currentCard.order };
+      }
+      if (c.id === currentCard.id) {
+        return { ...c, order: card.order };
+      }
+      return c;
+    }).sort((a, b) => a.order - b.order))
+  };
+
+  const onDragOverHandle = (event) => {
     event.preventDefault();
   };
 
-  onDropHandle = (event, card) => {
-    const { currentCard } = this.state;
-    event.preventDefault();
-    this.setState((prev) => ({
-      cartData: prev.cartData.map((c) => {
-        if (c.id === card.id) {
-          return { ...c, order: currentCard.order };
-        }
-        if (c.id === currentCard.id) {
-          return { ...c, order: card.order };
-        }
-        return c;
-      }).sort((a, b) => a.order - b.order),
-    }));
-  };
+  const {
+    onScrollToTop,
+    isShownScrollButton,
+  } = useUpButton();
 
-  onDragGetValue = (item) => {
-    this.setState(() => ({
-      currentCard: item,
-    }));
-  };
-
-  render() {
-    const {
-      items,
-      formData,
-      isCartOpen,
-      cartData,
-      isMobileMenuOpen,
-      isDiscount,
-    } = this.state;
-    return (
-      <HomeView
-        items={items}
-        onChangeMailInput={this.onChangeMail}
-        isError={formData.isMailError}
-        value={formData.email}
-        onBlur={this.onBlurMail}
-        touched={formData.touchedMail}
-        onCheckedMail={this.onCheckedMail}
-        checked={formData.checkedMail}
-        disabled={this.onButtonDisabled()}
-        isCartOpen={isCartOpen}
-        onCartOpen={this.onCartOpen}
-        onCartAdd={this.onCartAdd}
-        cartData={cartData}
-        onCartRemove={this.onCartRemove}
-        onCartLowerSort={this.onCartLowerSort}
-        onCartHigherSort={this.onCartHigherSort}
-        onCartSearchGetValue={this.onCartSearchGetValue}
-        isMobileMenuOpen={isMobileMenuOpen}
-        onMobileMenuOpen={this.onMobileMenuOpen}
-        onCartItemDiscount={this.onCartItemDiscount}
-        isDiscount={isDiscount}
-        filteredProducts={this.onFilteredProducts()}
-        onDragStartHandle={this.onDragStartHandle}
-        onDragOverHandle={this.onDragOverHandle}
-        onDropHandle={this.onDropHandle}
-        onItemSelected={this.onItemSelected}
-        onKeyDetect={this.onKeyDetect}
-      />
-    );
-  }
-}
-
-export default withUpButton(Home);
+  return (
+    <HomeView
+      items={items}
+      onChangeMailInput={onChangeMail}
+      isError={formData.isMailError}
+      value={formData.email}
+      onBlur={onBlurMail}
+      touched={formData.touchedMail}
+      onCheckedMail={onCheckedMail}
+      checked={formData.checkedMail}
+      disabled={isButtonDisabled}
+      isCartOpen={isCartOpen}
+      onCartOpen={onCartOpen}
+      onCartAdd={onCartAdd}
+      cartData={cartData}
+      onCartRemove={onCartRemove}
+      onCartLowerSort={onCartLowerSort}
+      onCartHigherSort={onCartHigherSort}
+      onCartSearchGetValue={onCartSearchGetValue}
+      isMobileMenuOpen={isMobileMenuOpen}
+      onMobileMenuOpen={onMobileMenuOpen}
+      onCartItemDiscount={onCartItemDiscount}
+      isDiscount={isDiscount}
+      filteredProducts={filteredProduct}
+      onDragStartHandle={onDragStartHandle}
+      onDragOverHandle={onDragOverHandle}
+      onDropHandle={onDropHandle}
+      onItemSelected={onItemSelected}
+      onKeyDetect={onKeyDetect}
+      onScrollToTop={onScrollToTop}
+      isShownScrollButton={isShownScrollButton}
+    />
+  );
+};

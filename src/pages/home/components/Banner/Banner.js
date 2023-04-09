@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../../../components/Button/Button';
 import './banner.scss';
 
-export const Banner = () => {
+export const Banner = memo(() => {
   const { t } = useTranslation();
+  console.log('RENDER BANNER');
 
   return (
     <section className="banner">
@@ -18,4 +19,4 @@ export const Banner = () => {
       </div>
     </section>
   );
-};
+});
