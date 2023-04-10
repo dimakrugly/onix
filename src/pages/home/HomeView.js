@@ -11,6 +11,7 @@ import { Banner } from './components/Banner/Banner';
 import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
+import { UpButton } from '../../components/UpButton/UpButton';
 
 export const HomeView = ({
   items,
@@ -40,6 +41,8 @@ export const HomeView = ({
   onDropHandle,
   onItemSelected,
   onKeyDetect,
+  onScrollToTop,
+  isShownScrollButton,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -88,6 +91,7 @@ export const HomeView = ({
         disabled={disabled}
       />
       <Footer />
+      <UpButton onClick={onScrollToTop} isShownScrollButton={isShownScrollButton} />
     </div>
   );
 };
@@ -139,6 +143,8 @@ HomeView.propTypes = {
   onDropHandle: PropTypes.func.isRequired,
   onItemSelected: PropTypes.func.isRequired,
   onKeyDetect: PropTypes.func.isRequired,
+  onScrollToTop: PropTypes.func.isRequired,
+  isShownScrollButton: PropTypes.bool.isRequired,
 };
 
 HomeView.defaultProps = {

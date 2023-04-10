@@ -8,9 +8,12 @@
     "browser": true
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
+    "semi": "off",
+
     "react/prop-types": 1,
     "linebreak-style": 0,
     "import/prefer-default-export": "off",
@@ -28,6 +31,7 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "error",
     "react/function-component-definition": [
       2,
       {

@@ -48,8 +48,8 @@ export const CartList = ({
                   type="button"
                   variant={buttonVariants.cart}
                   text={t('cart.discount')}
-                  onClick={() => {
-                    onCartItemDiscount(item);
+                  onClick={(event) => {
+                    onCartItemDiscount(event, item);
                   }}
                 />
               )
@@ -64,8 +64,8 @@ export const CartList = ({
               type="button"
               variant={buttonVariants.cart}
               text={t('cart.remove')}
-              onClick={() => {
-                onCartRemove(item);
+              onClick={(event) => {
+                onCartRemove(event, item);
               }}
             />
           </div>

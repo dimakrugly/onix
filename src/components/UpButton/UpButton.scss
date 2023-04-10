@@ -1,0 +1,13 @@
+.upButtonArea {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: none;
+  opacity: .5;
+}
+
+.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

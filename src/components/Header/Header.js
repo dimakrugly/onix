@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import './header.scss';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import { LangSwitcher } from '../LangSwitcher/LangSwitcher';
 import { Switcher } from '../Switcher/Switcher';
 import ThemeContext from '../../providers/ThemeProvider';
 
-export const Header = ({
+export const Header = memo(({
   onCartOpen,
   isMobileMenuOpen,
   onMobileMenuOpen,
@@ -94,7 +94,8 @@ export const Header = ({
       </div>
     </header>
   );
-};
+});
+
 Header.propTypes = {
   onCartOpen: PropTypes.func.isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,

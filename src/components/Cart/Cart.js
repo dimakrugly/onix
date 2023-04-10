@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import './cart.scss';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import { Button } from '../Button/Button';
 import { buttonVariants } from '../../constants/constants';
 import { CartList } from '../CartList/CartList';
 
-export const Cart = ({
+export const Cart = memo(({
   isCartOpen,
   onCartOpen,
   cartData,
@@ -50,7 +50,7 @@ export const Cart = ({
         <Button type="button" variant={buttonVariants.cart} onClick={onCartOpen} id="closeButton" text="×" />
       </div>
       <div className="cartFlex">
-        {cartData.length
+        {filteredProducts.length
           ? (
             <CartList
               onCartRemove={onCartRemove}
@@ -80,7 +80,7 @@ export const Cart = ({
       </div>
     </div>
   );
-};
+});
 
 Cart.propTypes = {
   isCartOpen: PropTypes.bool.isRequired,

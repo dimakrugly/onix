@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './footer.scss';
 
-export const Footer = () => (
+export const Footer = memo(() => (
   <footer id="footer">
     <div className="wrapper footerWrapper">
       <h3 className="headerLogo footerLogo">Dmytro Torop</h3>
@@ -47,4 +47,4 @@ export const Footer = () => (
       </a>
     </div>
   </footer>
-);
+));

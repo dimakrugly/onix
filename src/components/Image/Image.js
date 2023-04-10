@@ -17,7 +17,6 @@ export const Image = ({
       src={isError ? plugImage : src}
       alt={alt}
       className={className}
-      onLoad={() => { console.log(`image ${src} downloaded successfully`); }}
       onError={onError}
     />
   );
