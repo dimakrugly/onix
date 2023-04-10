@@ -10,7 +10,6 @@ export const Collection = memo(({
   items, onCartAdd, cartData,
 }) => {
   const { t } = useTranslation();
-  console.log('RENDER COLLECTION');
   return (
     <section className="collection" id="collection">
       <div>

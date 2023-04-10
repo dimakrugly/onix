@@ -5,7 +5,6 @@ import './banner.scss';
 
 export const Banner = memo(() => {
   const { t } = useTranslation();
-  console.log('RENDER BANNER');
 
   return (
     <section className="banner">

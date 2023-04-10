@@ -4,7 +4,6 @@ import './workspace.scss';
 
 export const Workspace = memo(() => {
   const { t } = useTranslation();
-  console.log('RENDER WORKSPACE');
   return (
     <section className="workspace" id="workspace">
       <p className="workspaceSideText">Hand Craft Pottery</p>

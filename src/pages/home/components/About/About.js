@@ -5,7 +5,6 @@ import { Button } from '../../../../components/Button/Button';
 
 export const About = memo(() => {
   const { t } = useTranslation();
-  console.log('RENDER ABOUT');
   return (
     <section className="about" id="about">
       <div className="aboutImageContainer" />

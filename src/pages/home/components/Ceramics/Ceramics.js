@@ -6,7 +6,6 @@ import ThemeContext from '../../../../providers/ThemeProvider';
 export const Ceramics = memo(() => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
-  console.log('RENDER CERAMICS');
   return (
     <section className="ceramics" data-theme={theme}>
       <div className="wrapper">

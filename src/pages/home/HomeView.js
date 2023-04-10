@@ -143,6 +143,8 @@ HomeView.propTypes = {
   onDropHandle: PropTypes.func.isRequired,
   onItemSelected: PropTypes.func.isRequired,
   onKeyDetect: PropTypes.func.isRequired,
+  onScrollToTop: PropTypes.func.isRequired,
+  isShownScrollButton: PropTypes.bool.isRequired,
 };
 
 HomeView.defaultProps = {

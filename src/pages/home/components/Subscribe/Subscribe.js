@@ -10,7 +10,6 @@ export const Subscribe = memo(({
   onChangeMailInput, isError, value, onBlur, touched, onCheckedMail, checked, disabled,
 }) => {
   const { t } = useTranslation();
-  console.log('RENDER SUBSCRIBE');
   return (
     <section className="subscribe">
       <div className="subscribeIcon" />

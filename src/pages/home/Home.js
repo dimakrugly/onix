@@ -40,16 +40,16 @@ export const Home = () => {
     LoggerService.logData('success', 'mobile menu switched');
   }, [isMobileMenuOpen])
 
-  const arrowHandler = (isUp) => {
+  const arrowHandler = useCallback((isUp) => {
     const payLoad = isUp ? 1 : -1;
     const currentActive = cartData.findIndex(((el) => el.active));
 
     const newIndex = (currentActive + payLoad + cartData.length) % cartData.length;
 
     setCartData(cartData.map((item, index) => ({ ...item, active: index === newIndex })));
-  };
+  }, [cartData]);
 
-  const onKeyDetect = (event) => {
+  const onKeyDetect = useCallback((event) => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
       arrowHandler(true);
@@ -58,13 +58,13 @@ export const Home = () => {
       event.preventDefault();
       arrowHandler(false);
     }
-  };
+  }, [arrowHandler]);
 
-  const onMobileMenuOpen = () => {
+  const onMobileMenuOpen = useCallback(() => {
     setIsMobileMenuOpen(
       !isMobileMenuOpen,
     );
-  };
+  }, [isMobileMenuOpen]);
 
   const onChangeMail = useCallback((event) => {
     setFormData({
@@ -92,9 +92,9 @@ export const Home = () => {
     !(formData.checkedMail && !formData.isMailError && formData.touchedMail)
   ), [formData.checkedMail, formData.isMailError, formData.touchedMail]);
 
-  const onCartOpen = () => {
+  const onCartOpen = useCallback(() => {
     setIsCartOpen(!isCartOpen);
-  };
+  }, [isCartOpen]);
 
   const onCartAdd = useCallback((item) => {
     const sortOrder = cartData.length + 1;
@@ -115,24 +115,19 @@ export const Home = () => {
     ])
   }, [cartData]);
 
-  const onCartRemove = (event, item) => {
+  const onCartRemove = useCallback((event, item) => {
     event.stopPropagation();
     const newCartData = cartData.filter((cartItem) => cartItem.key !== item.key)
     setCartData(newCartData);
-  };
+  }, [cartData]);
 
-  const onCartLowerSort = () => {
-    let i = 1;
+  const onCartLowerSort = useCallback(() => {
     setCartData([...cartData]
       .sort((el, item) => el.productData.price - item.productData.price)
-      .reduce((acc, item) => {
-        item = { ...item, order: i += 1 };
-        acc = [...acc, item];
-        return acc;
-      }, []))
-  }
+      .map((item, index) => ({ ...item, order: index + 1 })));
+  }, [cartData])
 
-  const onCartHigherSort = () => {
+  const onCartHigherSort = useCallback(() => {
     let i = 1;
     setCartData(
       bubbleSort(cartData)
@@ -142,11 +137,11 @@ export const Home = () => {
           return acc;
         }, []),
     )
-  }
+  }, [cartData])
 
-  const onCartSearchGetValue = (event) => {
+  const onCartSearchGetValue = useCallback((event) => {
     setCartSearchValue(event.target.value);
-  };
+  }, []);
 
   const filteredProduct = useMemo(() => cartData.filter((product) => product
     .productData
@@ -155,7 +150,7 @@ export const Home = () => {
     .includes(cartSearchValue
       .toLowerCase())), [cartData, cartSearchValue])
 
-  const onCartItemDiscount = (event, product) => {
+  const onCartItemDiscount = useCallback((event, product) => {
     event.stopPropagation();
     setCartData(
       cartData.map((item) => {
@@ -172,24 +167,24 @@ export const Home = () => {
       }),
       setIsDiscount(true),
     )
-  };
+  }, [cartData]);
 
-  const onItemSelected = (product) => {
+  const onItemSelected = useCallback((product) => {
     setCartData(cartData.map((item) => ({
       ...item,
       active: item.key === product.key ? !item.active : false,
     })))
-  };
+  }, [cartData]);
 
-  const onDragGetValue = (item) => {
+  const onDragGetValue = useCallback((item) => {
     setCurrentCard(item);
-  };
+  }, []);
 
-  const onDragStartHandle = (event, card) => {
+  const onDragStartHandle = useCallback((event, card) => {
     onDragGetValue(card);
-  };
+  }, [onDragGetValue]);
 
-  const onDropHandle = (event, card) => {
+  const onDropHandle = useCallback((event, card) => {
     event.preventDefault();
     setCartData(cartData.map((c) => {
       if (c.id === card.id) {
@@ -200,11 +195,11 @@ export const Home = () => {
       }
       return c;
     }).sort((a, b) => a.order - b.order))
-  };
+  }, [cartData, currentCard]);
 
-  const onDragOverHandle = (event) => {
+  const onDragOverHandle = useCallback((event) => {
     event.preventDefault();
-  };
+  }, []);
 
   const {
     onScrollToTop,
