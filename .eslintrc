@@ -13,24 +13,16 @@
   ],
   "rules": {
     "semi": "off",
-
-    "react/prop-types": 1,
     "linebreak-style": 0,
+    "react/prop-types": 1,
+    "no-console": "off",
     "import/prefer-default-export": "off",
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-param-reassign": 0,
     "class-methods-use-this": "off",
     "class-methods-use-this\n": "off",
-    "no-console": "off",
     "react/prefer-stateless-function": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ],
-    "react/react-in-jsx-scope": "off",
     "react-hooks/exhaustive-deps": "error",
     "react/function-component-definition": [
       2,
@@ -39,7 +31,14 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-    "jsx-a11y/anchor-is-valid": 0,
-    "no-param-reassign": 0
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
   }
 }
