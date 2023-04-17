@@ -2,7 +2,6 @@ import React, { memo, useContext } from 'react';
 import './header.scss';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import image from '../../assets/img/cart.png';
 import { LangSwitcher } from '../LangSwitcher/LangSwitcher';
 import { Switcher } from '../Switcher/Switcher';
@@ -24,7 +23,7 @@ export const Header = memo(({
           <nav className="headerMenu">
             <ul className="headerList">
               <li className="headerItem">
-                <Link to="/onix">{t('header.home')}</Link>
+                <a to="/onix">{t('header.home')}</a>
               </li>
               <li className="headerItem">
                 <a href="#workspace">
@@ -42,7 +41,7 @@ export const Header = memo(({
                 </a>
               </li>
               <li className="headerItem">
-                <Link to="/swapi">STAR DB</Link>
+                <a to="/swapi">STAR DB</a>
               </li>
             </ul>
           </nav>

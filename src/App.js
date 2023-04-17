@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import translate from './services/translate/TranslateService';
-import { Navigation } from './components/Navigation/Navigation';
 import { ThemeProvider } from './providers/ThemeProvider';
+import { Home } from './pages/home/Home';
 
 class App extends Component {
   render() {
     translate.init();
     return (
       <ThemeProvider>
-        <BrowserRouter>
-          <Navigation />
-        </BrowserRouter>
+        <Home />
       </ThemeProvider>
     );
   }
