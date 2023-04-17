@@ -53,11 +53,11 @@ class HomeClasses extends Component {
   }
 
   onKeyDetect = (event) => {
-    if (event.key === 'ArrowDown') {
+    if (event.key === 'ARROW_DOWN') {
       event.preventDefault();
       this.arrowHandler(true);
     }
-    if (event.key === 'ArrowUp') {
+    if (event.key === 'ARROW_UP') {
       event.preventDefault();
       this.arrowHandler(false);
     }

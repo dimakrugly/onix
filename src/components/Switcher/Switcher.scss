@@ -44,6 +44,9 @@
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  @media screen and (max-width: 768px) {
+    width: 3px;
+  }
 }
 
 input:checked + .slider {
@@ -59,4 +62,3 @@ input:checked + .slider:before {
   -ms-transform: translateX(5px);
   transform: translateX(5px);
 }
-

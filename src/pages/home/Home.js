@@ -9,6 +9,7 @@ import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
 import { bubbleSort } from '../../utils/bubleSort';
 import { urlBase } from '../../constants/urlBase';
+import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -24,8 +25,9 @@ export const Home = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDiscount, setIsDiscount] = useState(false);
   const [currentCard, setCurrentCard] = useState(undefined);
+  const [newsItems, setNewsItems] = useState([]);
 
-  useEffect(() => {
+  const getItems = useCallback(() => {
     axios
       .get(urlBase.sku)
       .then((response) => {
@@ -34,7 +36,24 @@ export const Home = () => {
         );
       })
       .catch(console.log);
-  }, []);
+  }, [setItems])
+
+  useEffect(() => {
+    getItems()
+  }, [getItems]);
+
+  const getNewsItems = useCallback(() => {
+    axios
+      .get(urlBase.news)
+      .then((response) => {
+        setNewsItems(response.data.results);
+      })
+      .catch(console.log);
+  }, [setNewsItems])
+
+  useEffect(() => {
+    getNewsItems()
+  }, [getNewsItems])
 
   useEffect(() => {
     LoggerService.logData('success', 'mobile menu switched');
@@ -50,11 +69,11 @@ export const Home = () => {
   }, [cartData]);
 
   const onKeyDetect = useCallback((event) => {
-    if (event.key === 'ArrowDown') {
+    if (event.key === ARROW_DOWN) {
       event.preventDefault();
       arrowHandler(true);
     }
-    if (event.key === 'ArrowUp') {
+    if (event.key === ARROW_UP) {
       event.preventDefault();
       arrowHandler(false);
     }
@@ -237,6 +256,7 @@ export const Home = () => {
       onKeyDetect={onKeyDetect}
       onScrollToTop={onScrollToTop}
       isShownScrollButton={isShownScrollButton}
+      newsItems={newsItems}
     />
   );
 };

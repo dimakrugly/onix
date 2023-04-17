@@ -1,0 +1,28 @@
+.longTextButton {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.longTextButtonText {
+
+}
+
+.longTextP {
+  margin-top: 23px;
+  font-family: "Libre Franklin", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #6C6C6C;
+}

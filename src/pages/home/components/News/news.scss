@@ -1,0 +1,85 @@
+.news {
+  margin-top: 50px;
+}
+
+.newsMainTitle {
+  margin-top: 10px;
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+  color: #000000;
+  text-align: center;
+
+  @media screen and (max-width: 992px) {
+    margin-top: 0;
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 20px;
+  }
+}
+
+.newsArea {
+  display: flex;
+  flex-direction: column;
+}
+.newsCard {
+  display: flex;
+  border: solid 1px #c1c1c1;
+  padding: 10px;
+  margin: 5px 0 5px 0;
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+  }
+}
+
+.newsInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  padding: 10px;
+}
+.newsImageContainer {
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  @media screen and (max-width: 576px) {
+    width: 100%;
+    height: auto;
+  }
+}
+.newsImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  align-self: flex-start;
+}
+.newsTitle {
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  align-self: center;
+
+  @media screen and (max-width: 576px) {
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .newsText {
+    margin: 10px;
+  }
+
+  .newsButton {
+
+  }
+}

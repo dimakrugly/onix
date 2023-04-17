@@ -12,6 +12,7 @@ import { Subscribe } from './components/Subscribe/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
 import { UpButton } from '../../components/UpButton/UpButton';
+import { News } from './components/News/News';
 
 export const HomeView = ({
   items,
@@ -43,6 +44,7 @@ export const HomeView = ({
   onKeyDetect,
   onScrollToTop,
   isShownScrollButton,
+  newsItems,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -79,6 +81,7 @@ export const HomeView = ({
         onCartAdd={onCartAdd}
         cartData={cartData}
       />
+      <News items={newsItems} />
       <Banner />
       <Subscribe
         onChangeMailInput={onChangeMailInput}
@@ -145,6 +148,14 @@ HomeView.propTypes = {
   onKeyDetect: PropTypes.func.isRequired,
   onScrollToTop: PropTypes.func.isRequired,
   isShownScrollButton: PropTypes.bool.isRequired,
+  newsItems: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image_url: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.oneOf([null]),
+    ]),
+    content: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
 };
 
 HomeView.defaultProps = {

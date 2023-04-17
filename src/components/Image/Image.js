@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './image.scss';
 import PropTypes from 'prop-types';
-import { plugImage } from '../../constants/constants';
+import { PLUG_IMAGE } from '../../constants/constants';
 
 export const Image = ({
   alt, className, src,
@@ -14,7 +14,7 @@ export const Image = ({
 
   return (
     <img
-      src={isError ? plugImage : src}
+      src={isError ? PLUG_IMAGE : src}
       alt={alt}
       className={className}
       onError={onError}
