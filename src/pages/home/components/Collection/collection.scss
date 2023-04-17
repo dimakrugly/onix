@@ -1,10 +1,8 @@
 .collection {
   margin-top: 150px;
+  padding-bottom: 32px;
   border-top: 1px #EBEBEB solid;
-
-  @media screen and (max-width: 576px) {
-
-  }
+  border-bottom: 1px #EBEBEB solid;
 }
 .collectionMainText{
   margin-bottom: 30px;

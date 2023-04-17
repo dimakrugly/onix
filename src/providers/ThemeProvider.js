@@ -1,18 +1,19 @@
 import { createContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { THEME_DARK, THEME_LIGHT } from '../constants/constants';
 
 const ThemeContext = createContext({
-  theme: 'light',
+  theme: THEME_LIGHT,
   toggleTheme: () => {},
 });
 
 export default ThemeContext;
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(THEME_LIGHT);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prevTheme) => (prevTheme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT));
   };
 
   const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
