@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import './about.scss';
+import '../scss/about.scss';
 import { useTranslation } from 'react-i18next';
-import { Button } from '../../../../components/Button/Button';
+import { Button } from '../../../components/Button/Button';
 
 export const About = memo(() => {
   const { t } = useTranslation();

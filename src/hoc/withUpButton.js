@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './withUpButton.scss';
 import { Button } from '../components/Button/Button';
-import { buttonVariants } from '../constants/constants';
+import { BUTTON_VARIANTS } from '../constants/constants';
 
 const withUpButton = (WrappedComponent) => class extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ const withUpButton = (WrappedComponent) => class extends Component {
         <div className={`upButtonArea ${isShownScrollButton ? 'visible' : null}`}>
           <Button
             text="Up!"
-            variant={buttonVariants.secondary}
+            variant={BUTTON_VARIANTS.secondary}
             type="button"
             onClick={this.scrollToTop}
           />

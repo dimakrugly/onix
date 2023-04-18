@@ -1,7 +1,7 @@
 import React, { memo, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import './ceramics.scss';
-import ThemeContext from '../../../../providers/ThemeProvider';
+import '../scss/ceramics.scss';
+import ThemeContext from '../../../providers/ThemeProvider';
 
 export const Ceramics = memo(() => {
   const { t } = useTranslation();

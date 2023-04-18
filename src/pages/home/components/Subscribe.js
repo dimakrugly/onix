@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import './subscribe.scss';
+import '../scss/subscribe.scss';
 import PropTypes from 'prop-types';
-import { Input } from '../../../../components/Input/Input';
-import { Button } from '../../../../components/Button/Button';
-import { buttonVariants } from '../../../../constants/constants';
+import { Input } from '../../../components/Input/Input';
+import { Button } from '../../../components/Button/Button';
+import { BUTTON_VARIANTS } from '../../../constants/constants';
 
 export const Subscribe = memo(({
   onChangeMailInput, isError, value, onBlur, touched, onCheckedMail, checked, disabled,
@@ -30,7 +30,7 @@ export const Subscribe = memo(({
         />
         <Button
           text={t('subscribe.subscribe')}
-          variant={buttonVariants.secondary}
+          variant={BUTTON_VARIANTS.secondary}
           disabled={disabled}
         />
       </div>

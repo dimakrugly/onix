@@ -3,16 +3,16 @@ import React, { useContext } from 'react';
 import ThemeContext from '../../providers/ThemeProvider';
 import './home.scss';
 import { Header } from '../../components/Header/Header';
-import { About } from './components/About/About';
-import { Workspace } from './components/Workspace/Workspace';
-import { Ceramics } from './components/Ceramics/Ceramics';
-import { Collection } from './components/Collection/Collection';
-import { Banner } from './components/Banner/Banner';
-import { Subscribe } from './components/Subscribe/Subscribe';
+import { About } from './components/About';
+import { Workspace } from './components/Workspace';
+import { Ceramics } from './components/Ceramics';
+import { Collection } from './components/Collection';
+import { Banner } from './components/Banner';
+import { Subscribe } from './components/Subscribe';
 import { Footer } from '../../components/Footer/Footer';
 import { Cart } from '../../components/Cart/Cart';
 import { UpButton } from '../../components/UpButton/UpButton';
-import { News } from './components/News/News';
+import { News } from './components/News';
 
 export const HomeView = ({
   items,

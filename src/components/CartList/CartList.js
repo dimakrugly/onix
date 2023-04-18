@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { Button } from '../Button/Button';
-import { buttonVariants } from '../../constants/constants';
+import { BUTTON_VARIANTS } from '../../constants/constants';
 
 export const CartList = ({
   onCartRemove,
@@ -46,7 +46,7 @@ export const CartList = ({
               !isDiscount && (
                 <Button
                   type="button"
-                  variant={buttonVariants.cart}
+                  variant={BUTTON_VARIANTS.cart}
                   text={t('cart.discount')}
                   onClick={(event) => {
                     onCartItemDiscount(event, item);
@@ -62,7 +62,7 @@ export const CartList = ({
           <div className="cartButtonContainer removeButton">
             <Button
               type="button"
-              variant={buttonVariants.cart}
+              variant={BUTTON_VARIANTS.cart}
               text={t('cart.remove')}
               onClick={(event) => {
                 onCartRemove(event, item);

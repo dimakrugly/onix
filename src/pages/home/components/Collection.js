@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import './collection.scss';
+import '../scss/collection.scss';
 import PropTypes from 'prop-types';
-import { Button } from '../../../../components/Button/Button';
-import { buttonVariants } from '../../../../constants/constants';
-import { Image } from '../../../../components/Image/Image';
+import { Button } from '../../../components/Button/Button';
+import { BUTTON_VARIANTS } from '../../../constants/constants';
+import { Image } from '../../../components/Image/Image';
 
 export const Collection = memo(({
   items, onCartAdd, cartData,
@@ -32,7 +32,7 @@ export const Collection = memo(({
                 <Button
                   disabled={cartData.some((cartItem) => cartItem.key === key)}
                   text={cartData.some((cartItem) => cartItem.key === key) ? t('collection.done') : t('collection.cartButton')}
-                  variant={buttonVariants.small}
+                  variant={BUTTON_VARIANTS.small}
                   onClick={() => {
                     onCartAdd({
                       key,
