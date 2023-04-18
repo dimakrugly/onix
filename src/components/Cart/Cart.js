@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import './cart.scss';
 import PropTypes from 'prop-types';
 import { Button } from '../Button/Button';
-import { buttonVariants } from '../../constants/constants';
+import { BUTTON_VARIANTS } from '../../constants/constants';
 import { CartList } from '../CartList/CartList';
 
 export const Cart = memo(({
@@ -29,14 +29,14 @@ export const Cart = memo(({
       <div className="cartButtonContainer">
         <Button
           text={t('cart.low')}
-          variant={buttonVariants.cart}
+          variant={BUTTON_VARIANTS.cart}
           onClick={() => {
             onCartLowerSort(cartData);
           }}
         />
         <Button
           text={t('cart.high')}
-          variant={buttonVariants.cart}
+          variant={BUTTON_VARIANTS.cart}
           onClick={() => {
             onCartHigherSort(cartData);
           }}
@@ -47,7 +47,7 @@ export const Cart = memo(({
           placeholder={t('cart.search')}
           onChange={onCartSearchGetValue}
         />
-        <Button type="button" variant={buttonVariants.cart} onClick={onCartOpen} id="closeButton" text="×" />
+        <Button type="button" variant={BUTTON_VARIANTS.cart} onClick={onCartOpen} id="closeButton" text="×" />
       </div>
       <div className="cartFlex">
         {filteredProducts.length
@@ -71,7 +71,7 @@ export const Cart = memo(({
           )}
       </div>
       <div className="cartButtonShopContainer">
-        <Button type="button" variant={buttonVariants.cart} onClick={() => { }} text={t('cart.buy')} />
+        <Button type="button" variant={BUTTON_VARIANTS.cart} onClick={() => { }} text={t('cart.buy')} />
         <div className="cartTitle">
           <p>
             {`${t('cart.total')} ${cartData.reduce((acc, item) => acc + item.productData.price, 0)} $`}

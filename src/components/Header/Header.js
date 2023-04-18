@@ -40,9 +40,6 @@ export const Header = memo(({
                   {t('header.contact')}
                 </a>
               </li>
-              <li className="headerItem">
-                <a to="/swapi">STAR DB</a>
-              </li>
             </ul>
           </nav>
           <div className="divider" />

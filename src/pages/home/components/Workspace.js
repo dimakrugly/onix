@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import './workspace.scss';
+import '../scss/workspace.scss';
 
 export const Workspace = memo(() => {
   const { t } = useTranslation();

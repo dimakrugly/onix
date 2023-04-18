@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import './news.scss';
+import '../scss/news.scss';
 import PropTypes from 'prop-types';
-import { LongText } from '../../../../components/LongText/LongText';
-import { MAX_LENGTH, PLUG_IMAGE } from '../../../../constants/constants';
+import { LongText } from '../../../components/LongText/LongText';
+import { MAX_LENGTH, PLUG_IMAGE } from '../../../constants/constants';
 
 export const News = memo(({
   items,

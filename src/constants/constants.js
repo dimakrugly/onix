@@ -1,4 +1,4 @@
-export const buttonVariants = {
+export const BUTTON_VARIANTS = {
   primary: 'primary',
   secondary: 'secondary',
   small: 'small',

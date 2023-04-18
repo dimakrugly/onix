@@ -1,4 +1,4 @@
-@import "../../../../App.scss";
+@import "../../../App";
 
 .ceramics {
   margin-top: 151px;
@@ -72,7 +72,7 @@
 
 
 .ceramicsVaseImg {
-  background-image: url("../../../../assets/img/vase.png");
+  background-image: url("../../../assets/img/vase.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 509px;
@@ -157,7 +157,7 @@
 }
 
 .ceramicsVaseRed {
-  background-image: url("../../../../assets/img/vaseRed.png");
+  background-image: url("../../../assets/img/vaseRed.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 417px;
