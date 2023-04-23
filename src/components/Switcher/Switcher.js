@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import ThemeContext from '../../providers/ThemeProvider';
 import './Switcher.scss';
+import { THEME_DARK, THEME_LIGHT } from '../../constants/constants';
 
 export const Switcher = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -13,7 +14,7 @@ export const Switcher = () => {
         <span className="slider" />
       </label>
       <p className="headerCartText">
-        {theme === 'light' ? 'Dark Theme' : 'Light Theme'}
+        {theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT}
       </p>
     </div>
   );

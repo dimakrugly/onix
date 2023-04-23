@@ -9,22 +9,11 @@ export const LongText = ({ text, maxLength }) => {
     return <p className="longTextP">{text}</p>;
   }
 
-  if (showFullText) {
-    return (
-      <>
-        <p className="longTextP">{text}</p>
-        <button className="longTextButton" type="button" onClick={() => setShowFullText(false)}>
-          <span className="longTextButtonText">Read Less</span>
-        </button>
-      </>
-    );
-  }
   return (
     <>
-      <p className="longTextP">{`${text.slice(0, maxLength)}...`}</p>
-      <button className="longTextButton" type="button" onClick={() => setShowFullText(true)}>
-        {' '}
-        <span className="longTextButtonText">Read More</span>
+      <p className="longTextP">{showFullText ? text : `${text.slice(0, maxLength)} ...`}</p>
+      <button className="longTextButton" type="button" onClick={() => setShowFullText(!showFullText)}>
+        <span className="longTextButtonText">{showFullText ? 'Read Less' : 'Read More'}</span>
       </button>
     </>
   );

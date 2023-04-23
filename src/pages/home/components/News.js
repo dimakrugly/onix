@@ -11,7 +11,7 @@ export const News = memo(({
     <h2 className="newsMainTitle">Latest Art news</h2>
     <div className="newsArea">
       {items.map((item) => (
-        <div key={item.title} className="newsCard">
+        <div key={item.title + item.index} className="newsCard">
           <div className="newsImageContainer">
             <img
               src={
