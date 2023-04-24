@@ -45,6 +45,9 @@ export const HomeView = ({
   onScrollToTop,
   isShownScrollButton,
   newsItems,
+  newsIsLoading,
+  newsIsError,
+  getNews,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -81,7 +84,7 @@ export const HomeView = ({
         onCartAdd={onCartAdd}
         cartData={cartData}
       />
-      <News items={newsItems} />
+      <News items={newsItems} isLoading={newsIsLoading} isError={newsIsError} getNews={getNews} />
       <Banner />
       <Subscribe
         onChangeMailInput={onChangeMailInput}
@@ -156,6 +159,9 @@ HomeView.propTypes = {
     ]),
     content: PropTypes.string.isRequired,
   }).isRequired).isRequired,
+  newsIsLoading: PropTypes.bool.isRequired,
+  newsIsError: PropTypes.bool.isRequired,
+  getNews: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {

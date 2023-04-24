@@ -12,7 +12,8 @@ import { bubbleSort } from '../../utils/bubleSort';
 import { urlBase } from '../../constants/urlBase';
 import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
 import { getNewsRequest } from '../../store/newsData/action';
-import { selectNews, selectIsLoadingNews } from '../../store/newsData/selector';
+import { selectIsLoadingNews, selectNews } from '../../store/newsData/selector';
+import { selectNewsError } from '../../store/error/selector';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -28,15 +29,20 @@ export const Home = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDiscount, setIsDiscount] = useState(false);
   const [currentCard, setCurrentCard] = useState(undefined);
-  // const [newsItems, setNewsItems] = useState([]);
 
-  const news = useSelector(selectNews)
-  const isLoadingNews = useSelector(selectIsLoadingNews)
+  const news = useSelector(selectNews);
+  const newsIsLoading = useSelector(selectIsLoadingNews);
+  const newsFailure = useSelector(selectNewsError);
   const dispatch = useDispatch();
 
+  const getNews = useCallback(
+    () => { dispatch(getNewsRequest()) },
+    [dispatch],
+  );
+
   useEffect(() => {
-    dispatch(getNewsRequest())
-  }, [dispatch]);
+    getNews()
+  }, [dispatch, getNews]);
 
   const getItems = useCallback(() => {
     axios
@@ -210,7 +216,7 @@ export const Home = () => {
 
   const onDragStartHandle = useCallback((event, card) => {
     onDragGetValue(card);
-  }, []);
+  }, [onDragGetValue]);
 
   const onDropHandle = useCallback((event, card) => {
     event.preventDefault();
@@ -269,6 +275,9 @@ export const Home = () => {
       onScrollToTop={onScrollToTop}
       isShownScrollButton={isShownScrollButton}
       newsItems={news}
+      newsIsLoading={newsIsLoading}
+      newsIsError={newsFailure}
+      getNews={getNews}
     />
   );
 };

@@ -9,7 +9,7 @@ const error = createSlice({
   initialState,
   reducers: {
     setNewsFailure(state, action) {
-      state.newsFailure = action.payload
+      state.newsFailure = action.payload.message
     },
     clearError: () => initialState,
   },
@@ -17,5 +17,5 @@ const error = createSlice({
 
 export default error.reducer;
 export const {
-  setNewsFailure,
+  setNewsFailure, clearError,
 } = error.actions;

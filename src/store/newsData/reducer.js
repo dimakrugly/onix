@@ -13,7 +13,7 @@ const news = createSlice({
       state.news = action.payload
     },
     updateIsLoading(state, action) {
-      state.isLoading = action.payload
+      state.isLoadingNews = action.payload
     },
   },
 })
