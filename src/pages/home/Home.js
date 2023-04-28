@@ -276,7 +276,7 @@ export const Home = () => {
       isShownScrollButton={isShownScrollButton}
       newsItems={news}
       newsIsLoading={newsIsLoading}
-      newsIsError={newsFailure}
+      newsFailure={newsFailure}
       getNews={getNews}
     />
   );

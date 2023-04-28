@@ -1,0 +1,22 @@
+.errorFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.errorText {
+  font-family: 'Libre Franklin', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  align-self: center;
+  margin-top: 10px;
+
+  @media screen and (max-width: 576px) {
+    max-width: none;
+    margin-top: 0;
+  }
+}

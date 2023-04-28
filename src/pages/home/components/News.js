@@ -8,12 +8,12 @@ import { SuspenseView } from '../../../components/SuspenseView/SuspenseView';
 export const News = memo(({
   items,
   isLoading,
-  isError,
+  newsFailure,
   getNews,
 }) => (
   <section className="news wrapper">
     <h2 className="newsMainTitle">Latest Art news</h2>
-    <SuspenseView isLoading={isLoading} isError={isError} onRetryClick={getNews}>
+    <SuspenseView isLoading={isLoading} isError={newsFailure} onRetryClick={getNews}>
       <div className="newsArea">
         {items.map((item) => (
           <div key={item.title + item.index} className="newsCard">
@@ -50,6 +50,9 @@ News.propTypes = {
     content: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   isLoading: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired,
+  newsFailure: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]).isRequired,
   getNews: PropTypes.func.isRequired,
 };
