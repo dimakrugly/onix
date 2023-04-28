@@ -46,7 +46,7 @@ export default {
     new: 'new collection',
   },
   subscribe: {
-    latest: 'Latest news',
+    latest: 'Latest newsData',
     news: 'New updates',
     placeholder: 'Enter your email',
     subscribe: 'subscribe',

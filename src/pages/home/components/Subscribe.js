@@ -17,7 +17,7 @@ export const Subscribe = memo(({
       <h2 className="subscribeTitle">
         {t('subscribe.latest')}
         <span>&</span>
-        {t('subscribe.news')}
+        {t('subscribe.newsData')}
       </h2>
       <div className="subscribeMail">
         <Input

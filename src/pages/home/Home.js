@@ -2,6 +2,7 @@ import React, {
   useState, useEffect, useMemo, useCallback,
 } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { useUpButton } from '../../hook/useUpButton';
 import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
@@ -10,6 +11,9 @@ import LoggerService from '../../services/logger/LoggerService';
 import { bubbleSort } from '../../utils/bubleSort';
 import { urlBase } from '../../constants/urlBase';
 import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
+import { getNewsRequest } from '../../store/newsData/action';
+import { selectIsLoadingNews, selectNews } from '../../store/newsData/selector';
+import { selectNewsError } from '../../store/error/selector';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -25,7 +29,20 @@ export const Home = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDiscount, setIsDiscount] = useState(false);
   const [currentCard, setCurrentCard] = useState(undefined);
-  const [newsItems, setNewsItems] = useState([]);
+
+  const news = useSelector(selectNews);
+  const newsIsLoading = useSelector(selectIsLoadingNews);
+  const newsFailure = useSelector(selectNewsError);
+  const dispatch = useDispatch();
+
+  const getNews = useCallback(
+    () => { dispatch(getNewsRequest()) },
+    [dispatch],
+  );
+
+  useEffect(() => {
+    getNews()
+  }, [dispatch, getNews]);
 
   const getItems = useCallback(() => {
     axios
@@ -42,19 +59,6 @@ export const Home = () => {
     getItems()
   }, [getItems]);
 
-  const getNewsItems = useCallback(() => {
-    axios
-      .get(urlBase.news)
-      .then((response) => {
-        setNewsItems(response.data.results);
-      })
-      .catch(console.log);
-  }, [setNewsItems])
-
-  useEffect(() => {
-    getNewsItems()
-  }, [getNewsItems])
-
   useEffect(() => {
     LoggerService.logData('success', 'mobile menu switched');
   }, [isMobileMenuOpen])
@@ -65,7 +69,10 @@ export const Home = () => {
 
     const newIndex = (currentActive + payLoad + cartData.length) % cartData.length;
 
-    setCartData(cartData.map((item, index) => ({ ...item, active: index === newIndex })));
+    setCartData((prevState) => prevState.map((item, index) => ({
+      ...item,
+      active: index === newIndex,
+    })));
   }, [cartData]);
 
   const onKeyDetect = useCallback((event) => {
@@ -80,46 +87,44 @@ export const Home = () => {
   }, [arrowHandler]);
 
   const onMobileMenuOpen = useCallback(() => {
-    setIsMobileMenuOpen(
-      !isMobileMenuOpen,
-    );
-  }, [isMobileMenuOpen]);
+    setIsMobileMenuOpen((prevState) => !prevState);
+  }, [setIsMobileMenuOpen]);
 
   const onChangeMail = useCallback((event) => {
-    setFormData({
-      ...formData,
+    setFormData((prevState) => ({
+      ...prevState.formData,
       email: event.target.value,
       isMailError: isValidEMail(event.target.value),
-    });
-  }, [formData])
+    }));
+  }, [])
 
   const onBlurMail = useCallback((event) => {
-    setFormData({
-      ...formData,
+    setFormData((prevState) => ({
+      ...prevState,
       touchedMail: isTouchedMail(event.target.value),
-    })
-  }, [formData])
+    }))
+  }, [])
 
   const onCheckedMail = useCallback(() => {
-    setFormData({
-      ...formData,
-      checkedMail: !formData.checkedMail,
-    })
-  }, [formData])
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      checkedMail: !prevFormData.checkedMail,
+    }))
+  }, [])
 
   const isButtonDisabled = useMemo(() => (
     !(formData.checkedMail && !formData.isMailError && formData.touchedMail)
   ), [formData.checkedMail, formData.isMailError, formData.touchedMail]);
 
   const onCartOpen = useCallback(() => {
-    setIsCartOpen(!isCartOpen);
-  }, [isCartOpen]);
+    setIsCartOpen((prevState) => !prevState);
+  }, []);
 
   const onCartAdd = useCallback((item) => {
     const sortOrder = cartData.length + 1;
 
-    setCartData([
-      ...cartData,
+    setCartData((prevState) => [
+      ...prevState,
       {
         key: item.key,
         id: item.key,
@@ -136,27 +141,32 @@ export const Home = () => {
 
   const onCartRemove = useCallback((event, item) => {
     event.stopPropagation();
-    const newCartData = cartData.filter((cartItem) => cartItem.key !== item.key)
-    setCartData(newCartData);
-  }, [cartData]);
+    setCartData((prevState) => (prevState.filter((cartItem) => cartItem.key !== item.key)));
+  }, []);
 
   const onCartLowerSort = useCallback(() => {
-    setCartData([...cartData]
-      .sort((el, item) => el.productData.price - item.productData.price)
-      .map((item, index) => ({ ...item, order: index + 1 })));
-  }, [cartData])
+    setCartData(
+      (prevState) => (
+        [...prevState]
+          .sort((el, item) => el.productData.price - item.productData.price)
+          .map((item, index) => ({ ...item, order: index + 1 }))),
+    );
+  }, [])
 
   const onCartHigherSort = useCallback(() => {
     let i = 1;
     setCartData(
-      bubbleSort(cartData)
-        .reduce((acc, item) => {
-          item = { ...item, order: i += 1 };
-          acc = [...acc, item];
-          return acc;
-        }, []),
+      (prevState) => (
+
+        bubbleSort(prevState)
+
+          .reduce((acc, item) => {
+            item = { ...item, order: i += 1 };
+            acc = [...acc, item];
+            return acc;
+          }, [])),
     )
-  }, [cartData])
+  }, [])
 
   const onCartSearchGetValue = useCallback((event) => {
     setCartSearchValue(event.target.value);
@@ -172,28 +182,33 @@ export const Home = () => {
   const onCartItemDiscount = useCallback((event, product) => {
     event.stopPropagation();
     setCartData(
-      cartData.map((item) => {
-        if (item.key === product.key) {
-          return {
-            ...product,
-            productData: {
-              ...product.productData,
-              price: parseInt(discount(product.productData.price), 10),
-            },
-          };
-        }
-        return item;
-      }),
-      setIsDiscount(true),
-    )
-  }, [cartData]);
+      (prevState) => (
+        prevState.map((item) => {
+          if (item.key === product.key) {
+            return {
+              ...product,
+              productData: {
+                ...product.productData,
+                price: parseInt(discount(product.productData.price), 10),
+              },
+            };
+          }
+          return item;
+        })
+      ),
+    );
+    setIsDiscount(true);
+  }, []);
 
   const onItemSelected = useCallback((product) => {
-    setCartData(cartData.map((item) => ({
-      ...item,
-      active: item.key === product.key ? !item.active : false,
-    })))
-  }, [cartData]);
+    setCartData(
+      (prevState) => (
+        prevState.map((item) => ({
+          ...item,
+          active: item.key === product.key ? !item.active : false,
+        }))),
+    )
+  }, []);
 
   const onDragGetValue = useCallback((item) => {
     setCurrentCard(item);
@@ -205,16 +220,19 @@ export const Home = () => {
 
   const onDropHandle = useCallback((event, card) => {
     event.preventDefault();
-    setCartData(cartData.map((c) => {
-      if (c.id === card.id) {
-        return { ...c, order: currentCard.order };
-      }
-      if (c.id === currentCard.id) {
-        return { ...c, order: card.order };
-      }
-      return c;
-    }).sort((a, b) => a.order - b.order))
-  }, [cartData, currentCard]);
+    setCartData(
+      (prevState) => (
+        prevState.map((c) => {
+          if (c.id === card.id) {
+            return { ...c, order: currentCard.order };
+          }
+          if (c.id === currentCard.id) {
+            return { ...c, order: card.order };
+          }
+          return c;
+        }).sort((a, b) => a.order - b.order)),
+    )
+  }, [currentCard]);
 
   const onDragOverHandle = useCallback((event) => {
     event.preventDefault();
@@ -256,7 +274,10 @@ export const Home = () => {
       onKeyDetect={onKeyDetect}
       onScrollToTop={onScrollToTop}
       isShownScrollButton={isShownScrollButton}
-      newsItems={newsItems}
+      newsItems={news}
+      newsIsLoading={newsIsLoading}
+      newsFailure={newsFailure}
+      getNews={getNews}
     />
   );
 };
