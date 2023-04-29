@@ -11,24 +11,27 @@ import LoggerService from '../../services/logger/LoggerService';
 import { bubbleSort } from '../../utils/bubleSort';
 import { urlBase } from '../../constants/urlBase';
 import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
-import { getNewsRequest } from '../../store/newsData/action';
-import { selectIsLoadingNews, selectNews } from '../../store/newsData/selector';
-import { selectNewsError } from '../../store/error/selector';
+import { selectIsLoadingNews, selectNews, selectNewsError } from '../../store/newsData/selector';
+import { fetchNews } from '../../store/newsData/action';
+import { fetchItems } from '../../store/itemsData/action';
 
 export const Home = () => {
-  const [items, setItems] = useState([]);
   const [formData, setFormData] = useState({
     email: '',
     isMailError: false,
     touchedMail: false,
     checkedMail: false,
   });
-  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const [items, setItems] = useState([]);
+
   const [cartData, setCartData] = useState([]);
   const [cartSearchValue, setCartSearchValue] = useState('');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDiscount, setIsDiscount] = useState(false);
   const [currentCard, setCurrentCard] = useState(undefined);
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const news = useSelector(selectNews);
   const newsIsLoading = useSelector(selectIsLoadingNews);
@@ -36,13 +39,19 @@ export const Home = () => {
   const dispatch = useDispatch();
 
   const getNews = useCallback(
-    () => { dispatch(getNewsRequest()) },
+    () => { dispatch(fetchNews()) },
     [dispatch],
   );
 
   useEffect(() => {
     getNews()
   }, [dispatch, getNews]);
+
+  const getItemsR = useCallback(() => { dispatch(fetchItems()) }, [dispatch])
+
+  useEffect(() => {
+    getItemsR()
+  }, [dispatch, getItemsR])
 
   const getItems = useCallback(() => {
     axios

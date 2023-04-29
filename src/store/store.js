@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import news from './newsData/reducer'
-import error from './error/reducer'
+import items from './itemsData/reducer'
 
 const rootReducer = combineReducers({
-  news, error,
+  news, items,
 })
 
 export const store = configureStore({

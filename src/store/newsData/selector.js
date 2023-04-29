@@ -7,3 +7,4 @@ export const selectIsLoadingNews = createSelector(
   selectNewsData,
   ({ isLoadingNews }) => isLoadingNews,
 )
+export const selectNewsError = createSelector(selectNewsData, ({ newsFailure }) => newsFailure)
