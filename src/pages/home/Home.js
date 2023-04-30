@@ -1,10 +1,10 @@
 import React, {
   useState, useEffect, useMemo, useCallback,
 } from 'react';
+import { FormikProvider, useFormik } from 'formik';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useUpButton } from '../../hook/useUpButton';
-import { isTouchedMail, isValidEMail } from '../../utils/validation';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
 import LoggerService from '../../services/logger/LoggerService';
@@ -14,14 +14,17 @@ import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
 import { selectIsLoadingNews, selectNews, selectNewsError } from '../../store/newsData/selector';
 import { fetchNews } from '../../store/newsData/action';
 import { fetchItems } from '../../store/itemsData/action';
+import { subscribeSchema } from '../../utils/validation1';
 
 export const Home = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    isMailError: false,
-    touchedMail: false,
-    checkedMail: false,
-  });
+  const formikData = useFormik({
+    initialValues: {
+      email: '',
+      checkedMail: false,
+    },
+    validationSchema: subscribeSchema,
+    onSubmit: () => {},
+  })
 
   const [items, setItems] = useState([]);
 
@@ -95,35 +98,47 @@ export const Home = () => {
     }
   }, [arrowHandler]);
 
+  const onItemSelected = useCallback((product) => {
+    setCartData(
+      (prevState) => (
+        prevState.map((item) => ({
+          ...item,
+          active: item.key === product.key ? !item.active : false,
+        }))),
+    )
+  }, []);
+
+  const onDragGetValue = useCallback((item) => {
+    setCurrentCard(item);
+  }, []);
+
+  const onDragStartHandle = useCallback((event, card) => {
+    onDragGetValue(card);
+  }, [onDragGetValue]);
+
+  const onDropHandle = useCallback((event, card) => {
+    event.preventDefault();
+    setCartData(
+      (prevState) => (
+        prevState.map((c) => {
+          if (c.id === card.id) {
+            return { ...c, order: currentCard.order };
+          }
+          if (c.id === currentCard.id) {
+            return { ...c, order: card.order };
+          }
+          return c;
+        }).sort((a, b) => a.order - b.order)),
+    )
+  }, [currentCard]);
+
+  const onDragOverHandle = useCallback((event) => {
+    event.preventDefault();
+  }, []);
+
   const onMobileMenuOpen = useCallback(() => {
     setIsMobileMenuOpen((prevState) => !prevState);
   }, [setIsMobileMenuOpen]);
-
-  const onChangeMail = useCallback((event) => {
-    setFormData((prevState) => ({
-      ...prevState.formData,
-      email: event.target.value,
-      isMailError: isValidEMail(event.target.value),
-    }));
-  }, [])
-
-  const onBlurMail = useCallback((event) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      touchedMail: isTouchedMail(event.target.value),
-    }))
-  }, [])
-
-  const onCheckedMail = useCallback(() => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      checkedMail: !prevFormData.checkedMail,
-    }))
-  }, [])
-
-  const isButtonDisabled = useMemo(() => (
-    !(formData.checkedMail && !formData.isMailError && formData.touchedMail)
-  ), [formData.checkedMail, formData.isMailError, formData.touchedMail]);
 
   const onCartOpen = useCallback(() => {
     setIsCartOpen((prevState) => !prevState);
@@ -209,84 +224,41 @@ export const Home = () => {
     setIsDiscount(true);
   }, []);
 
-  const onItemSelected = useCallback((product) => {
-    setCartData(
-      (prevState) => (
-        prevState.map((item) => ({
-          ...item,
-          active: item.key === product.key ? !item.active : false,
-        }))),
-    )
-  }, []);
-
-  const onDragGetValue = useCallback((item) => {
-    setCurrentCard(item);
-  }, []);
-
-  const onDragStartHandle = useCallback((event, card) => {
-    onDragGetValue(card);
-  }, [onDragGetValue]);
-
-  const onDropHandle = useCallback((event, card) => {
-    event.preventDefault();
-    setCartData(
-      (prevState) => (
-        prevState.map((c) => {
-          if (c.id === card.id) {
-            return { ...c, order: currentCard.order };
-          }
-          if (c.id === currentCard.id) {
-            return { ...c, order: card.order };
-          }
-          return c;
-        }).sort((a, b) => a.order - b.order)),
-    )
-  }, [currentCard]);
-
-  const onDragOverHandle = useCallback((event) => {
-    event.preventDefault();
-  }, []);
-
   const {
     onScrollToTop,
     isShownScrollButton,
   } = useUpButton();
 
   return (
-    <HomeView
-      items={items}
-      onChangeMailInput={onChangeMail}
-      isError={formData.isMailError}
-      value={formData.email}
-      onBlur={onBlurMail}
-      touched={formData.touchedMail}
-      onCheckedMail={onCheckedMail}
-      checked={formData.checkedMail}
-      disabled={isButtonDisabled}
-      isCartOpen={isCartOpen}
-      onCartOpen={onCartOpen}
-      onCartAdd={onCartAdd}
-      cartData={cartData}
-      onCartRemove={onCartRemove}
-      onCartLowerSort={onCartLowerSort}
-      onCartHigherSort={onCartHigherSort}
-      onCartSearchGetValue={onCartSearchGetValue}
-      isMobileMenuOpen={isMobileMenuOpen}
-      onMobileMenuOpen={onMobileMenuOpen}
-      onCartItemDiscount={onCartItemDiscount}
-      isDiscount={isDiscount}
-      filteredProducts={filteredProduct}
-      onDragStartHandle={onDragStartHandle}
-      onDragOverHandle={onDragOverHandle}
-      onDropHandle={onDropHandle}
-      onItemSelected={onItemSelected}
-      onKeyDetect={onKeyDetect}
-      onScrollToTop={onScrollToTop}
-      isShownScrollButton={isShownScrollButton}
-      newsItems={news}
-      newsIsLoading={newsIsLoading}
-      newsFailure={newsFailure}
-      getNews={getNews}
-    />
+    <FormikProvider value={formikData}>
+      <HomeView
+        items={items}
+        formikData={formikData}
+        isCartOpen={isCartOpen}
+        onCartOpen={onCartOpen}
+        onCartAdd={onCartAdd}
+        cartData={cartData}
+        onCartRemove={onCartRemove}
+        onCartLowerSort={onCartLowerSort}
+        onCartHigherSort={onCartHigherSort}
+        onCartSearchGetValue={onCartSearchGetValue}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuOpen={onMobileMenuOpen}
+        onCartItemDiscount={onCartItemDiscount}
+        isDiscount={isDiscount}
+        filteredProducts={filteredProduct}
+        onDragStartHandle={onDragStartHandle}
+        onDragOverHandle={onDragOverHandle}
+        onDropHandle={onDropHandle}
+        onItemSelected={onItemSelected}
+        onKeyDetect={onKeyDetect}
+        onScrollToTop={onScrollToTop}
+        isShownScrollButton={isShownScrollButton}
+        newsItems={news}
+        newsIsLoading={newsIsLoading}
+        newsFailure={newsFailure}
+        getNews={getNews}
+      />
+    </FormikProvider>
   );
 };

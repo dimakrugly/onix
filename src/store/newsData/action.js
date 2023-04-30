@@ -7,10 +7,10 @@ export const fetchNews = createAsyncThunk(
   'news/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(getRandomAPI(urlBase.news))
-      return response.data.results;
+      const { data } = await axios.get(getRandomAPI(urlBase.news))
+      return data.results;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message)
+      return thunkAPI.rejectWithValue(e)
     }
   },
 )

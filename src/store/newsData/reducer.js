@@ -4,7 +4,7 @@ import { fetchNews } from './action';
 const initialState = {
   isLoadingNews: false,
   news: [],
-  newsFailure: false,
+  newsFailure: null,
 };
 
 const news = createSlice({
@@ -15,12 +15,12 @@ const news = createSlice({
     builder
       .addCase(fetchNews.pending, (state) => {
         state.isLoadingNews = true;
-        state.newsFailure = false;
+        state.newsFailure = null;
       })
       .addCase(fetchNews.fulfilled, (state, action) => {
         state.news = action.payload;
         state.isLoadingNews = false;
-        state.newsFailure = false;
+        state.newsFailure = null;
       })
       .addCase(fetchNews.rejected, (state, action) => {
         state.isLoadingNews = false;

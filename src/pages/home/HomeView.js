@@ -16,14 +16,6 @@ import { News } from './components/News';
 
 export const HomeView = ({
   items,
-  onChangeMailInput,
-  isError,
-  value,
-  onBlur,
-  touched,
-  onCheckedMail,
-  checked,
-  disabled,
   isCartOpen,
   onCartOpen,
   onCartAdd,
@@ -48,6 +40,7 @@ export const HomeView = ({
   newsIsLoading,
   newsFailure,
   getNews,
+  formikData,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -92,14 +85,7 @@ export const HomeView = ({
       />
       <Banner />
       <Subscribe
-        onChangeMailInput={onChangeMailInput}
-        isError={isError}
-        value={value}
-        onBlur={onBlur}
-        touched={touched}
-        onCheckedMail={onCheckedMail}
-        checked={checked}
-        disabled={disabled}
+        formikData={formikData}
       />
       <Footer />
       <UpButton onClick={onScrollToTop} isShownScrollButton={isShownScrollButton} />
@@ -114,14 +100,6 @@ HomeView.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   })).isRequired,
-  onChangeMailInput: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired,
-  value: PropTypes.string,
-  onBlur: PropTypes.func.isRequired,
-  touched: PropTypes.bool.isRequired,
-  onCheckedMail: PropTypes.func.isRequired,
-  checked: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
   isCartOpen: PropTypes.bool.isRequired,
   onCartOpen: PropTypes.func.isRequired,
   onCartAdd: PropTypes.func.isRequired,
@@ -170,8 +148,12 @@ HomeView.propTypes = {
     PropTypes.bool,
   ]).isRequired,
   getNews: PropTypes.func.isRequired,
-};
-
-HomeView.defaultProps = {
-  value: '',
+  formikData: PropTypes.shape({
+    handleChange: PropTypes.func.isRequired,
+    handleBlur: PropTypes.func.isRequired,
+    errors: PropTypes.objectOf(PropTypes.string).isRequired,
+    isValid: PropTypes.bool.isRequired,
+    dirty: PropTypes.bool.isRequired,
+    touched: PropTypes.objectOf(PropTypes.bool).isRequired,
+  }).isRequired,
 };

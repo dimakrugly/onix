@@ -6,8 +6,8 @@ export const fetchItems = createAsyncThunk(
   'items/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(urlBase.sku)
-      return response.data.items;
+      const { data } = await axios.get(urlBase.sku)
+      return data.items;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message)
     }
