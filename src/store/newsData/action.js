@@ -1,23 +1,16 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { batch } from 'react-redux';
-import { fetchNewsSuccess, updateIsLoading } from './reducer';
-import { clearError, setNewsFailure } from '../error/reducer';
 import { getRandomAPI } from '../../utils/getRandomAPI';
+import { urlBase } from '../../constants/urlBase';
 
-export const getNewsRequest = () => (dispatch) => {
-  dispatch(updateIsLoading(true))
-  axios.get(getRandomAPI())
-    .then((response) => {
-      batch(() => {
-        dispatch(fetchNewsSuccess(response.data.results));
-        dispatch(updateIsLoading(false));
-        dispatch(clearError());
-      })
-    })
-    .catch((error) => {
-      batch(() => {
-        dispatch(updateIsLoading(false))
-        dispatch(setNewsFailure(error))
-      })
-    });
-};
+export const fetchNews = createAsyncThunk(
+  'news/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get(getRandomAPI(urlBase.news))
+      return data.results;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e)
+    }
+  },
+)
