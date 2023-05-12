@@ -1,9 +1,9 @@
 import React, {
   useState, useEffect, useMemo, useCallback,
 } from 'react';
-import { FormikProvider, useFormik } from 'formik';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { useUpButton } from '../../hook/useUpButton';
 import { discount } from '../../utils/discount';
 import { HomeView } from './HomeView';
@@ -14,18 +14,9 @@ import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
 import { selectIsLoadingNews, selectNews, selectNewsError } from '../../store/newsData/selector';
 import { fetchNews } from '../../store/newsData/action';
 import { fetchItems } from '../../store/itemsData/action';
-import { subscribeSchema } from '../../utils/validation1';
+import { useSnackBar } from '../../components/SnackBar/useSnackBar';
 
 export const Home = () => {
-  const formikData = useFormik({
-    initialValues: {
-      email: '',
-      checkedMail: false,
-    },
-    validationSchema: subscribeSchema,
-    onSubmit: () => {},
-  })
-
   const [items, setItems] = useState([]);
 
   const [cartData, setCartData] = useState([]);
@@ -146,7 +137,6 @@ export const Home = () => {
 
   const onCartAdd = useCallback((item) => {
     const sortOrder = cartData.length + 1;
-
     setCartData((prevState) => [
       ...prevState,
       {
@@ -178,14 +168,13 @@ export const Home = () => {
   }, [])
 
   const onCartHigherSort = useCallback(() => {
-    let i = 1;
     setCartData(
       (prevState) => (
 
         bubbleSort(prevState)
 
-          .reduce((acc, item) => {
-            item = { ...item, order: i += 1 };
+          .reduce((acc, item, index) => {
+            item = { ...item, order: index + 1 };
             acc = [...acc, item];
             return acc;
           }, [])),
@@ -196,12 +185,14 @@ export const Home = () => {
     setCartSearchValue(event.target.value);
   }, []);
 
-  const filteredProduct = useMemo(() => cartData.filter((product) => product
-    .productData
-    .title
-    .toLowerCase()
-    .includes(cartSearchValue
-      .toLowerCase())), [cartData, cartSearchValue])
+  const filteredProduct = useMemo(
+    () => cartData.filter((product) => product
+      .productData
+      .title
+      .toLowerCase()
+      .includes(cartSearchValue.toLowerCase())),
+    [cartData, cartSearchValue],
+  )
 
   const onCartItemDiscount = useCallback((event, product) => {
     event.stopPropagation();
@@ -229,36 +220,45 @@ export const Home = () => {
     isShownScrollButton,
   } = useUpButton();
 
+  const {
+    register, handleSubmit, formState: { errors, isValid },
+  } = useForm();
+
+  const { show: showSnackBar, ref: refSnackBar } = useSnackBar();
+
   return (
-    <FormikProvider value={formikData}>
-      <HomeView
-        items={items}
-        formikData={formikData}
-        isCartOpen={isCartOpen}
-        onCartOpen={onCartOpen}
-        onCartAdd={onCartAdd}
-        cartData={cartData}
-        onCartRemove={onCartRemove}
-        onCartLowerSort={onCartLowerSort}
-        onCartHigherSort={onCartHigherSort}
-        onCartSearchGetValue={onCartSearchGetValue}
-        isMobileMenuOpen={isMobileMenuOpen}
-        onMobileMenuOpen={onMobileMenuOpen}
-        onCartItemDiscount={onCartItemDiscount}
-        isDiscount={isDiscount}
-        filteredProducts={filteredProduct}
-        onDragStartHandle={onDragStartHandle}
-        onDragOverHandle={onDragOverHandle}
-        onDropHandle={onDropHandle}
-        onItemSelected={onItemSelected}
-        onKeyDetect={onKeyDetect}
-        onScrollToTop={onScrollToTop}
-        isShownScrollButton={isShownScrollButton}
-        newsItems={news}
-        newsIsLoading={newsIsLoading}
-        newsFailure={newsFailure}
-        getNews={getNews}
-      />
-    </FormikProvider>
+    <HomeView
+      items={items}
+      isCartOpen={isCartOpen}
+      onCartOpen={onCartOpen}
+      onCartAdd={onCartAdd}
+      cartData={cartData}
+      onCartRemove={onCartRemove}
+      onCartLowerSort={onCartLowerSort}
+      onCartHigherSort={onCartHigherSort}
+      onCartSearchGetValue={onCartSearchGetValue}
+      isMobileMenuOpen={isMobileMenuOpen}
+      onMobileMenuOpen={onMobileMenuOpen}
+      onCartItemDiscount={onCartItemDiscount}
+      isDiscount={isDiscount}
+      filteredProducts={filteredProduct}
+      onDragStartHandle={onDragStartHandle}
+      onDragOverHandle={onDragOverHandle}
+      onDropHandle={onDropHandle}
+      onItemSelected={onItemSelected}
+      onKeyDetect={onKeyDetect}
+      onScrollToTop={onScrollToTop}
+      isShownScrollButton={isShownScrollButton}
+      newsItems={news}
+      newsIsLoading={newsIsLoading}
+      newsFailure={newsFailure}
+      getNews={getNews}
+      showSnackBar={showSnackBar}
+      refSnackBar={refSnackBar}
+      register={register}
+      handleSubmit={handleSubmit}
+      errors={errors}
+      isValid={isValid}
+    />
   );
 };

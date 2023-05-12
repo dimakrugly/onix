@@ -1,61 +1,86 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useFormikContext } from 'formik';
-import { Button } from '../Button/Button';
-import { BUTTON_VARIANTS } from '../../constants/constants';
+import PropTypes from 'prop-types';
+import { EMAIL_REG_EXP } from '../../utils/validation';
 import './SubscribeForm.scss'
-import { Input } from '../Input/Input';
+import { SnackBar } from '../SnackBar/SnackBar';
 
-export const SubscribeForm = () => {
+export const SubscribeForm = ({
+  showSnackBar,
+  refSnackBar,
+  register,
+  handleSubmit,
+  errors,
+  isValid,
+}) => {
   const { t } = useTranslation();
-
-  const {
-    handleChange,
-    handleBlur,
-    errors,
-    isValid,
-    dirty,
-    touched,
-    values: { email },
-  } = useFormikContext();
 
   return (
     <div className="subscribeForm">
-      <div className="formInput">
-        <Input
-          className={`formControl ${errors.email ? 'isInvalid' : null}`}
-          placeholder={t('subscribe.placeholder')}
-          name="email"
-          value={email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        <Button
-          text={t('subscribe.subscribe')}
-          variant={BUTTON_VARIANTS.secondary}
-          disabled={!isValid || !dirty}
-        />
-      </div>
-      {
-        touched.email
-          ? <p className="mailErrorText">{errors.email}</p> : null
-      }
-      <div className="subscribeAgreement">
-        <label htmlFor="check" className="checkboxContainer">
+      <SnackBar message="Thank you for signing up!" ref={refSnackBar} />
+      <div>
+        <form onSubmit={handleSubmit(showSnackBar)} className="formInput">
           <input
-            name="checkedMail"
-            id="check"
-            type="checkbox"
-            onChange={
-            handleChange
-            }
+            className={`formControl ${errors?.email ? 'isInvalid' : null}`}
+            {...register('email', {
+              required: 'email field is required',
+              pattern: {
+                value: EMAIL_REG_EXP,
+                message: 'Please enter valid email',
+              },
+            })}
+            onBlur={handleSubmit}
           />
-          <span className="mark" />
-        </label>
-        <p className="checkboxText">
-          {t('subscribe.message')}
-        </p>
+          <button
+            type="submit"
+            className={`subscribeButton ${!isValid && 'disabled'}`}
+            disabled={!isValid}
+            onClick={handleSubmit}
+          >
+            <span>{t('subscribe.subscribe')}</span>
+          </button>
+        </form>
+        <p className="mailErrorText">{errors?.email && errors.email.message}</p>
+        <div className="subscribeAgreement">
+          <label htmlFor="check" className="checkboxContainer">
+            <input
+              name="checkedMail"
+              id="check"
+              type="checkbox"
+              {...register('checkbox', {
+                required: true,
+              })}
+            />
+            <span className="mark" />
+          </label>
+        </div>
       </div>
     </div>
   )
+}
+
+SubscribeForm.propTypes = {
+  showSnackBar: PropTypes.func.isRequired,
+  refSnackBar: PropTypes.shape({
+    current: PropTypes.shape({
+      show: PropTypes.func.isRequired,
+      hide: PropTypes.func.isRequired,
+    }),
+  }),
+  register: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    email: PropTypes.string,
+    checkbox: PropTypes.string,
+  }),
+  isValid: PropTypes.bool.isRequired,
+}
+
+SubscribeForm.defaultProps = {
+  errors: PropTypes.shape({
+    email: '',
+    checkbox: '',
+  }),
+
+  refSnackBar: {},
 }

@@ -26,13 +26,16 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
+  max-width: 550px;
 
   @media screen and (max-width: 992px) {
     margin-top: 35px;
+    max-width: 450px;
   }
 
   @media screen and (max-width: 576px) {
     margin-top: 25px;
+    max-width: 350px;
   }
 }
 
@@ -45,20 +48,56 @@
   text-transform: uppercase;
   color: #D77474;
 
+
+  position: relative;
+  animation: slide-in 0.3s forwards;
+  opacity: 0;
+
+
   @media screen and (max-width: 576px) {
     font-size: 11px;
   }
 }
 
+@keyframes slide-in {
+  0% {
+    top: -30px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.aboutAnimationContainer {
+  animation-name: slideInFromLeft;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .aboutMainText {
-  margin-top: 12px;
-  font-family: 'Poppins', serif;
-  font-style: normal;
-  font-weight: 700;
+  font-family: Poppins, sans-serif;
+  color: #000;
   font-size: 48px;
   line-height: 58px;
-  color: #000000;
-  max-width: 80%;
+  font-weight: 500;
 
   @media screen and (max-width: 992px) {
     font-size: 36px;
@@ -72,12 +111,11 @@
 }
 
 .aboutMainText span {
-  font-family: 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 400;
+  font-family: 'Playfair Display', sans-serif;
+  color: #ac1313;
   font-size: 68px;
   line-height: 68px;
-  color: #AC1313;
+  font-weight: 400;
 
   @media screen and (max-width: 992px) {
     font-size: 50px;
