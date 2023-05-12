@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/onix/static/css/main.9f69185f.css",
-    "main.js": "/onix/static/js/main.4d43ba3c.js",
+    "main.css": "/onix/static/css/main.a0ed5308.css",
+    "main.js": "/onix/static/js/main.7ab08560.js",
     "static/js/787.69219562.chunk.js": "/onix/static/js/787.69219562.chunk.js",
     "static/media/banner.png": "/onix/static/media/banner.a16f0df4f68d6ed9eaa5.png",
     "static/media/aboutImage.png": "/onix/static/media/aboutImage.a16aeb5c83774192fe8e.png",
     "static/media/background.png": "/onix/static/media/background.a25c7b58dca82c232887.png",
     "static/media/vase.png": "/onix/static/media/vase.17e953fb4434ca5897f9.png",
     "static/media/vaseRed.png": "/onix/static/media/vaseRed.7d248ed104846a550193.png",
+    "static/media/yes.png": "/onix/static/media/yes.1d3160736aedf4f18ac0.png",
     "static/media/en.jpg": "/onix/static/media/en.5961eba15118665b8056.jpg",
     "index.html": "/onix/index.html",
-    "main.9f69185f.css.map": "/onix/static/css/main.9f69185f.css.map",
-    "main.4d43ba3c.js.map": "/onix/static/js/main.4d43ba3c.js.map",
+    "main.a0ed5308.css.map": "/onix/static/css/main.a0ed5308.css.map",
+    "main.7ab08560.js.map": "/onix/static/js/main.7ab08560.js.map",
     "787.69219562.chunk.js.map": "/onix/static/js/787.69219562.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9f69185f.css",
-    "static/js/main.4d43ba3c.js"
+    "static/css/main.a0ed5308.css",
+    "static/js/main.7ab08560.js"
   ]
 }
