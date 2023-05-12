@@ -40,7 +40,12 @@ export const HomeView = ({
   newsIsLoading,
   newsFailure,
   getNews,
-  formikData,
+  showSnackBar,
+  refSnackBar,
+  register,
+  handleSubmit,
+  errors,
+  isValid,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -85,7 +90,12 @@ export const HomeView = ({
       />
       <Banner />
       <Subscribe
-        formikData={formikData}
+        showSnackBar={showSnackBar}
+        refSnackBar={refSnackBar}
+        register={register}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        isValid={isValid}
       />
       <Footer />
       <UpButton onClick={onScrollToTop} isShownScrollButton={isShownScrollButton} />
@@ -148,12 +158,26 @@ HomeView.propTypes = {
     PropTypes.bool,
   ]).isRequired,
   getNews: PropTypes.func.isRequired,
-  formikData: PropTypes.shape({
-    handleChange: PropTypes.func.isRequired,
-    handleBlur: PropTypes.func.isRequired,
-    errors: PropTypes.objectOf(PropTypes.string).isRequired,
-    isValid: PropTypes.bool.isRequired,
-    dirty: PropTypes.bool.isRequired,
-    touched: PropTypes.objectOf(PropTypes.bool).isRequired,
-  }).isRequired,
+  showSnackBar: PropTypes.func.isRequired,
+  refSnackBar: PropTypes.shape({
+    current: PropTypes.shape({
+      show: PropTypes.func.isRequired,
+      hide: PropTypes.func.isRequired,
+    }),
+  }),
+  register: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.shape({
+    email: PropTypes.string,
+    checkbox: PropTypes.string,
+  }),
+  isValid: PropTypes.bool.isRequired,
 };
+
+HomeView.defaultProps = {
+  errors: PropTypes.shape({
+    email: '',
+    checkbox: '',
+  }),
+  refSnackBar: {},
+}

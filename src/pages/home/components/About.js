@@ -11,15 +11,17 @@ export const About = memo(() => {
       <div className="wrapper aboutFlexContainer">
         <div className="aboutInfoContainer">
           <p className="aboutName">Pompeo Pottery </p>
-          <h1 className="aboutMainText">
-            {t('about.title')}
-            <span>&</span>
-            {' '}
-            {t('about.collection')}
-          </h1>
-          <p className="aboutSubText">
-            {t('about.unique')}
-          </p>
+          <div className="aboutAnimationContainer">
+            <h1 className="aboutMainText">
+              {t('about.title')}
+              <span>&</span>
+              {' '}
+              {t('about.collection')}
+            </h1>
+            <p className="aboutSubText">
+              {t('about.unique')}
+            </p>
+          </div>
           <Button theme="dark" className="aboutButton" text={t('about.shop')} />
         </div>
       </div>

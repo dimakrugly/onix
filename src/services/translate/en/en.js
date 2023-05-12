@@ -8,7 +8,7 @@ export default {
   },
   about: {
     title: 'Unique Porcelain',
-    collection: 'Collection',
+    collection: 'Stone Collection',
     unique: 'Unique & modern pottery made by our master in porcelain & stones',
     shop: 'Shop collection',
   },

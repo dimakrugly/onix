@@ -15,8 +15,8 @@ export const News = memo(({
     <h2 className="newsMainTitle">Latest Art news</h2>
     <SuspenseView isLoading={isLoading} isError={newsFailure} onRetryClick={getNews}>
       <div className="newsArea">
-        {items.map((item) => (
-          <div key={item.title + item.index} className="newsCard">
+        {items.map((item, index) => (
+          <div key={`${item.title} + ${index}`} className="newsCard">
             <div className="newsImageContainer">
               <img
                 src={

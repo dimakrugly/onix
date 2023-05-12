@@ -99,11 +99,42 @@
 }
 
 .mailErrorText {
+  font-family: "Poppins", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
   position: absolute;
-  bottom: 65px;
-  font-family: inherit;
-  font-size: 100%;
-  font-style: inherit;
-  font-weight: inherit;
-  color: #d63638;
+}
+
+.subscribeButton {
+  background-color: var(--button);
+  cursor: pointer;
+  outline: none;
+  border: 0;
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  span {
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &.disabled {
+    background-color: #6C6C6C;
+  }
 }
