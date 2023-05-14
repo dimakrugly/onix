@@ -6,16 +6,21 @@ import { MAX_LENGTH, PLUG_IMAGE } from '../../../constants/constants';
 import { SuspenseView } from '../../../components/SuspenseView/SuspenseView';
 
 export const News = memo(({
-  items,
-  isLoading,
-  newsFailure,
-  getNews,
+  newsData,
+  newsIsFetching,
+  newsError,
+  newsIsSuccess,
+  newsRefetch,
 }) => (
   <section className="news wrapper">
     <h2 className="newsMainTitle">Latest Art news</h2>
-    <SuspenseView isLoading={isLoading} isError={newsFailure} onRetryClick={getNews}>
+    <SuspenseView
+      isLoading={newsIsFetching}
+      isError={newsError?.error && newsError.error}
+      onRetryClick={newsRefetch}
+    >
       <div className="newsArea">
-        {items.map((item, index) => (
+        {newsIsSuccess && newsData.results.map((item, index) => (
           <div key={`${item.title} + ${index}`} className="newsCard">
             <div className="newsImageContainer">
               <img
@@ -41,18 +46,25 @@ export const News = memo(({
 ))
 
 News.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image_url: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.oneOf([null]),
-    ]),
-    content: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  newsFailure: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]).isRequired,
-  getNews: PropTypes.func.isRequired,
+  newsData: PropTypes.shape({
+    results: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image_url: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.oneOf([null]),
+      ]),
+      content: PropTypes.string.isRequired,
+    }).isRequired),
+  }),
+  newsIsFetching: PropTypes.bool.isRequired,
+  newsError: PropTypes.shape({
+    error: PropTypes.string,
+  }),
+  newsIsSuccess: PropTypes.bool.isRequired,
+  newsRefetch: PropTypes.func.isRequired,
 };
+
+News.defaultProps = {
+  newsData: {},
+  newsError: {},
+}

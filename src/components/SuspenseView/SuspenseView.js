@@ -31,10 +31,11 @@ SuspenseView.propTypes = {
   isError: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
-  ]).isRequired,
+  ]),
   onRetryClick: PropTypes.func,
 };
 
 SuspenseView.defaultProps = {
   onRetryClick: () => {},
+  isError: false,
 }

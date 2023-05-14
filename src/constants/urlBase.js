@@ -3,4 +3,6 @@ export const urlBase = {
   swapi: 'https://swapi.dev/api/people',
   news: 'https://newsdata.io/api/1/news?apikey=pub_191214d569ec4d9c6ae025acbe6c2376efdcc&q=art ',
   newsData: 'https://newsdata.io/api/1/news?apikey=pub_206328c5383614a92936d216cb41671adec3c&q=art ',
+  newsDataBase: 'https://newsdata.io/api/1',
+  newsDataEndpoint: '/news?apikey=pub_206328c5383614a92936d216cb41671adec3c&q=art ',
 };

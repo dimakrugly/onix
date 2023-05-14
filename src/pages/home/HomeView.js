@@ -36,16 +36,17 @@ export const HomeView = ({
   onKeyDetect,
   onScrollToTop,
   isShownScrollButton,
-  newsItems,
-  newsIsLoading,
-  newsFailure,
-  getNews,
   showSnackBar,
   refSnackBar,
   register,
   handleSubmit,
   errors,
   isValid,
+  newsData,
+  newsIsFetching,
+  newsError,
+  newsIsSuccess,
+  newsRefetch,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -83,10 +84,11 @@ export const HomeView = ({
         cartData={cartData}
       />
       <News
-        items={newsItems}
-        isLoading={newsIsLoading}
-        newsFailure={newsFailure}
-        getNews={getNews}
+        newsData={newsData}
+        newsIsFetching={newsIsFetching}
+        newsError={newsError}
+        newsIsSuccess={newsIsSuccess}
+        newsRefetch={newsRefetch}
       />
       <Banner />
       <Subscribe
@@ -144,20 +146,6 @@ HomeView.propTypes = {
   onKeyDetect: PropTypes.func.isRequired,
   onScrollToTop: PropTypes.func.isRequired,
   isShownScrollButton: PropTypes.bool.isRequired,
-  newsItems: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image_url: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.oneOf([null]),
-    ]),
-    content: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
-  newsIsLoading: PropTypes.bool.isRequired,
-  newsFailure: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]).isRequired,
-  getNews: PropTypes.func.isRequired,
   showSnackBar: PropTypes.func.isRequired,
   refSnackBar: PropTypes.shape({
     current: PropTypes.shape({
@@ -172,6 +160,22 @@ HomeView.propTypes = {
     checkbox: PropTypes.string,
   }),
   isValid: PropTypes.bool.isRequired,
+  newsData: PropTypes.shape({
+    results: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image_url: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.oneOf([null]),
+      ]),
+      content: PropTypes.string.isRequired,
+    }).isRequired),
+  }),
+  newsIsFetching: PropTypes.bool.isRequired,
+  newsError: PropTypes.shape({
+    error: PropTypes.string,
+  }),
+  newsIsSuccess: PropTypes.bool.isRequired,
+  newsRefetch: PropTypes.func.isRequired,
 };
 
 HomeView.defaultProps = {
@@ -180,4 +184,6 @@ HomeView.defaultProps = {
     checkbox: '',
   }),
   refSnackBar: {},
+  newsData: {},
+  newsError: {},
 }

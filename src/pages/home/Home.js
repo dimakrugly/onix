@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useMemo, useCallback,
 } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useUpButton } from '../../hook/useUpButton';
 import { discount } from '../../utils/discount';
@@ -11,10 +10,8 @@ import LoggerService from '../../services/logger/LoggerService';
 import { bubbleSort } from '../../utils/bubleSort';
 import { urlBase } from '../../constants/urlBase';
 import { ARROW_DOWN, ARROW_UP } from '../../constants/constants';
-import { selectIsLoadingNews, selectNews, selectNewsError } from '../../store/newsData/selector';
-import { fetchNews } from '../../store/newsData/action';
-import { fetchItems } from '../../store/itemsData/action';
 import { useSnackBar } from '../../components/SnackBar/useSnackBar';
+import { useGetNewsQuery } from '../../store/apis/newsApi';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -27,25 +24,13 @@ export const Home = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const news = useSelector(selectNews);
-  const newsIsLoading = useSelector(selectIsLoadingNews);
-  const newsFailure = useSelector(selectNewsError);
-  const dispatch = useDispatch();
-
-  const getNews = useCallback(
-    () => { dispatch(fetchNews()) },
-    [dispatch],
-  );
-
-  useEffect(() => {
-    getNews()
-  }, [dispatch, getNews]);
-
-  const getItemsR = useCallback(() => { dispatch(fetchItems()) }, [dispatch])
-
-  useEffect(() => {
-    getItemsR()
-  }, [dispatch, getItemsR])
+  const {
+    data: newsData,
+    isFetching: newsIsFetching,
+    error: newsError,
+    isSuccess: newsIsSuccess,
+    refetch: newsRefetch,
+  } = useGetNewsQuery();
 
   const getItems = useCallback(() => {
     axios
@@ -249,16 +234,17 @@ export const Home = () => {
       onKeyDetect={onKeyDetect}
       onScrollToTop={onScrollToTop}
       isShownScrollButton={isShownScrollButton}
-      newsItems={news}
-      newsIsLoading={newsIsLoading}
-      newsFailure={newsFailure}
-      getNews={getNews}
       showSnackBar={showSnackBar}
       refSnackBar={refSnackBar}
       register={register}
       handleSubmit={handleSubmit}
       errors={errors}
       isValid={isValid}
+      newsData={newsData}
+      newsIsFetching={newsIsFetching}
+      newsError={newsError}
+      newsIsSuccess={newsIsSuccess}
+      newsRefetch={newsRefetch}
     />
   );
 };
