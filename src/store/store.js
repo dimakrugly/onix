@@ -1,14 +1,13 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { newsApi } from './apis/newsApi';
 import news from './newsData/reducer'
 import items from './itemsData/reducer'
 
-const rootReducer = combineReducers({
-  news, items,
-})
-
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    news, items, [newsApi.reducerPath]: newsApi.reducer,
+  },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,
-  }),
+  }).concat(newsApi.middleware),
 })
